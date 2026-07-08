@@ -20,23 +20,35 @@ export default function LoginPage() {
     event.preventDefault();
     setLoading(true);
     setError("");
-    const response = await fetch("/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password })
-    });
-    const result = await response.json();
-    setLoading(false);
-    if (!response.ok || !result.success) {
-      setError(result.error ?? "Login failed");
-      return;
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+      const result = await response.json().catch(() => ({
+        success: false,
+        error: "Login failed: invalid server response"
+      }));
+      if (!response.ok || !result.success) {
+        setError(result.error ?? "Login failed");
+        return;
+      }
+      saveCurrentUser({
+        id: result.userId,
+        email,
+        subscriptionStatus: result.subscriptionStatus ?? "free"
+      });
+      router.push("/dashboard");
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? `Login request failed: ${error.message}`
+          : "Login request failed"
+      );
+    } finally {
+      setLoading(false);
     }
-    saveCurrentUser({
-      id: result.userId,
-      email,
-      subscriptionStatus: result.subscriptionStatus ?? "free"
-    });
-    router.push("/dashboard");
   }
 
   return (

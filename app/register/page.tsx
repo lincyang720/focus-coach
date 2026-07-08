@@ -20,24 +20,36 @@ export default function RegisterPage() {
     event.preventDefault();
     setLoading(true);
     setError("");
-    const response = await fetch("/api/auth/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, name })
-    });
-    const result = await response.json();
-    setLoading(false);
-    if (!response.ok || !result.success) {
-      setError(result.error ?? "Registration failed");
-      return;
+    try {
+      const response = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, name })
+      });
+      const result = await response.json().catch(() => ({
+        success: false,
+        error: "Registration failed: invalid server response"
+      }));
+      if (!response.ok || !result.success) {
+        setError(result.error ?? "Registration failed");
+        return;
+      }
+      saveCurrentUser({
+        id: result.userId,
+        email,
+        name,
+        subscriptionStatus: "free"
+      });
+      router.push("/dashboard");
+    } catch (error) {
+      setError(
+        error instanceof Error
+          ? `Registration request failed: ${error.message}`
+          : "Registration request failed"
+      );
+    } finally {
+      setLoading(false);
     }
-    saveCurrentUser({
-      id: result.userId,
-      email,
-      name,
-      subscriptionStatus: "free"
-    });
-    router.push("/dashboard");
   }
 
   return (

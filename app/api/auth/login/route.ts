@@ -2,47 +2,60 @@ import { NextResponse } from "next/server";
 import { createSupabaseAnonClient, createSupabaseAdminClient } from "@/lib/supabase";
 
 export async function POST(req: Request) {
-  const { email, password } = (await req.json()) as {
-    email?: string;
-    password?: string;
-  };
+  try {
+    const { email, password } = (await req.json()) as {
+      email?: string;
+      password?: string;
+    };
 
-  if (!email || !password) {
-    return NextResponse.json(
-      { success: false, error: "Email and password are required" },
-      { status: 400 }
-    );
-  }
+    if (!email || !password) {
+      return NextResponse.json(
+        { success: false, error: "Email and password are required" },
+        { status: 400 }
+      );
+    }
 
-  const supabase = createSupabaseAnonClient();
-  const admin = createSupabaseAdminClient();
-  if (!supabase || !admin) {
+    const supabase = createSupabaseAnonClient();
+    const admin = createSupabaseAdminClient();
+    if (!supabase || !admin) {
+      return NextResponse.json({
+        success: true,
+        token: "demo-token",
+        userId: "demo-user",
+        subscriptionStatus: "free"
+      });
+    }
+
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error || !data.user || !data.session) {
+      return NextResponse.json(
+        { success: false, error: error?.message ?? "Login failed" },
+        { status: 401 }
+      );
+    }
+
+    const { data: profile } = await admin
+      .from("users")
+      .select("subscription_status")
+      .eq("id", data.user.id)
+      .single();
+
     return NextResponse.json({
       success: true,
-      token: "demo-token",
-      userId: "demo-user",
-      subscriptionStatus: "free"
+      token: data.session.access_token,
+      userId: data.user.id,
+      subscriptionStatus: profile?.subscription_status ?? "free"
     });
-  }
-
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error || !data.user || !data.session) {
+  } catch (error) {
     return NextResponse.json(
-      { success: false, error: error?.message ?? "Login failed" },
-      { status: 401 }
+      {
+        success: false,
+        error:
+          error instanceof Error && error.message
+            ? `Login service error: ${error.message}`
+            : "Login service error. Check Supabase environment variables."
+      },
+      { status: 502 }
     );
   }
-
-  const { data: profile } = await admin
-    .from("users")
-    .select("subscription_status")
-    .eq("id", data.user.id)
-    .single();
-
-  return NextResponse.json({
-    success: true,
-    token: data.session.access_token,
-    userId: data.user.id,
-    subscriptionStatus: profile?.subscription_status ?? "free"
-  });
 }
