@@ -55,7 +55,7 @@ export async function POST(req: Request) {
             brand_name: "Focus Coach",
             landing_page: "LOGIN",
             user_action: "PAY_NOW",
-            return_url: `${appUrl}/success`,
+            return_url: `${appUrl}/success?user_id=${encodeURIComponent(userId)}`,
             cancel_url: `${appUrl}/pricing`
           }
         }

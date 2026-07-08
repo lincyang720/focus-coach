@@ -40,7 +40,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing user id" }, { status: 400 });
     }
 
-    await supabase
+    const { error } = await supabase
       .from("users")
       .update({
         paypal_payer_id: resource?.payer?.payer_id ?? null,
@@ -49,13 +49,27 @@ export async function POST(req: Request) {
         subscription_status: "active"
       })
       .eq("id", userId);
+
+    if (error) {
+      return NextResponse.json(
+        { error: `Supabase update failed: ${error.message}` },
+        { status: 500 }
+      );
+    }
   }
 
   if (event.event_type === "BILLING.SUBSCRIPTION.CANCELLED" && resource?.id) {
-    await supabase
+    const { error } = await supabase
       .from("users")
       .update({ subscription_status: "canceled" })
       .eq("paypal_subscription_id", resource.id);
+
+    if (error) {
+      return NextResponse.json(
+        { error: `Supabase update failed: ${error.message}` },
+        { status: 500 }
+      );
+    }
   }
 
   return NextResponse.json({ received: true });

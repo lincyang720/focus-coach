@@ -1,10 +1,61 @@
+"use client";
+
 import Link from "next/link";
 import { CheckCircle2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { getCurrentUser, saveCurrentUser } from "@/lib/storage";
 
 export default function SuccessPage() {
+  const [message, setMessage] = useState(
+    "Your checkout completed. PayPal is confirming the payment."
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const demo = params.get("demo");
+    const orderId = params.get("token") ?? params.get("order_id");
+    const userId = params.get("user_id") ?? getCurrentUser().id;
+
+    if (demo) {
+      const user = getCurrentUser();
+      saveCurrentUser({ ...user, subscriptionStatus: "active" });
+      setMessage("Demo checkout completed. Your local Pro status is active.");
+      return;
+    }
+
+    if (!orderId || !userId) {
+      setMessage(
+        "Checkout completed. If your Pro status does not update shortly, contact support with your PayPal receipt."
+      );
+      return;
+    }
+
+    fetch("/api/paypal/capture-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderId, userId })
+    })
+      .then(async (response) => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.success) {
+          throw new Error(result.error ?? "Unable to confirm PayPal payment");
+        }
+        const user = getCurrentUser();
+        saveCurrentUser({ ...user, subscriptionStatus: "active" });
+        setMessage("Your PayPal payment was confirmed and your Pro status is active.");
+      })
+      .catch((error) => {
+        setMessage(
+          error instanceof Error
+            ? error.message
+            : "PayPal payment confirmation failed. Please contact support."
+        );
+      });
+  }, []);
+
   return (
     <PageShell>
       <Card className="mx-auto max-w-lg bg-background/92 backdrop-blur">
@@ -14,7 +65,7 @@ export default function SuccessPage() {
             Focus Coach subscription active
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Your checkout completed. PayPal webhooks update the Supabase user record when configured.
+            {message}
           </p>
           <Button className="mt-6" asChild>
             <Link href="/dashboard">Return to dashboard</Link>
