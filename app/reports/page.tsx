@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Sparkles } from "lucide-react";
+import { CalendarDays, Clock3, FileText, Sparkles, Target } from "lucide-react";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -137,16 +137,30 @@ export default function ReportsPage() {
                 </CardHeader>
                 <CardContent className="space-y-5">
                   <div className="grid gap-3 md:grid-cols-3">
-                    <Metric label="Time" value={formatDuration(report.totalDurationSeconds)} />
                     <Metric
+                      icon="time"
+                      label="Training time"
+                      tone="blue"
+                      value={formatDuration(report.totalDurationSeconds)}
+                    />
+                    <Metric
+                      icon="accuracy"
                       label="Accuracy"
+                      tone="green"
                       value={`${(report.averageAccuracy * 100).toFixed(1)}%`}
                     />
-                    <Metric label="Window" value={`${report.weekStartDate} to ${report.weekEndDate}`} />
+                    <Metric
+                      icon="window"
+                      label="Report window"
+                      tone="amber"
+                      value={`${report.weekStartDate} to ${report.weekEndDate}`}
+                    />
                   </div>
-                  <p className="whitespace-pre-line leading-7 text-muted-foreground">
-                    {report.reportContent}
-                  </p>
+                  <div className="rounded-md border border-primary/15 bg-primary/5 p-4">
+                    <div className="space-y-3 leading-7 text-muted-foreground">
+                      {renderHighlightedReport(report.reportContent)}
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -157,11 +171,55 @@ export default function ReportsPage() {
   );
 }
 
-function Metric({ label, value }: { label: string; value: string }) {
+function Metric({
+  icon,
+  label,
+  tone,
+  value
+}: {
+  icon: "time" | "accuracy" | "window";
+  label: string;
+  tone: "blue" | "green" | "amber";
+  value: string;
+}) {
+  const Icon = icon === "time" ? Clock3 : icon === "accuracy" ? Target : CalendarDays;
+  const toneClass =
+    tone === "green"
+      ? "border-emerald-200 bg-emerald-50 text-emerald-900"
+      : tone === "amber"
+        ? "border-amber-200 bg-amber-50 text-amber-900"
+        : "border-sky-200 bg-sky-50 text-sky-900";
+
   return (
-    <div className="rounded-md border bg-background/70 p-4">
-      <p className="text-sm text-muted-foreground">{label}</p>
-      <p className="mt-1 font-semibold">{value}</p>
+    <div className={`rounded-md border p-4 ${toneClass}`}>
+      <div className="flex items-center gap-2 text-sm font-medium">
+        <Icon className="h-4 w-4" aria-hidden />
+        <span>{label}</span>
+      </div>
+      <p className="mt-2 break-words text-xl font-semibold tracking-normal">{value}</p>
     </div>
   );
+}
+
+function renderHighlightedReport(content: string) {
+  return content.split(/\n+/).map((line, lineIndex) => (
+    <p key={`${line}-${lineIndex}`}>{highlightReportLine(line)}</p>
+  ));
+}
+
+function highlightReportLine(line: string) {
+  const pattern =
+    /(under 1 minute|less than 1 minute|\b\d+(?:\.\d+)?%?\b|Number Memory|Quick Match|N-Back|Task Switch|Stroop Test|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)/g;
+
+  return line.split(pattern).map((part, index) => {
+    if (!part.match(pattern)) return part;
+    return (
+      <span
+        key={`${part}-${index}`}
+        className="rounded-sm bg-amber-100 px-1.5 py-0.5 font-semibold text-amber-950"
+      >
+        {part}
+      </span>
+    );
+  });
 }

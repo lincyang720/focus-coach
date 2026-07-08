@@ -63,8 +63,9 @@ export async function POST(req: Request) {
     sessions.reduce((sum, session) => sum + session.accuracy, 0) / totalSessions;
   const statsByGame = formatGameStats(sessions);
   const bestDayOfWeek = getBestDayOfWeek(sessions);
+  const totalDurationLabel = formatReportDuration(totalDurationSeconds);
   const prompt = WEEKLY_REPORT_PROMPT.replace("{totalSessions}", String(totalSessions))
-    .replace("{totalDurationMinutes}", String(Math.round(totalDurationSeconds / 60)))
+    .replace("{totalDuration}", totalDurationLabel)
     .replace("{averageAccuracy}", (averageAccuracy * 100).toFixed(1))
     .replace("{statsByGame}", statsByGame)
     .replace("{bestDayOfWeek}", bestDayOfWeek);
@@ -226,9 +227,9 @@ function fallbackReport(
   averageAccuracy: number,
   bestDayOfWeek: string
 ) {
-  return `You completed ${totalSessions} focused sessions this week for ${Math.round(
-    totalDurationSeconds / 60
-  )} minutes total. Your average accuracy was ${(averageAccuracy * 100).toFixed(
+  return `You completed ${totalSessions} focused sessions this week for ${formatReportDuration(
+    totalDurationSeconds
+  )} total. Your average accuracy was ${(averageAccuracy * 100).toFixed(
     1
   )}%, with your strongest results on ${bestDayOfWeek}.
 
@@ -239,6 +240,13 @@ Try repeating your lowest-accuracy game first tomorrow.
 Try keeping each training block under 15 minutes.
 
 Next week goal: complete one focused session on at least five days.`;
+}
+
+function formatReportDuration(totalDurationSeconds: number) {
+  if (totalDurationSeconds <= 0) return "less than 1 minute";
+  if (totalDurationSeconds < 60) return "under 1 minute";
+  const minutes = Math.round(totalDurationSeconds / 60);
+  return `${minutes} ${minutes === 1 ? "minute" : "minutes"}`;
 }
 
 function extractLines(content: string, prefixes: string[]) {

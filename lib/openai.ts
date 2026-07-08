@@ -54,7 +54,7 @@ You are a friendly, professional focus-training coach. Based on the user's weekl
 
 User weekly data:
 - Total sessions: {totalSessions}
-- Total training time: {totalDurationMinutes} minutes
+- Total training time: {totalDuration}
 - Average accuracy: {averageAccuracy}%
 
 Game performance:
@@ -72,5 +72,6 @@ Rules:
 - Use a friendly, practical tone
 - Do not make medical claims or say this improves memory, brain health, or prevents decline
 - Use concrete numbers
+- If the total training time is under 1 minute, describe it as "under 1 minute", not "0 minutes"
 - Stay under 300 words
 `;
