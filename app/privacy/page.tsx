@@ -50,7 +50,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-foreground">Payments and processors</h2>
             <p>
-              Payments are processed through Stripe. Focus Coach does not store full card numbers in
+              Payments are processed through PayPal. Focus Coach does not store full card numbers in
               the application database.
             </p>
           </section>

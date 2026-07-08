@@ -14,14 +14,14 @@ export default function PricingPage() {
   async function startCheckout() {
     setLoading(true);
     const user = getCurrentUser();
-    const response = await fetch("/api/stripe/create-checkout-session", {
+    const response = await fetch("/api/paypal/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId: user.id })
     });
     const result = await response.json();
     setLoading(false);
-    if (result.url) window.location.href = result.url;
+    if (result.approveUrl) window.location.href = result.approveUrl;
   }
 
   return (
@@ -63,7 +63,7 @@ export default function PricingPage() {
             action={
               <Button className="w-full" onClick={startCheckout} disabled={loading}>
                 <Sparkles className="h-4 w-4" aria-hidden />
-                {loading ? "Opening checkout..." : "Upgrade"}
+                {loading ? "Opening PayPal..." : "Upgrade"}
               </Button>
             }
           />

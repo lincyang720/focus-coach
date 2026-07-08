@@ -48,7 +48,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-semibold text-foreground">Subscriptions</h2>
             <p>
               The Pro plan is designed as an annual subscription for unlimited focus training,
-              weekly AI recaps, and detailed data views. Stripe handles checkout and billing.
+              weekly AI recaps, and detailed data views. PayPal handles checkout and billing.
             </p>
           </section>
         </CardContent>

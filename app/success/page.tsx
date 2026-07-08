@@ -14,7 +14,7 @@ export default function SuccessPage() {
             Focus Coach subscription active
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Your checkout completed. Stripe webhooks update the Supabase user record when configured.
+            Your checkout completed. PayPal webhooks update the Supabase user record when configured.
           </p>
           <Button className="mt-6" asChild>
             <Link href="/dashboard">Return to dashboard</Link>

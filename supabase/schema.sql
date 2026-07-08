@@ -2,8 +2,9 @@ CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email TEXT UNIQUE NOT NULL,
   name TEXT,
-  stripe_customer_id TEXT,
-  stripe_subscription_id TEXT,
+  paypal_payer_id TEXT,
+  paypal_order_id TEXT,
+  paypal_subscription_id TEXT,
   subscription_status TEXT DEFAULT 'free',
   subscription_expires_at TIMESTAMP,
   created_at TIMESTAMP DEFAULT NOW(),
@@ -11,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
-CREATE INDEX IF NOT EXISTS idx_users_stripe ON users(stripe_customer_id);
+CREATE INDEX IF NOT EXISTS idx_users_paypal ON users(paypal_payer_id);
 
 CREATE TABLE IF NOT EXISTS game_sessions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
