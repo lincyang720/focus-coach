@@ -35,7 +35,15 @@ export default function DashboardPage() {
     <PageShell>
       <div className="space-y-8">
         <section>
-          <Badge>{isPro ? "Pro plan" : "Free plan"}</Badge>
+          <Badge
+            className={
+              isPro
+                ? "border-primary bg-primary text-primary-foreground"
+                : "bg-background/80"
+            }
+          >
+            {isPro ? "Pro plan active" : "Free plan"}
+          </Badge>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal">
             Daily Focus Training Dashboard
           </h1>

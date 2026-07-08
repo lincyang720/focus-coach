@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getPayPalAccessToken, getPayPalBaseUrl, hasPayPalConfig } from "@/lib/paypal";
+import { createSupabaseAdminClient } from "@/lib/supabase";
 
 type PayPalOrderResponse = {
   id?: string;
@@ -14,6 +15,36 @@ export async function POST(req: Request) {
 
   if (!userId) {
     return NextResponse.json({ error: "userId is required" }, { status: 400 });
+  }
+
+  const supabase = createSupabaseAdminClient();
+  if (supabase) {
+    const { data: user, error } = await supabase
+      .from("users")
+      .select("subscription_status, subscription_expires_at")
+      .eq("id", userId)
+      .maybeSingle();
+
+    if (error) {
+      return NextResponse.json(
+        { error: `Unable to check subscription status: ${error.message}` },
+        { status: 500 }
+      );
+    }
+
+    if (
+      user?.subscription_status === "active" &&
+      user.subscription_expires_at &&
+      new Date(user.subscription_expires_at).getTime() > Date.now()
+    ) {
+      return NextResponse.json(
+        {
+          error: "Subscription is already active",
+          subscriptionExpiresAt: user.subscription_expires_at
+        },
+        { status: 409 }
+      );
+    }
   }
 
   if (!hasPayPalConfig()) {

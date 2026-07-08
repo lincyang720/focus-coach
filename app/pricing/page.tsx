@@ -1,26 +1,47 @@
 "use client";
 
 import { Check, Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getCurrentUser } from "@/lib/storage";
+import { getCurrentUser, isSubscriptionActive } from "@/lib/storage";
+import type { UserProfile } from "@/lib/types";
 
 export default function PricingPage() {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const isPro = user ? isSubscriptionActive(user) : false;
+  const isExpired =
+    user?.subscriptionStatus === "active" &&
+    Boolean(user.subscriptionExpiresAt) &&
+    !isSubscriptionActive(user);
+
+  useEffect(() => {
+    setUser(getCurrentUser());
+  }, []);
 
   async function startCheckout() {
+    if (user && isSubscriptionActive(user)) {
+      setError("Your Pro plan is already active.");
+      return;
+    }
     setLoading(true);
-    const user = getCurrentUser();
+    setError("");
+    const currentUser = user ?? getCurrentUser();
     const response = await fetch("/api/paypal/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: user.id })
+      body: JSON.stringify({ userId: currentUser.id })
     });
     const result = await response.json();
     setLoading(false);
+    if (!response.ok) {
+      setError(result.error ?? "Unable to open PayPal checkout.");
+      return;
+    }
     if (result.approveUrl) window.location.href = result.approveUrl;
   }
 
@@ -42,13 +63,29 @@ export default function PricingPage() {
             Start with daily free attention games, then upgrade when unlimited sessions and AI
             productivity reports become useful.
           </p>
+          {isPro && user?.subscriptionExpiresAt ? (
+            <div className="mx-auto mt-5 max-w-md rounded-lg border border-primary bg-primary/10 px-4 py-3 text-sm font-medium text-primary">
+              Current Pro plan active until{" "}
+              {new Date(user.subscriptionExpiresAt).toLocaleDateString()}.
+            </div>
+          ) : null}
+          {isExpired ? (
+            <p className="mt-4 text-sm font-medium text-accent">
+              Your previous Pro plan has expired. Renew to continue using Pro features.
+            </p>
+          ) : null}
+          {error ? <p className="mt-4 text-sm text-destructive">{error}</p> : null}
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <Plan
             title="Free"
             price="$0"
             features={["1 training session per day", "Basic score history", "Five core games"]}
-            action={<Button variant="outline" className="w-full">Current plan</Button>}
+            action={
+              <Button variant="outline" className="w-full" disabled={isPro}>
+                {isPro ? "Included with Pro" : "Current plan"}
+              </Button>
+            }
           />
           <Plan
             title="Pro"
@@ -61,9 +98,15 @@ export default function PricingPage() {
               "Priority access to new games"
             ]}
             action={
-              <Button className="w-full" onClick={startCheckout} disabled={loading}>
+              <Button className="w-full" onClick={startCheckout} disabled={loading || isPro}>
                 <Sparkles className="h-4 w-4" aria-hidden />
-                {loading ? "Opening PayPal..." : "Upgrade"}
+                {isPro
+                  ? "Current Pro plan"
+                  : loading
+                    ? "Opening PayPal..."
+                    : isExpired
+                      ? "Renew Pro"
+                      : "Upgrade"}
               </Button>
             }
           />
@@ -87,7 +130,13 @@ function Plan({
   highlight?: boolean;
 }) {
   return (
-    <Card className={highlight ? "border-primary bg-background/95" : "bg-background/90"}>
+    <Card
+      className={
+        highlight
+          ? "border-primary bg-background/95 shadow-sm shadow-primary/20"
+          : "bg-background/90"
+      }
+    >
       <CardHeader>
         <CardTitle>{title}</CardTitle>
         <p className="text-3xl font-semibold">{price}</p>

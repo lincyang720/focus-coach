@@ -44,7 +44,13 @@ export default function SettingsPage() {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Subscription</p>
-            <Badge className="mt-1">
+            <Badge
+              className={
+                user && isSubscriptionActive(user)
+                  ? "mt-1 border-primary bg-primary text-primary-foreground"
+                  : "mt-1 bg-background/80"
+              }
+            >
               {user && isSubscriptionActive(user) ? "active" : "free"}
             </Badge>
             {user?.subscriptionExpiresAt ? (
