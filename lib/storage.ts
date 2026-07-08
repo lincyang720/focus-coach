@@ -32,6 +32,10 @@ export function saveCurrentUser(user: UserProfile) {
   localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
+export function clearCurrentUser() {
+  localStorage.removeItem(USER_KEY);
+}
+
 export function isSubscriptionActive(user: Pick<UserProfile, "subscriptionStatus" | "subscriptionExpiresAt">) {
   if (user.subscriptionStatus !== "active") return false;
   if (!user.subscriptionExpiresAt) return false;
