@@ -65,9 +65,33 @@ export async function POST(req: Request) {
     .replace("{bestDayOfWeek}", bestDayOfWeek);
 
   const openai = createOpenAIClient();
-  const reportContent = openai
-    ? await generateOpenAIReport(openai, prompt)
-    : fallbackReport(totalSessions, totalDurationSeconds, averageAccuracy, bestDayOfWeek);
+  let reportContent: string;
+  let source: "openai" | "fallback";
+  if (openai) {
+    try {
+      reportContent = await generateOpenAIReport(openai, prompt);
+      source = "openai";
+    } catch (error) {
+      return NextResponse.json(
+        {
+          success: false,
+          error:
+            error instanceof Error
+              ? `OpenAI report generation failed: ${error.message}`
+              : "OpenAI report generation failed"
+        },
+        { status: 502 }
+      );
+    }
+  } else {
+    reportContent = fallbackReport(
+      totalSessions,
+      totalDurationSeconds,
+      averageAccuracy,
+      bestDayOfWeek
+    );
+    source = "fallback";
+  }
 
   const improvements = extractLines(reportContent, ["You"]);
   const suggestions = extractLines(reportContent, ["Try", "Suggestion", "建议"]);
@@ -98,7 +122,7 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ success: true, reportId: report.id });
+  return NextResponse.json({ success: true, reportId: report.id, source });
 }
 
 async function generateOpenAIReport(

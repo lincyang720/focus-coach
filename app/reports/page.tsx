@@ -6,20 +6,88 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { createLocalWeeklyReport, getLocalReports, getLocalSessions } from "@/lib/storage";
+import {
+  createLocalWeeklyReport,
+  getCurrentUser,
+  getLocalReports,
+  getLocalSessions
+} from "@/lib/storage";
 import type { WeeklyReport } from "@/lib/types";
-import { formatDuration } from "@/lib/utils";
+import { formatDuration, getMonday, toDateInputValue } from "@/lib/utils";
 
 export default function ReportsPage() {
   const [reports, setReports] = useState<WeeklyReport[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     setReports(getLocalReports());
+    void loadWeeklyReport();
   }, []);
 
-  function generateReport() {
-    const report = createLocalWeeklyReport(getLocalSessions());
-    setReports(getLocalReports().filter((item) => item.weekStartDate !== report.weekStartDate).concat(report));
+  async function loadWeeklyReport() {
+    const user = getCurrentUser();
+    const weekStart = toDateInputValue(getMonday());
+    const response = await fetch(
+      `/api/reports/weekly?userId=${encodeURIComponent(user.id)}&weekStart=${weekStart}`
+    ).catch(() => null);
+
+    if (!response?.ok) return;
+    const result = await response.json();
+    if (result.report) {
+      setReports([result.report]);
+    }
+  }
+
+  async function generateReport() {
+    setLoading(true);
+    setMessage("");
+    const user = getCurrentUser();
+    const weekStart = toDateInputValue(getMonday());
+
+    try {
+      const response = await fetch("/api/reports/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user.id, weekStart })
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error ?? "Unable to generate AI report");
+      }
+
+      const reportResponse = await fetch(
+        `/api/reports/weekly?userId=${encodeURIComponent(user.id)}&weekStart=${weekStart}`
+      );
+      const reportResult = await reportResponse.json();
+
+      if (reportResult.report) {
+        setReports([reportResult.report]);
+        setMessage(
+          result.source === "openai"
+            ? "OpenAI report generated from Supabase training data."
+            : "Fallback report generated because OPENAI_API_KEY is not configured."
+        );
+        return;
+      }
+
+      throw new Error("AI report was generated but could not be loaded");
+    } catch (error) {
+      const report = createLocalWeeklyReport(getLocalSessions());
+      setReports(
+        getLocalReports()
+          .filter((item) => item.weekStartDate !== report.weekStartDate)
+          .concat(report)
+      );
+      setMessage(
+        error instanceof Error
+          ? `${error.message}. Showing local demo report instead.`
+          : "Showing local demo report instead."
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -32,8 +100,8 @@ export default function ReportsPage() {
               AI Weekly Focus Training Report
             </h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              Generate a weekly recap from local demo data. With OpenAI and Supabase keys, the API
-              route stores the report in Postgres.
+              Generate a weekly recap from Supabase training data. With OPENAI_API_KEY configured,
+              the backend calls OpenAI and stores the report in Postgres.
             </p>
             <h2 className="mt-6 text-2xl font-semibold tracking-normal">
               AI productivity insights from focus training data
@@ -43,11 +111,16 @@ export default function ReportsPage() {
               medical claims.
             </p>
           </div>
-          <Button onClick={generateReport}>
+          <Button onClick={generateReport} disabled={loading}>
             <Sparkles className="h-4 w-4" aria-hidden />
-            Generate report
+            {loading ? "Generating..." : "Generate AI report"}
           </Button>
         </div>
+        {message ? (
+          <div className="rounded-md border bg-background/80 p-4 text-sm text-muted-foreground">
+            {message}
+          </div>
+        ) : null}
 
         {reports.length === 0 ? (
           <Card className="bg-background/92 backdrop-blur">
