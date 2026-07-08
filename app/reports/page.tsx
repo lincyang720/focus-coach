@@ -64,15 +64,11 @@ export default function ReportsPage() {
 
       if (reportResult.report) {
         setReports([reportResult.report]);
-        setMessage(
-          result.source === "openai"
-            ? "OpenAI report generated from Supabase training data."
-            : "Fallback report generated because OPENAI_API_KEY is not configured."
-        );
+        setMessage("Your weekly focus training report is ready.");
         return;
       }
 
-      throw new Error("AI report was generated but could not be loaded");
+      throw new Error("Unable to load the weekly report");
     } catch (error) {
       const report = createLocalWeeklyReport(getLocalSessions());
       setReports(
@@ -80,11 +76,7 @@ export default function ReportsPage() {
           .filter((item) => item.weekStartDate !== report.weekStartDate)
           .concat(report)
       );
-      setMessage(
-        error instanceof Error
-          ? `${error.message}. Showing local demo report instead.`
-          : "Showing local demo report instead."
-      );
+      setMessage("We could not save the report right now, so a local report is shown instead.");
     } finally {
       setLoading(false);
     }
@@ -100,8 +92,7 @@ export default function ReportsPage() {
               AI Weekly Focus Training Report
             </h1>
             <p className="mt-2 max-w-2xl text-muted-foreground">
-              Generate a weekly recap from Supabase training data. With OPENAI_API_KEY configured,
-              the backend calls OpenAI and stores the report in Postgres.
+              Generate a weekly recap from your focus training data and store it with your account.
             </p>
             <h2 className="mt-6 text-2xl font-semibold tracking-normal">
               AI productivity insights from focus training data

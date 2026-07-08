@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { gameConfigByType } from "@/lib/games";
-import { createOpenAIClient, WEEKLY_REPORT_PROMPT } from "@/lib/openai";
+import {
+  createOpenAIClient,
+  getAIModel,
+  getDefaultAIModel,
+  WEEKLY_REPORT_PROMPT
+} from "@/lib/openai";
 import { createSupabaseAdminClient } from "@/lib/supabase";
 import type { GameType } from "@/lib/types";
 
@@ -66,21 +71,17 @@ export async function POST(req: Request) {
 
   const openai = createOpenAIClient();
   let reportContent: string;
-  let source: "openai" | "fallback";
   if (openai) {
     try {
-      reportContent = await generateOpenAIReport(openai, prompt);
-      source = "openai";
+      const result = await generateOpenAIReport(openai, prompt);
+      reportContent = result.content;
     } catch (error) {
-      return NextResponse.json(
-        {
-          success: false,
-          error:
-            error instanceof Error
-              ? `OpenAI report generation failed: ${error.message}`
-              : "OpenAI report generation failed"
-        },
-        { status: 502 }
+      console.error("AI report generation failed, using fallback report.", error);
+      reportContent = fallbackReport(
+        totalSessions,
+        totalDurationSeconds,
+        averageAccuracy,
+        bestDayOfWeek
       );
     }
   } else {
@@ -90,7 +91,6 @@ export async function POST(req: Request) {
       averageAccuracy,
       bestDayOfWeek
     );
-    source = "fallback";
   }
 
   const improvements = extractLines(reportContent, ["You"]);
@@ -122,15 +122,48 @@ export async function POST(req: Request) {
     );
   }
 
-  return NextResponse.json({ success: true, reportId: report.id, source });
+  return NextResponse.json({ success: true, reportId: report.id });
 }
 
 async function generateOpenAIReport(
   openai: NonNullable<ReturnType<typeof createOpenAIClient>>,
   prompt: string
 ) {
+  const configuredModel = getAIModel();
+  const defaultModel = getDefaultAIModel();
+
+  try {
+    return {
+      content: await requestOpenAIReport(openai, prompt, configuredModel),
+      model: configuredModel
+    };
+  } catch (error) {
+    if (configuredModel !== defaultModel && isInvalidModelError(error)) {
+      try {
+        return {
+          content: await requestOpenAIReport(openai, prompt, defaultModel),
+          model: defaultModel
+        };
+      } catch (fallbackError) {
+        throw new Error(
+          `Configured model "${configuredModel}" failed, and fallback model "${defaultModel}" also failed: ${getErrorMessage(
+            fallbackError
+          )}`
+        );
+      }
+    }
+
+    throw new Error(`${getErrorMessage(error)} (model: ${configuredModel})`);
+  }
+}
+
+async function requestOpenAIReport(
+  openai: NonNullable<ReturnType<typeof createOpenAIClient>>,
+  prompt: string,
+  model: string
+) {
   const response = await openai.chat.completions.create({
-    model: process.env.OPENAI_MODEL ?? "gpt-4",
+    model,
     messages: [
       {
         role: "system",
@@ -145,6 +178,16 @@ async function generateOpenAIReport(
     response.choices[0]?.message.content ??
     "You completed focused training this week. Try one short session tomorrow and keep the pace sustainable."
   );
+}
+
+function isInvalidModelError(error: unknown) {
+  const message = getErrorMessage(error).toLowerCase();
+  return message.includes("invalid model") || message.includes("model_not_found");
+}
+
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  return "Unknown OpenAI error";
 }
 
 function formatGameStats(sessions: Array<Record<string, any>>) {

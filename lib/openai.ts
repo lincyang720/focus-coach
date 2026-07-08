@@ -1,10 +1,52 @@
 import OpenAI from "openai";
 
+export const DEFAULT_AI_BASE_URL = "https://api.deepseek.com";
+export const DEFAULT_AI_MODEL = "deepseek-v4-flash";
+export const DEFAULT_OPENAI_MODEL = "gpt-4.1-mini";
+
 export function createOpenAIClient() {
-  if (!process.env.OPENAI_API_KEY) return null;
+  const apiKey =
+    process.env.AI_API_KEY || process.env.DEEPSEEK_API_KEY || process.env.OPENAI_API_KEY;
+
+  if (!apiKey) return null;
+
+  const baseURL = getAIBaseURL();
+
   return new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY
+    apiKey,
+    ...(baseURL ? { baseURL } : {})
   });
+}
+
+export function getAIModel() {
+  return (
+    process.env.AI_MODEL?.trim() ||
+    process.env.DEEPSEEK_MODEL?.trim() ||
+    process.env.OPENAI_MODEL?.trim() ||
+    getDefaultAIModel()
+  );
+}
+
+export function getDefaultAIModel() {
+  return isOpenAIOnlyConfig() ? DEFAULT_OPENAI_MODEL : DEFAULT_AI_MODEL;
+}
+
+function getAIBaseURL() {
+  if (process.env.AI_BASE_URL) return process.env.AI_BASE_URL;
+  if (process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_BASE_URL) {
+    return process.env.DEEPSEEK_BASE_URL || DEFAULT_AI_BASE_URL;
+  }
+  return process.env.OPENAI_BASE_URL;
+}
+
+function isOpenAIOnlyConfig() {
+  return Boolean(
+    process.env.OPENAI_API_KEY &&
+      !process.env.AI_API_KEY &&
+      !process.env.DEEPSEEK_API_KEY &&
+      !process.env.AI_BASE_URL &&
+      !process.env.DEEPSEEK_BASE_URL
+  );
 }
 
 export const WEEKLY_REPORT_PROMPT = `

@@ -7,7 +7,7 @@ An AI-powered cognitive training web app focused on improving focus and producti
 - **Positioning**: Productivity tool (NOT medical), focused on "improving focus + boosting work efficiency"
 - **Pricing**: $29.99/year (transparent, no hidden weekly fees)
 - **Target**: US market first
-- **Tech Stack**: Next.js 14 + TypeScript + TailwindCSS + shadcn/ui + Supabase + Stripe + OpenAI GPT-4
+- **Tech Stack**: Next.js 14 + TypeScript + TailwindCSS + shadcn/ui + Supabase + PayPal + OpenAI-compatible AI API
 
 ## Key Files
 
@@ -27,6 +27,17 @@ An AI-powered cognitive training web app focused on improving focus and producti
 - Daily personalized game recommendations (3 games per day)
 - Adaptive difficulty (auto-adjust based on accuracy)
 - AI weekly report with natural language insights
+
+### AI Provider
+Weekly reports use an OpenAI-compatible chat completions API. For DeepSeek on Vercel, configure:
+
+```env
+AI_API_KEY=your_deepseek_api_key
+AI_BASE_URL=https://api.deepseek.com
+AI_MODEL=deepseek-v4-flash
+```
+
+Legacy `OPENAI_API_KEY` / `OPENAI_MODEL` settings are still supported.
 
 ### Pricing
 - **Free**: 1 training session/day, basic stats
