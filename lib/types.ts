@@ -22,6 +22,7 @@ export interface UserProfile {
   email: string;
   name?: string;
   subscriptionStatus: SubscriptionStatus;
+  subscriptionExpiresAt?: string | null;
 }
 
 export interface GameSessionInput {

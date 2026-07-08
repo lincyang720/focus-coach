@@ -37,7 +37,8 @@ export default function LoginPage() {
       saveCurrentUser({
         id: result.userId,
         email,
-        subscriptionStatus: result.subscriptionStatus ?? "free"
+        subscriptionStatus: result.subscriptionStatus ?? "free",
+        subscriptionExpiresAt: result.subscriptionExpiresAt ?? null
       });
       router.push("/dashboard");
     } catch (error) {

@@ -36,15 +36,20 @@ export async function POST(req: Request) {
 
     const { data: profile } = await admin
       .from("users")
-      .select("subscription_status")
+      .select("subscription_status, subscription_expires_at")
       .eq("id", data.user.id)
       .single();
+    const subscriptionExpiresAt = profile?.subscription_expires_at ?? null;
+    const isExpired =
+      profile?.subscription_status === "active" &&
+      (!subscriptionExpiresAt || new Date(subscriptionExpiresAt).getTime() <= Date.now());
 
     return NextResponse.json({
       success: true,
       token: data.session.access_token,
       userId: data.user.id,
-      subscriptionStatus: profile?.subscription_status ?? "free"
+      subscriptionStatus: isExpired ? "free" : profile?.subscription_status ?? "free",
+      subscriptionExpiresAt
     });
   } catch (error) {
     return NextResponse.json(

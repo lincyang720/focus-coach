@@ -32,6 +32,18 @@ export function saveCurrentUser(user: UserProfile) {
   localStorage.setItem(USER_KEY, JSON.stringify(user));
 }
 
+export function isSubscriptionActive(user: Pick<UserProfile, "subscriptionStatus" | "subscriptionExpiresAt">) {
+  if (user.subscriptionStatus !== "active") return false;
+  if (!user.subscriptionExpiresAt) return false;
+  return new Date(user.subscriptionExpiresAt).getTime() > Date.now();
+}
+
+export function getAnnualSubscriptionExpiry() {
+  const expiresAt = new Date();
+  expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+  return expiresAt.toISOString();
+}
+
 export function getLocalSessions() {
   if (typeof window === "undefined") return [];
   const raw = localStorage.getItem(SESSIONS_KEY);

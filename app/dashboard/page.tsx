@@ -9,13 +9,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gameConfigs, gameSlugByType, getRecommendedGames } from "@/lib/games";
-import { getCurrentUser, getLocalSessions } from "@/lib/storage";
+import { getCurrentUser, getLocalSessions, isSubscriptionActive } from "@/lib/storage";
 import type { GameSession } from "@/lib/types";
 import { formatDuration } from "@/lib/utils";
 
 export default function DashboardPage() {
   const [sessions, setSessions] = useState<GameSession[]>([]);
   const user = getCurrentUser();
+  const isPro = isSubscriptionActive(user);
 
   useEffect(() => {
     setSessions(getLocalSessions());
@@ -34,7 +35,7 @@ export default function DashboardPage() {
     <PageShell>
       <div className="space-y-8">
         <section>
-          <Badge>{user.subscriptionStatus === "active" ? "Pro plan" : "Free plan"}</Badge>
+          <Badge>{isPro ? "Pro plan" : "Free plan"}</Badge>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal">
             Daily Focus Training Dashboard
           </h1>

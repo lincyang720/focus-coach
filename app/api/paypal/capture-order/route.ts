@@ -69,13 +69,15 @@ export async function POST(req: Request) {
   }
 
   const capture = data.purchase_units?.[0]?.payments?.captures?.[0];
+  const expiresAt = getAnnualSubscriptionExpiry();
   const { error } = await supabase
     .from("users")
     .update({
       paypal_payer_id: data.payer?.payer_id ?? null,
       paypal_order_id: orderId,
       paypal_subscription_id: orderId,
-      subscription_status: "active"
+      subscription_status: "active",
+      subscription_expires_at: expiresAt
     })
     .eq("id", userId);
 
@@ -90,6 +92,13 @@ export async function POST(req: Request) {
     success: true,
     orderId,
     captureId: capture?.id,
-    status: data.status ?? capture?.status ?? "COMPLETED"
+    status: data.status ?? capture?.status ?? "COMPLETED",
+    subscriptionExpiresAt: expiresAt
   });
+}
+
+function getAnnualSubscriptionExpiry() {
+  const expiresAt = new Date();
+  expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+  return expiresAt.toISOString();
 }

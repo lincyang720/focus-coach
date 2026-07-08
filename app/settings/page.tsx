@@ -5,7 +5,12 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getCurrentUser, saveCurrentUser } from "@/lib/storage";
+import {
+  getAnnualSubscriptionExpiry,
+  getCurrentUser,
+  isSubscriptionActive,
+  saveCurrentUser
+} from "@/lib/storage";
 import type { UserProfile } from "@/lib/types";
 
 export default function SettingsPage() {
@@ -17,7 +22,11 @@ export default function SettingsPage() {
 
   function setProDemo() {
     const current = getCurrentUser();
-    const next = { ...current, subscriptionStatus: "active" as const };
+    const next = {
+      ...current,
+      subscriptionStatus: "active" as const,
+      subscriptionExpiresAt: getAnnualSubscriptionExpiry()
+    };
     saveCurrentUser(next);
     setUser(next);
   }
@@ -35,7 +44,14 @@ export default function SettingsPage() {
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Subscription</p>
-            <Badge className="mt-1">{user?.subscriptionStatus ?? "free"}</Badge>
+            <Badge className="mt-1">
+              {user && isSubscriptionActive(user) ? "active" : "free"}
+            </Badge>
+            {user?.subscriptionExpiresAt ? (
+              <p className="mt-2 text-sm text-muted-foreground">
+                Expires {new Date(user.subscriptionExpiresAt).toLocaleDateString()}
+              </p>
+            ) : null}
           </div>
           <Button variant="outline" onClick={setProDemo}>
             Enable Pro demo locally

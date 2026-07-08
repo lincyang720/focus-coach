@@ -6,7 +6,11 @@ import { useEffect, useState } from "react";
 import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { getCurrentUser, saveCurrentUser } from "@/lib/storage";
+import {
+  getAnnualSubscriptionExpiry,
+  getCurrentUser,
+  saveCurrentUser
+} from "@/lib/storage";
 
 export default function SuccessPage() {
   const [message, setMessage] = useState(
@@ -21,7 +25,11 @@ export default function SuccessPage() {
 
     if (demo) {
       const user = getCurrentUser();
-      saveCurrentUser({ ...user, subscriptionStatus: "active" });
+      saveCurrentUser({
+        ...user,
+        subscriptionStatus: "active",
+        subscriptionExpiresAt: getAnnualSubscriptionExpiry()
+      });
       setMessage("Demo checkout completed. Your local Pro status is active.");
       return;
     }
@@ -44,7 +52,11 @@ export default function SuccessPage() {
           throw new Error(result.error ?? "Unable to confirm PayPal payment");
         }
         const user = getCurrentUser();
-        saveCurrentUser({ ...user, subscriptionStatus: "active" });
+        saveCurrentUser({
+          ...user,
+          subscriptionStatus: "active",
+          subscriptionExpiresAt: result.subscriptionExpiresAt ?? getAnnualSubscriptionExpiry()
+        });
         setMessage("Your PayPal payment was confirmed and your Pro status is active.");
       })
       .catch((error) => {
