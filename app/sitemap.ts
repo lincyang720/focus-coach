@@ -10,6 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/games",
     "/pricing",
+    "/login",
+    "/register",
     "/privacy",
     "/terms"
   ];
@@ -19,7 +21,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${appUrl}${route}`,
       lastModified: now,
       changeFrequency: (route === "" ? "weekly" : "monthly") as ChangeFrequency,
-      priority: route === "" ? 1 : route === "/games" ? 0.9 : route === "/pricing" ? 0.8 : 0.5
+      priority:
+        route === ""
+          ? 1
+          : route === "/games"
+            ? 0.9
+            : route === "/pricing"
+              ? 0.8
+              : route === "/login" || route === "/register"
+                ? 0.2
+                : 0.5
     })),
     ...gameConfigs.map((game) => ({
       url: `${appUrl}/games/${gameSlugByType[game.type]}`,
