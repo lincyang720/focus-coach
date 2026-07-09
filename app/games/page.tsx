@@ -8,16 +8,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
 export const metadata: Metadata = {
-  title: "Free Attention Training Games Online",
+  title: "Free Brain Training & Cognitive Training Games Online",
   description:
-    "Play five free attention training games online: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch for short focus practice.",
+    "Play five free brain training and cognitive training games online: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch for short focus practice.",
   alternates: {
     canonical: "/games"
   },
   openGraph: {
-    title: "Free Attention Training Games Online | Focus Coach",
+    title: "Free Brain Training & Cognitive Training Games Online | Focus Coach",
     description:
-      "Try short focus training games online with adaptive difficulty and productivity-oriented progress tracking.",
+      "Try short brain training games online with adaptive difficulty and productivity-oriented progress tracking.",
     url: "/games"
   }
 };
@@ -26,9 +26,9 @@ export default function GamesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Free Attention Training Games Online",
+    name: "Free Brain Training & Cognitive Training Games Online",
     description:
-      "A collection of short attention training games for focus, reaction speed, task switching, and productivity practice.",
+      "A collection of short brain training and cognitive training games for focus, reaction speed, task switching, and productivity practice.",
     hasPart: gameConfigs.map((game) => ({
       "@type": "Game",
       name: game.name,
@@ -47,19 +47,20 @@ export default function GamesPage() {
         <section className="max-w-3xl">
           <Badge>Free online focus practice</Badge>
           <h1 className="mt-3 text-4xl font-semibold tracking-normal">
-            Free Attention Training Games Online
+            Free Brain Training & Cognitive Training Games Online
           </h1>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            Practice focus, reaction speed, task switching, and self-control with five short
-            productivity-oriented games. Each session is designed to be quick, measurable, and easy
-            to repeat during a workday.
+            Practice focus, reaction speed, working memory, task switching, and self-control with
+            five short productivity-oriented brain training games. Each cognitive training session
+            is quick, measurable, and easy to repeat during a workday.
           </p>
           <h2 className="mt-8 text-2xl font-semibold tracking-normal">
-            Choose a free focus training game
+            Choose a free cognitive training game
           </h2>
           <p className="mt-3 leading-7 text-muted-foreground">
             Start with Number Memory, N-Back, Stroop Test, Quick Match, or Task Switch. Each game
-            has a dedicated page for online practice and SEO-friendly discovery.
+            supports a different mental skill, from working memory training to reaction time tests
+            and task switching exercises.
           </p>
         </section>
 

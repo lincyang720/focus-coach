@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://focuscoach.app";
-const title = "Focus Coach | AI Focus Training & Attention Games";
+const title = "Focus Coach | AI Brain Training & Cognitive Training App";
 const description =
-  "Train focus with short attention games, adaptive difficulty, and weekly AI productivity recaps. Free daily focus training, $29.99/year for Pro.";
+  "AI brain training and cognitive coaching app. Train attention, reaction speed, and working memory with 5 short games. Weekly AI reports turn scores into productivity insights.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
@@ -16,14 +16,30 @@ export const metadata: Metadata = {
   applicationName: "Focus Coach",
   keywords: [
     "focus training",
-    "AI focus training",
-    "productivity training",
+    "brain training",
+    "cognitive training",
     "attention games",
     "attention training games",
-    "focus improvement app",
-    "work focus",
+    "AI focus training",
+    "AI cognitive coach",
+    "AI brain training",
+    "brain training with AI reports",
+    "personalized cognitive training",
+    "focus training for adults",
+    "focus games for work",
+    "productivity training",
+    "mental fitness app",
+    "daily brain training",
+    "working memory training",
+    "reaction time test",
+    "task switching exercise",
+    "improve attention span",
     "AI weekly recap",
-    "cognitive productivity"
+    "cognitive productivity",
+    "Focus Coach",
+    "cognitive training app",
+    "brain training app",
+    "short attention games"
   ],
   authors: [{ name: "Focus Coach" }],
   creator: "Focus Coach",

@@ -51,17 +51,18 @@ export default function PricingPage() {
         <div className="text-center">
           <Badge>Transparent annual pricing</Badge>
           <h1 className="mt-3 text-3xl font-semibold tracking-normal">
-            Affordable Focus Training App Pricing - $29.99/year
+            Affordable AI Brain Training App Pricing - $29.99/year
           </h1>
           <p className="mt-2 text-muted-foreground">
-            Free plan for basic validation. Upgrade to Pro for $29.99/year when weekly recaps and detailed data matter.
+            Free plan for basic validation. Upgrade to Pro for personalized cognitive training,
+            unlimited brain training sessions, and weekly AI recaps.
           </p>
           <h2 className="mt-8 text-2xl font-semibold tracking-normal">
-            Free focus training or Pro AI weekly recaps
+            Free cognitive training or Pro AI weekly recaps
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Start with daily free attention games, then upgrade when unlimited sessions and AI
-            productivity reports become useful.
+            Start with daily free attention games, then upgrade when unlimited sessions, adaptive
+            difficulty, and AI productivity reports become useful.
           </p>
           {isPro && user?.subscriptionExpiresAt ? (
             <div className="mx-auto mt-5 max-w-md rounded-lg border border-primary bg-primary/10 px-4 py-3 text-sm font-medium text-primary">
@@ -80,7 +81,11 @@ export default function PricingPage() {
           <Plan
             title="Free"
             price="$0"
-            features={["1 training session per day", "Basic score history", "Five core games"]}
+            features={[
+              "1 cognitive training session per day",
+              "Basic brain training score history",
+              "Five core games"
+            ]}
             action={
               <Button variant="outline" className="w-full" disabled={isPro}>
                 {isPro ? "Included with Pro" : "Current plan"}
@@ -95,6 +100,7 @@ export default function PricingPage() {
               "Unlimited training sessions",
               "Weekly AI recap",
               "Detailed data analysis",
+              "Personalized cognitive training insights",
               "Priority access to new games"
             ]}
             action={

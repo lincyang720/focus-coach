@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Affordable Focus Training App Pricing",
+  title: "Affordable AI Brain Training App Pricing",
   description:
-    "Compare the free Focus Coach plan with the $29.99/year Pro plan for unlimited focus training and weekly AI recaps.",
+    "Compare the free Focus Coach plan with the $29.99/year Pro plan for personalized cognitive training, unlimited brain training, and weekly AI recaps.",
+  keywords: [
+    "AI brain training",
+    "personalized cognitive training",
+    "brain training app",
+    "cognitive training app",
+    "focus training app pricing"
+  ],
   alternates: {
     canonical: "/pricing"
   }
