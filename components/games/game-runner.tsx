@@ -39,7 +39,7 @@ export function GameRunner({
   async function handleComplete(payload: GameCompletePayload) {
     const user = getCurrentUser();
     const input: GameSessionInput = {
-      userId: user.id,
+      userId: user?.id,
       gameType,
       difficultyLevel: difficulty,
       score: payload.score,
@@ -52,11 +52,13 @@ export function GameRunner({
     setLastResult(payload);
     setDifficulty(adjustDifficulty(difficulty, payload.accuracy));
 
-    await fetch("/api/sessions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(input)
-    }).catch(() => undefined);
+    if (user) {
+      await fetch("/api/sessions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(input)
+      }).catch(() => undefined);
+    }
   }
 
   return (

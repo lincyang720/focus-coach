@@ -6,30 +6,39 @@ import { getMonday, toDateInputValue } from "@/lib/utils";
 const USER_KEY = "focus-coach:user";
 const SESSIONS_KEY = "focus-coach:sessions";
 const REPORTS_KEY = "focus-coach:reports";
+const DEFAULT_AUTH_SESSION_MS = 24 * 60 * 60 * 1000;
 
-export function getCurrentUser(): UserProfile {
-  if (typeof window === "undefined") {
-    return {
-      id: "demo-user",
-      email: "demo@focuscoach.local",
-      name: "Demo User",
-      subscriptionStatus: "free"
-    };
-  }
+export function getDefaultAuthExpiresAt() {
+  return new Date(Date.now() + DEFAULT_AUTH_SESSION_MS).toISOString();
+}
+
+export function getCurrentUser(): UserProfile | null {
+  if (typeof window === "undefined") return null;
+
   const saved = localStorage.getItem(USER_KEY);
-  if (saved) return JSON.parse(saved) as UserProfile;
-  const demo = {
-    id: "demo-user",
-    email: "demo@focuscoach.local",
-    name: "Demo User",
-    subscriptionStatus: "free" as const
-  };
-  localStorage.setItem(USER_KEY, JSON.stringify(demo));
-  return demo;
+  if (!saved) return null;
+
+  try {
+    const user = JSON.parse(saved) as UserProfile;
+    if (!user.authExpiresAt || new Date(user.authExpiresAt).getTime() <= Date.now()) {
+      clearCurrentUser();
+      return null;
+    }
+    return user;
+  } catch {
+    clearCurrentUser();
+    return null;
+  }
 }
 
 export function saveCurrentUser(user: UserProfile) {
-  localStorage.setItem(USER_KEY, JSON.stringify(user));
+  localStorage.setItem(
+    USER_KEY,
+    JSON.stringify({
+      ...user,
+      authExpiresAt: user.authExpiresAt ?? getDefaultAuthExpiresAt()
+    })
+  );
 }
 
 export function clearCurrentUser() {
@@ -59,7 +68,7 @@ export function saveLocalSession(input: GameSessionInput) {
   const session: GameSession = {
     ...input,
     id: crypto.randomUUID(),
-    userId: input.userId ?? user.id,
+    userId: input.userId ?? user?.id ?? "anonymous-user",
     completedAt: new Date().toISOString()
   };
   const sessions = [...getLocalSessions(), session];

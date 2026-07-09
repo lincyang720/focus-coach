@@ -27,6 +27,7 @@ export default function ReportsPage() {
 
   async function loadWeeklyReport() {
     const user = getCurrentUser();
+    if (!user) return;
     const weekStart = toDateInputValue(getMonday());
     const response = await fetch(
       `/api/reports/weekly?userId=${encodeURIComponent(user.id)}&weekStart=${weekStart}`
@@ -46,6 +47,9 @@ export default function ReportsPage() {
     const weekStart = toDateInputValue(getMonday());
 
     try {
+      if (!user) {
+        throw new Error("Sign in to save AI reports to your account.");
+      }
       const response = await fetch("/api/reports/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

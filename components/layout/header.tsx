@@ -22,8 +22,7 @@ export function Header() {
   const [user, setUser] = useState<UserProfile | null>(null);
 
   useEffect(() => {
-    const saved = localStorage.getItem("focus-coach:user");
-    setUser(saved ? getCurrentUser() : null);
+    setUser(getCurrentUser());
   }, []);
 
   function signOut() {

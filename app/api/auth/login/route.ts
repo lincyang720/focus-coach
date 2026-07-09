@@ -22,7 +22,8 @@ export async function POST(req: Request) {
         success: true,
         token: "demo-token",
         userId: "demo-user",
-        subscriptionStatus: "free"
+        subscriptionStatus: "free",
+        authExpiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
       });
     }
 
@@ -49,7 +50,10 @@ export async function POST(req: Request) {
       token: data.session.access_token,
       userId: data.user.id,
       subscriptionStatus: isExpired ? "free" : profile?.subscription_status ?? "free",
-      subscriptionExpiresAt
+      subscriptionExpiresAt,
+      authExpiresAt: data.session.expires_at
+        ? new Date(data.session.expires_at * 1000).toISOString()
+        : new Date(Date.now() + 60 * 60 * 1000).toISOString()
     });
   } catch (error) {
     return NextResponse.json(

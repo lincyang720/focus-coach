@@ -38,7 +38,8 @@ export default function LoginPage() {
         id: result.userId,
         email,
         subscriptionStatus: result.subscriptionStatus ?? "free",
-        subscriptionExpiresAt: result.subscriptionExpiresAt ?? null
+        subscriptionExpiresAt: result.subscriptionExpiresAt ?? null,
+        authExpiresAt: result.authExpiresAt ?? null
       });
       router.push("/dashboard");
     } catch (error) {

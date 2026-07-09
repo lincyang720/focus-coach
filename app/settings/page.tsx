@@ -22,6 +22,7 @@ export default function SettingsPage() {
 
   function setProDemo() {
     const current = getCurrentUser();
+    if (!current) return;
     const next = {
       ...current,
       subscriptionStatus: "active" as const,

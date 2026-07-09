@@ -10,15 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gameConfigs, gameSlugByType, getRecommendedGames } from "@/lib/games";
 import { getCurrentUser, getLocalSessions, isSubscriptionActive } from "@/lib/storage";
-import type { GameSession } from "@/lib/types";
+import type { GameSession, UserProfile } from "@/lib/types";
 import { formatDuration } from "@/lib/utils";
 
 export default function DashboardPage() {
   const [sessions, setSessions] = useState<GameSession[]>([]);
-  const user = getCurrentUser();
-  const isPro = isSubscriptionActive(user);
+  const [user, setUser] = useState<UserProfile | null>(null);
+  const isPro = user ? isSubscriptionActive(user) : false;
 
   useEffect(() => {
+    setUser(getCurrentUser());
     setSessions(getLocalSessions());
   }, []);
 

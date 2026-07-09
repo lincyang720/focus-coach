@@ -2,6 +2,7 @@
 
 import { Check, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ import { getCurrentUser, isSubscriptionActive } from "@/lib/storage";
 import type { UserProfile } from "@/lib/types";
 
 export default function PricingPage() {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [user, setUser] = useState<UserProfile | null>(null);
@@ -31,6 +33,11 @@ export default function PricingPage() {
     setLoading(true);
     setError("");
     const currentUser = user ?? getCurrentUser();
+    if (!currentUser) {
+      setLoading(false);
+      router.push("/login");
+      return;
+    }
     const response = await fetch("/api/paypal/create-order", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

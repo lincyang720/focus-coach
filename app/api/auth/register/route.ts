@@ -20,7 +20,8 @@ export async function POST(req: Request) {
     if (!supabase) {
       return NextResponse.json({
         success: true,
-        userId: `demo-${crypto.randomUUID()}`
+        userId: `demo-${crypto.randomUUID()}`,
+        authExpiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
       });
     }
 
@@ -52,7 +53,11 @@ export async function POST(req: Request) {
       );
     }
 
-    return NextResponse.json({ success: true, userId: data.user.id });
+    return NextResponse.json({
+      success: true,
+      userId: data.user.id,
+      authExpiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString()
+    });
   } catch (error) {
     return NextResponse.json(
       {

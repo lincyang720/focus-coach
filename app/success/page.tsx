@@ -21,10 +21,18 @@ export default function SuccessPage() {
     const params = new URLSearchParams(window.location.search);
     const demo = params.get("demo");
     const orderId = params.get("token") ?? params.get("order_id");
-    const userId = params.get("user_id") ?? getCurrentUser().id;
+    const currentUser = getCurrentUser();
+    const userId = params.get("user_id") ?? currentUser?.id;
 
     if (demo) {
-      const user = getCurrentUser();
+      const user =
+        getCurrentUser() ??
+        ({
+          id: "demo-user",
+          email: "demo@focuscoach.local",
+          name: "Demo User",
+          subscriptionStatus: "free" as const
+        });
       saveCurrentUser({
         ...user,
         subscriptionStatus: "active",
@@ -52,6 +60,9 @@ export default function SuccessPage() {
           throw new Error(result.error ?? "Unable to confirm PayPal payment");
         }
         const user = getCurrentUser();
+        if (!user) {
+          throw new Error("Sign in again to refresh your Pro status.");
+        }
         saveCurrentUser({
           ...user,
           subscriptionStatus: "active",

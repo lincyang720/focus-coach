@@ -38,7 +38,8 @@ export default function RegisterPage() {
         id: result.userId,
         email,
         name,
-        subscriptionStatus: "free"
+        subscriptionStatus: "free",
+        authExpiresAt: result.authExpiresAt ?? null
       });
       router.push("/dashboard");
     } catch (error) {
