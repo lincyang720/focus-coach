@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://focuscoach.app";
+const appUrl = "https://www.focuscoach.dev";
 const title = "Focus Coach | AI Brain Training & Cognitive Training App";
 const description =
   "AI brain training and cognitive coaching app. Train attention, reaction speed, and working memory with 5 short games. Weekly AI reports turn scores into productivity insights.";

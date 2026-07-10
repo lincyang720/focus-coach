@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://focuscoach.app";
+const appUrl = "https://www.focuscoach.dev";
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...staticRoutes.map((route) => ({
-      url: `${appUrl}${route}`,
+      url: route === "" ? `${appUrl}/` : `${appUrl}${route}`,
       lastModified: now,
       changeFrequency: (route === "" ? "weekly" : "monthly") as ChangeFrequency,
       priority:
