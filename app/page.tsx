@@ -1,8 +1,44 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BarChart3, Brain, Clock, Sparkles } from "lucide-react";
+import { FocusCheck } from "@/components/home/focus-check";
 import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "AI Brain Training Cognitive Coaching App | Focus Coach"
+  },
+  description:
+    "AI brain training cognitive coaching app with short focus games, personalized insights, and weekly reports to help adults train attention and working memory.",
+  alternates: {
+    canonical: "/"
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Focus Coach",
+    title: "AI Brain Training Cognitive Coaching App | Focus Coach",
+    description:
+      "Try short brain training games, personalized cognitive coaching insights, and weekly AI reports for daily focus practice.",
+    url: "/",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Focus Coach brain training app dashboard preview"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Brain Training Cognitive Coaching App | Focus Coach",
+    description:
+      "Short focus games, cognitive coaching insights, and weekly AI reports for practical brain training.",
+    images: ["/opengraph-image"]
+  }
+};
 
 export default function HomePage() {
   const jsonLd = {
@@ -14,7 +50,7 @@ export default function HomePage() {
         applicationCategory: "ProductivityApplication",
         operatingSystem: "Web",
         description:
-          "An AI brain training and cognitive training app with short attention games, adaptive difficulty, and weekly productivity recaps.",
+          "An AI brain training cognitive coaching app with short attention games, adaptive difficulty, and weekly productivity recaps.",
         offers: {
           "@type": "Offer",
           price: "29.99",
@@ -24,6 +60,7 @@ export default function HomePage() {
         featureList: [
           "10-minute cognitive training sessions",
           "Brain training games for attention and reaction speed",
+          "Cognitive coaching insights",
           "Adaptive difficulty",
           "Weekly AI productivity recap"
         ]
@@ -33,26 +70,26 @@ export default function HomePage() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is Focus Coach?",
+            name: "What is an AI brain training cognitive coaching app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Focus Coach is an AI brain training and cognitive coaching app for short focus practice, attention games, and weekly productivity insights."
+              text: "An AI brain training cognitive coaching app combines short cognitive training games, performance tracking, and AI-generated coaching insights. Focus Coach uses that workflow to help adults practice attention, working memory, reaction speed, and task switching."
             }
           },
           {
             "@type": "Question",
-            name: "Who is this cognitive training app for?",
+            name: "How is Focus Coach different from a regular brain training app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Focus Coach is designed for adults who want practical focus training for work, study, and daily mental fitness without medical claims."
+              text: "A regular brain training app may only show scores. Focus Coach adds cognitive coaching by turning game results into practical weekly insights about consistency, accuracy, response speed, and next steps for daily focus."
             }
           },
           {
             "@type": "Question",
-            name: "How long does daily brain training take?",
+            name: "Is Focus Coach a medical app?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Most sessions take 3 to 5 minutes per game, so users can build a daily brain training routine in about 10 minutes."
+              text: "No. Focus Coach is a productivity and mental fitness tool. It is not a medical device, does not diagnose conditions, and does not make clinical treatment claims."
             }
           }
         ]
@@ -66,61 +103,79 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <section className="grid min-h-[calc(100vh-120px)] items-center gap-10 py-10 lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="grid min-h-[calc(100vh-120px)] items-center gap-10 py-10 lg:grid-cols-[1.02fr_0.98fr]">
         <div className="max-w-2xl">
           <p className="mb-4 inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground">
             <Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />
             10-minute brain training app for workdays
           </p>
           <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">
-            AI Brain Training & Cognitive Coaching App
+            AI Brain Training Cognitive Coaching App
           </h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Train attention, reaction speed, working memory, task switching, and self-control with
-            five short cognitive training games. Weekly AI recaps turn your scores into practical
-            next steps for better work sessions.
-          </p>
-          <h2 className="mt-8 text-2xl font-semibold tracking-normal">
-            Cognitive Training Games with AI-Powered Productivity Reports
-          </h2>
-          <p className="mt-3 leading-7 text-muted-foreground">
-            Unlike generic brain training apps, Focus Coach combines short cognitive training
-            exercises with weekly AI reports. Each session targets specific mental skills: working
-            memory, reaction speed, attention control, and task switching.
+            Focus Coach is a brain training app for adults who want short, practical cognitive
+            training. Play quick attention, memory, reaction, and task-switching games, then get AI
+            coaching insights that explain what your results mean for daily focus and productivity.
           </p>
           <p className="mt-3 leading-7 text-muted-foreground">
-            This AI cognitive coach translates your progress into productivity insights for adults
-            who want personalized cognitive training, daily brain training, and focus games for work
-            without medical claims or vague charts.
+            Try a short focus check on this page, then continue into the full AI brain training
+            cognitive coaching app when you are ready for personalized weekly reports.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button size="lg" asChild>
-              <Link href="/dashboard">
-                Start training
+              <a href="#focus-check">
+                Try a 60-second focus check
                 <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
+              </a>
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <Link href="/pricing">See pricing</Link>
+              <Link href="/games">View brain training games</Link>
             </Button>
           </div>
         </div>
-        <div className="grid gap-4">
+        <div id="focus-check">
+          <FocusCheck />
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div className="md:col-span-1">
+          <h2 className="text-2xl font-semibold tracking-normal">
+            AI Brain Training Games for Daily Focus
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            Focus Coach helps adults build a short, repeatable brain training routine. Each session
+            includes cognitive training games for attention, reaction speed, working memory, and
+            task switching. Instead of long lessons or vague charts, the app turns your training
+            results into simple next steps you can use during a workday.
+          </p>
+          <p>
+            The goal is practical mental fitness. You can start with a quick game, see how accurate
+            you were, and return tomorrow with a clearer idea of what to practice next. This keeps
+            daily brain training focused, measurable, and easy to repeat without making medical
+            claims.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-4 py-8 md:grid-cols-3">
           {[
             {
               icon: Clock,
-              title: "Short daily brain training",
+              title: "Short Cognitive Training for Working Adults",
               text: "Each cognitive training game is designed for 3-5 minutes so practice stays sustainable."
             },
             {
               icon: Brain,
-              title: "Personalized cognitive training",
+              title: "Cognitive Coaching App with Personalized Insights",
               text: "Accuracy above 80% raises the challenge; below 60% lowers it for adaptive focus practice."
             },
             {
               icon: BarChart3,
-              title: "AI cognitive coach reports",
-              text: "Weekly AI reports summarize brain training patterns without medical claims or vague charts."
+              title: "Brain Training App with Weekly AI Reports",
+              text: "Weekly AI reports summarize brain training patterns, consistency, and next steps."
             }
           ].map((item) => (
             <Card key={item.title} className="bg-background/88 backdrop-blur">
@@ -129,9 +184,82 @@ export default function HomePage() {
                   <item.icon className="h-5 w-5" aria-hidden />
                 </div>
                 <div>
-                  <h2 className="font-semibold">{item.title}</h2>
+                  <h3 className="font-semibold">{item.title}</h3>
                   <p className="mt-1 text-sm leading-6 text-muted-foreground">{item.text}</p>
                 </div>
+              </CardContent>
+            </Card>
+          ))}
+      </section>
+
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-normal">
+            Cognitive Coaching App with Personalized Insights
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            As a cognitive coaching app, Focus Coach looks at your recent game performance,
+            accuracy, response time, and consistency. The app recommends short practice sessions
+            based on your results, so your brain training feels focused instead of random.
+          </p>
+          <p>
+            The coaching layer is designed for adults who want better work sessions, not another
+            complicated dashboard. After you complete training, Focus Coach explains which cognitive
+            skills were strongest, which games felt harder, and how to structure the next session.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-normal">
+            Brain Training App with Weekly AI Reports
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            The weekly AI report explains your focus patterns in plain language. It highlights where
+            your attention was strongest, which cognitive training games were hardest, and what to
+            try next. Focus Coach is designed for productivity and mental fitness, not medical
+            diagnosis or treatment.
+          </p>
+          <p>
+            A useful AI brain training cognitive coaching app should let users experience the core
+            workflow quickly: play, review, understand, and improve. That is why the homepage starts
+            with an interactive focus check instead of asking every visitor to jump to another page
+            before trying the product.
+          </p>
+        </div>
+      </section>
+
+      <section className="py-10">
+        <h2 className="text-2xl font-semibold tracking-normal">
+          AI Brain Training Cognitive Coaching App FAQ
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          {[
+            {
+              question: "What is an AI brain training cognitive coaching app?",
+              answer:
+                "It combines cognitive training games, performance tracking, and AI-generated coaching insights. Focus Coach uses short exercises to help adults practice attention, working memory, reaction speed, and task switching."
+            },
+            {
+              question: "How is Focus Coach different from a regular brain training app?",
+              answer:
+                "A regular brain training app may stop at scores. Focus Coach adds weekly cognitive coaching insights that explain accuracy, consistency, response speed, and practical next steps for daily focus."
+            },
+            {
+              question: "Is Focus Coach a medical app?",
+              answer:
+                "No. Focus Coach is a productivity and mental fitness tool. It does not diagnose conditions, treat health issues, or make clinical claims about cognitive improvement."
+            }
+          ].map((item) => (
+            <Card key={item.question} className="bg-background/88 backdrop-blur">
+              <CardContent className="p-5">
+                <h3 className="font-semibold leading-6">{item.question}</h3>
+                <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.answer}</p>
               </CardContent>
             </Card>
           ))}
