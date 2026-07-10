@@ -91,6 +91,30 @@ export default function HomePage() {
               "@type": "Answer",
               text: "No. Focus Coach is a productivity and mental fitness tool. It is not a medical device, does not diagnose conditions, and does not make clinical treatment claims."
             }
+          },
+          {
+            "@type": "Question",
+            name: "How often should I use this brain training app?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A short daily routine is usually easier to sustain than occasional long sessions. Focus Coach is designed around brief games that can fit before focused work, between meetings, or at the end of a workday review."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "What cognitive skills does Focus Coach train?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The games are organized around attention control, working memory, reaction speed, task switching, and inhibition. The AI report helps explain which areas looked consistent and which areas may deserve the next short practice session."
+            }
+          },
+          {
+            "@type": "Question",
+            name: "Why compare this with a regular brain training app?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "People often search for an AI brain training cognitive coaching app brain training app when they want both quick games and meaningful feedback. Focus Coach connects the two by pairing practice with weekly coaching explanations."
+            }
           }
         ]
       }
@@ -130,6 +154,11 @@ export default function HomePage() {
             </Button>
             <Button variant="outline" size="lg" asChild>
               <Link href="/games">View brain training games</Link>
+            </Button>
+            <Button variant="ghost" size="lg" asChild>
+              <Link href="/ai-brain-training-cognitive-coaching-app">
+                AI coaching guide
+              </Link>
             </Button>
           </div>
         </div>
@@ -234,11 +263,81 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-normal">
+            How the AI Brain Training Cognitive Coaching App Works
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            Focus Coach follows a simple training loop: play a short cognitive game, review
+            accuracy and response speed, then use AI coaching insights to decide what to practice
+            next. This makes the brain training app useful for adults who want practical focus
+            support during workdays, not long lessons, medical-style dashboards, or abstract scores
+            that are hard to act on.
+          </p>
+          <p>
+            For people comparing an AI brain training cognitive coaching app with a regular brain
+            training app, the difference is the coaching layer. Focus Coach connects game results to
+            plain-language feedback about consistency, attention control, task switching, and
+            working memory. The result is a routine that feels small enough to repeat and specific
+            enough to guide the next session.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-normal">
+            Who This Brain Training App Is For
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            Focus Coach is built for knowledge workers, students, founders, and busy adults who
+            want short cognitive training sessions they can repeat consistently. The app is meant
+            for a workday context: a quick warmup before deep work, a reset between meetings, or a
+            simple way to track focus practice without turning it into another complicated project.
+          </p>
+          <p>
+            The experience is intentionally practical. You can use the 60-second preview on this
+            page, move into the full game library, and then review weekly patterns when enough
+            training data is available. Focus Coach avoids clinical promises and keeps the language
+            focused on attention practice, mental fitness, productivity, and better training
+            consistency.
+          </p>
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-10 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold tracking-normal">
+            What You Can Practice with Focus Coach
+          </h2>
+        </div>
+        <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+          <p>
+            Each game targets a different part of focus. Number Memory supports working memory
+            practice, Quick Match trains fast visual decisions, N-Back challenges active recall,
+            Task Switch builds flexible attention, and Stroop Test practices inhibition and
+            self-control. Together, these games make the app more complete than a single-purpose
+            brain training tool.
+          </p>
+          <p>
+            The weekly report brings those signals together. Instead of treating every score as an
+            isolated number, Focus Coach looks for patterns across accuracy, response speed, game
+            type, and training frequency. That is what turns a set of short games into an AI brain
+            training cognitive coaching app for adults who want a repeatable focus routine.
+          </p>
+        </div>
+      </section>
+
       <section className="py-10">
         <h2 className="text-2xl font-semibold tracking-normal">
           AI Brain Training Cognitive Coaching App FAQ
         </h2>
-        <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <div className="mt-5 grid gap-6 md:grid-cols-2">
           {[
             {
               question: "What is an AI brain training cognitive coaching app?",
@@ -254,6 +353,21 @@ export default function HomePage() {
               question: "Is Focus Coach a medical app?",
               answer:
                 "No. Focus Coach is a productivity and mental fitness tool. It does not diagnose conditions, treat health issues, or make clinical claims about cognitive improvement."
+            },
+            {
+              question: "How often should I use this brain training app?",
+              answer:
+                "A short daily routine is usually easier to sustain than occasional long sessions. Focus Coach is designed around brief games that can fit before focused work, between meetings, or at the end of a workday review."
+            },
+            {
+              question: "What cognitive skills does Focus Coach train?",
+              answer:
+                "The games are organized around attention control, working memory, reaction speed, task switching, and inhibition. The AI report helps explain which areas looked consistent and which areas may deserve the next short practice session."
+            },
+            {
+              question: "Why compare this with a regular brain training app?",
+              answer:
+                "People often search for an AI brain training cognitive coaching app brain training app when they want both quick games and meaningful feedback. Focus Coach connects the two by pairing practice with weekly coaching explanations."
             }
           ].map((item) => (
             <Card key={item.question} className="bg-background/88 backdrop-blur">

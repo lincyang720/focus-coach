@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticRoutes = [
     "",
+    "/ai-brain-training-cognitive-coaching-app",
     "/games",
     "/pricing",
     "/login",
@@ -24,6 +25,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:
         route === ""
           ? 1
+          : route === "/ai-brain-training-cognitive-coaching-app"
+            ? 0.9
           : route === "/games"
             ? 0.9
             : route === "/pricing"

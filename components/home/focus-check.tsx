@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2, RotateCcw, Timer } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 const rounds = [
   { target: "Blue circle", options: ["Blue circle", "Green square", "Red triangle"] },
@@ -53,7 +53,9 @@ export function FocusCheck() {
         <div className="flex items-center justify-between gap-3">
           <div>
             <p className="text-sm font-medium text-primary">Interactive focus check</p>
-            <CardTitle className="mt-2">60-Second Brain Training Preview</CardTitle>
+            <h2 className="mt-2 text-lg font-semibold leading-none tracking-normal">
+              60-Second AI Brain Training Preview
+            </h2>
           </div>
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <Timer className="h-5 w-5" aria-hidden />
