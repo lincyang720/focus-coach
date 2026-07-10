@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Brain, ClipboardList, Sparkles } from "lucide-react";
 import { PageShell } from "@/components/layout/page-shell";
@@ -62,31 +63,44 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <article className="space-y-12 py-8">
-        <section className="max-w-3xl">
-          <p className="inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground">
-            <Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />
-            Focus training guide
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-normal sm:text-5xl">
-            AI Brain Training Cognitive Coaching App & Brain Training App
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Focus Coach is an AI brain training cognitive coaching app for adults who want short,
-            measurable focus practice. It combines a brain training app experience with cognitive
-            coaching insights, so users can play quick games, review results, and understand what to
-            practice next.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button size="lg" asChild>
-              <Link href="/#focus-check">
-                Try the focus check
-                <ArrowRight className="h-4 w-4" aria-hidden />
-              </Link>
-            </Button>
-            <Button variant="outline" size="lg" asChild>
-              <Link href="/games">View cognitive training games</Link>
-            </Button>
+        <section className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <div className="max-w-3xl">
+            <p className="inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground">
+              <Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />
+              Focus training guide
+            </p>
+            <h1 className="mt-4 text-4xl font-semibold tracking-normal sm:text-5xl">
+              AI Brain Training Cognitive Coaching App & Brain Training App
+            </h1>
+            <p className="mt-5 text-lg leading-8 text-muted-foreground">
+              Focus Coach is an AI brain training cognitive coaching app for adults who want short,
+              measurable focus practice. It combines a brain training app experience with cognitive
+              coaching insights, so users can play quick games, review results, and understand what
+              to practice next.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button size="lg" asChild>
+                <Link href="/#focus-check">
+                  Try the focus check
+                  <ArrowRight className="h-4 w-4" aria-hidden />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link href="/games">View cognitive training games</Link>
+              </Button>
+            </div>
           </div>
+          <figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm">
+            <Image
+              src="/images/focus-coach-ai-report.jpg"
+              alt="AI cognitive coaching weekly report dashboard with attention trend, accuracy, response speed, and focus insights"
+              width={1536}
+              height={1024}
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 54vw, 100vw"
+              priority
+            />
+          </figure>
         </section>
 
         <section className="grid gap-6 md:grid-cols-3">

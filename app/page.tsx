@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BarChart3, Brain, Clock, Sparkles } from "lucide-react";
 import { FocusCheck } from "@/components/home/focus-check";
@@ -187,6 +188,30 @@ export default function HomePage() {
             claims.
           </p>
         </div>
+      </section>
+
+      <section className="grid gap-6 py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="space-y-4">
+          <h2 className="text-2xl font-semibold tracking-normal">
+            A Visual Brain Training App Dashboard
+          </h2>
+          <p className="leading-7 text-muted-foreground">
+            The Focus Coach dashboard brings short games, progress trends, and AI coaching
+            summaries into one view. The product is designed so users can start a session quickly,
+            check their recent patterns, and return to focused work without digging through a
+            complicated analytics tool.
+          </p>
+        </div>
+        <figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm">
+          <Image
+            src="/images/focus-coach-dashboard.jpg"
+            alt="Focus Coach AI brain training cognitive coaching app dashboard with game tiles and weekly report"
+            width={1536}
+            height={1024}
+            className="h-auto w-full"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+          />
+        </figure>
       </section>
 
       <section className="grid gap-4 py-8 md:grid-cols-3">

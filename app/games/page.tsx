@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock, Gamepad2 } from "lucide-react";
 import { PageShell } from "@/components/layout/page-shell";
@@ -44,24 +45,37 @@ export default function GamesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="space-y-8">
-        <section className="max-w-3xl">
-          <Badge>Free online focus practice</Badge>
-          <h1 className="mt-3 text-4xl font-semibold tracking-normal">
-            Free Brain Training & Cognitive Training Games Online
-          </h1>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            Practice focus, reaction speed, working memory, task switching, and self-control with
-            five short productivity-oriented brain training games. Each cognitive training session
-            is quick, measurable, and easy to repeat during a workday.
-          </p>
-          <h2 className="mt-8 text-2xl font-semibold tracking-normal">
-            Choose a free cognitive training game
-          </h2>
-          <p className="mt-3 leading-7 text-muted-foreground">
-            Start with Number Memory, N-Back, Stroop Test, Quick Match, or Task Switch. Each game
-            supports a different mental skill, from working memory training to reaction time tests
-            and task switching exercises.
-          </p>
+        <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+          <div className="max-w-3xl">
+            <Badge>Free online focus practice</Badge>
+            <h1 className="mt-3 text-4xl font-semibold tracking-normal">
+              Free Brain Training & Cognitive Training Games Online
+            </h1>
+            <p className="mt-4 text-lg leading-8 text-muted-foreground">
+              Practice focus, reaction speed, working memory, task switching, and self-control with
+              five short productivity-oriented brain training games. Each cognitive training
+              session is quick, measurable, and easy to repeat during a workday.
+            </p>
+            <h2 className="mt-8 text-2xl font-semibold tracking-normal">
+              Choose a free cognitive training game
+            </h2>
+            <p className="mt-3 leading-7 text-muted-foreground">
+              Start with Number Memory, N-Back, Stroop Test, Quick Match, or Task Switch. Each game
+              supports a different mental skill, from working memory training to reaction time tests
+              and task switching exercises.
+            </p>
+          </div>
+          <figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm">
+            <Image
+              src="/images/focus-coach-games.jpg"
+              alt="Brain training app interface showing number memory, color matching, n-back, task switching, and Stroop games"
+              width={1536}
+              height={1024}
+              className="h-auto w-full"
+              sizes="(min-width: 1024px) 52vw, 100vw"
+              priority
+            />
+          </figure>
         </section>
 
         <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
