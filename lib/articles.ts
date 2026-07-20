@@ -1,6 +1,7 @@
 export type Article = {
   slug: string; title: string; description: string; keyword: string; published: string;
   intro: string[]; sections: { heading: string; paragraphs: string[]; tips?: string[] }[];
+  sources?: { title: string; url: string }[];
 };
 
 export const articles: Article[] = [
@@ -17,7 +18,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "how-to-focus-with-adhd-10-minute-routine", title: "How to Focus With ADHD: A Practical 10-Minute Daily Routine", keyword: "how to focus with ADHD", published: "2026-07-20",
+    slug: "how-to-focus-with-adhd-10-minute-routine", title: "How to Focus With ADHD: 7 Evidence-Informed Tips", keyword: "how to focus with ADHD", published: "2026-07-20",
     description: "A practical 10-minute routine for adults learning how to focus with ADHD, with setup, attention practice, task selection, and review.",
     intro: ["Learning how to focus with ADHD is less about forcing concentration and more about designing a reliable path into a task. This ten-minute routine creates that path.", "Use it as a workday warm-up. It is a productivity routine, not medical treatment, and you can adapt every step to your circumstances."],
     sections: [
@@ -29,7 +30,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "best-focus-apps-for-adhd-adults", title: "The 7 Best Focus Apps for ADHD Adults in 2026", keyword: "best focus app for ADHD", published: "2026-07-20",
+    slug: "best-focus-apps-for-adhd-adults", title: "5 Best ADHD Focus Apps in 2026 (Plus 2 Useful Alternatives)", keyword: "best ADHD focus apps", published: "2026-07-20",
     description: "Compare seven useful focus apps for ADHD adults by use case, friction, feedback, flexibility, and privacy.",
     intro: ["The best focus app for ADHD is the one that solves your specific bottleneck with the least friction. A timer, blocker, task manager, and attention trainer solve different problems.", "This comparison uses product categories and well-known tools as examples. Features and pricing can change, so verify details on each product’s official site."],
     sections: [
@@ -44,7 +45,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "attention-exercises-for-adults-with-adhd", title: "5 Attention Exercises for Adults With ADHD", keyword: "ADHD attention exercises", published: "2026-07-20",
+    slug: "attention-exercises-for-adults-with-adhd", title: "Focus Exercises for Adults With ADHD: 5 Short Practices", keyword: "focus exercises for ADHD", published: "2026-07-20",
     description: "Five short ADHD attention exercises for adults, including visual matching, working memory, inhibition, task switching, and mindful noticing.",
     intro: ["ADHD attention exercises can provide a structured warm-up before focused work. They should be brief, repeatable, and connected to a practical next task.", "These exercises are for productivity and skills practice. They do not diagnose ADHD or replace evidence-based professional care."],
     sections: [
@@ -56,7 +57,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "why-regular-timers-fail-adhd-brains", title: "Why Regular Timers Fail ADHD Brains (and What Works Instead)", keyword: "focus timer for ADHD", published: "2026-07-20",
+    slug: "why-regular-timers-fail-adhd-brains", title: "ADHD Productivity: Why Timers Alone Don’t Work", keyword: "ADHD productivity tips", published: "2026-07-20",
     description: "Why a regular focus timer for ADHD may not be enough, and how to add task clarity, visible time, flexible intervals, and restart cues.",
     intro: ["A focus timer for ADHD can help externalize time, but a countdown cannot decide what to do, reduce emotional friction, or make a vague project concrete.", "When timers fail, the problem is often the workflow around them—not a lack of effort."],
     sections: [
@@ -149,6 +150,56 @@ export const articles: Article[] = [
       { heading: "Recover after meetings", paragraphs: ["Reserve five minutes after meetings to capture decisions and write the next action. Back-to-back calls can otherwise leave unresolved context behind.", "If no buffer exists, take one minute before switching applications."] },
       { heading: "Make progress visible", paragraphs: ["Break projects into deliverables small enough to mark complete. A visible sequence offers more feedback than one distant deadline.", "Share intermediate work when appropriate so corrections arrive before the final stage."] },
       { heading: "End with tomorrow’s start", paragraphs: ["Write tomorrow’s first action, clear unrelated windows, and capture unfinished concerns. This reduces morning setup friction.", "Protect recovery outside work; sustained attention is affected by the conditions around it."] }
+    ]
+  },
+  {
+    slug: "n-back-training-research", title: "N-Back Training: What the Research Actually Says", keyword: "n-back training benefits", published: "2026-07-20",
+    description: "A careful review of n-back training benefits, near transfer, far transfer, limitations, and realistic ways to use an n-back exercise.",
+    intro: ["Claims about n-back training benefits range from modest to spectacular. The research supports a more careful conclusion: practice reliably improves the trained task, can transfer to similar n-back tasks, and has much less certain effects on broad abilities or everyday performance.", "That distinction matters. FocusCoach includes n-back as one short working-memory exercise, not as a treatment for ADHD or a guaranteed way to raise intelligence."],
+    sections: [
+      { heading: "What an n-back task asks you to do", paragraphs: ["Items appear one at a time. You respond when the current item matches the one presented a specified number of steps earlier. As n increases, you must continually update what is relevant while discarding older information.", "Because the task combines maintenance, updating, and response decisions, it is commonly used in working-memory research. Becoming better at it demonstrates learning on that task; it does not by itself prove a broad change in cognition."] },
+      { heading: "Near transfer is the clearest finding", paragraphs: ["A 2017 meta-analysis covering 33 randomized controlled trials found a medium transfer effect to untrained n-back tasks. This is called near transfer because the outcome resembles the trained activity.", "The same analysis found effects on other working-memory tasks, fluid intelligence, and cognitive control were very small. A large portion of improvement therefore appears task-specific."] },
+      { heading: "Why far-transfer claims remain disputed", paragraphs: ["Some meta-analyses report small improvements on laboratory measures of fluid intelligence. Other analyses show that results weaken when studies use active control groups, which better account for expectation and engagement.", "A 2022 analysis proposed that improvement on untrained n-back tasks may mediate some broader transfer, but findings across its trials were mixed. This remains an active research question rather than a settled product promise."] },
+      { heading: "How to use n-back responsibly", paragraphs: ["Treat n-back as a compact challenge and transition into work. Begin at a level where you can understand the rule, value accuracy over frantic responses, and stop before fatigue turns practice into guessing.", "Track your n-back score as a task-specific trend. Do not use it to estimate IQ, diagnose ADHD, or judge whether medication or therapy is working."] },
+      { heading: "What FocusCoach claims—and does not claim", paragraphs: ["FocusCoach can show performance within its own exercises and help you establish a repeatable routine. It cannot establish that practice has changed your general intelligence, clinical symptoms, or real-world job performance.", "If you enjoy the exercise and it helps mark the beginning of a work block, that is a practical reason to use it without overstating the science."] }
+    ],
+    sources: [
+      { title: "Soveri et al. (2017), multi-level meta-analysis of n-back training", url: "https://pubmed.ncbi.nlm.nih.gov/28116702/" },
+      { title: "Dougherty et al. (2016), Bayesian reevaluation of transfer", url: "https://pubmed.ncbi.nlm.nih.gov/26082280/" },
+      { title: "Pahor et al. (2022), near transfer and matrix reasoning", url: "https://pubmed.ncbi.nlm.nih.gov/35726054/" }
+    ]
+  },
+  {
+    slug: "adhd-working-memory", title: "ADHD and Working Memory: What You Need to Know", keyword: "ADHD working memory", published: "2026-07-20",
+    description: "Understand ADHD and working memory, why everyday tasks can overload it, and how external supports reduce the need to hold everything in mind.",
+    intro: ["ADHD and working memory are often discussed together because working memory helps keep information available while you use it. It supports following multi-step directions, returning after an interruption, and remembering the purpose of a task while details compete for attention.", "Not every adult with ADHD has the same profile. A group-level research finding cannot determine an individual’s ability, and a browser game cannot assess or diagnose a working-memory impairment."],
+    sections: [
+      { heading: "Working memory is a temporary workspace", paragraphs: ["Working memory is not the same as long-term memory. It is the limited mental workspace used to hold and manipulate information for a short period—for example, remembering a number while entering it or tracking the point of a paragraph.", "Capacity depends on the task and context. Stress, fatigue, interruptions, and unclear instructions can make the same activity feel more demanding."] },
+      { heading: "What adult ADHD research finds", paragraphs: ["A meta-analytic review of 38 studies found moderate group-level differences in phonological and visuospatial working memory between adults with ADHD and control groups. Results varied with task methods and demands.", "This supports working memory as one relevant domain in adult ADHD, but it does not mean every person has the same difficulty or that working memory alone explains ADHD."] },
+      { heading: "How overload appears at work", paragraphs: ["You may lose a step after a message arrives, forget why a tab was opened, or struggle to hold several verbal instructions while beginning the first. These experiences can also have many non-ADHD causes.", "The practical response is often to reduce what must remain internal: write the next action, keep source and destination visible, and capture interruptions without following them immediately."] },
+      { heading: "External supports beat heroic memorizing", paragraphs: ["Checklists, calendar cues, templates, and visible restart notes move information into the environment. Breaking an assignment into deliverables also gives each work block a smaller mental footprint.", "During meetings, capture decisions and owners in a consistent location. Before switching tasks, write one sentence describing where to resume."] },
+      { heading: "Training evidence needs careful interpretation", paragraphs: ["Computerized working-memory practice can improve performance on trained or similar tasks. Evidence that it produces broad, clinically meaningful changes is mixed, and ADHD studies include many more children than adults.", "Use FocusCoach as productivity practice and a routine cue. For assessment or treatment questions, consult a qualified clinician who can consider your full history and daily functioning."] }
+    ],
+    sources: [
+      { title: "Alderson et al. (2013), adult ADHD working-memory meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/23688211/" },
+      { title: "Computerized cognitive training in ADHD: randomized-trial meta-analysis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10208955/" }
+    ]
+  },
+  {
+    slug: "how-long-brain-training-takes", title: "How Long Does Brain Training Take to Work?", keyword: "brain training results timeline", published: "2026-07-20",
+    description: "Why there is no universal brain-training results timeline, what research measures, and how to evaluate a focus routine without inflated promises.",
+    intro: ["There is no universal brain-training results timeline. Studies use different exercises, schedules, control groups, and outcomes, while people begin with different goals and circumstances.", "The first question should be what “work” means: a higher score on the practiced game, improvement on a similar laboratory task, a broader cognitive change, or a noticeable difference in daily life. Those are not interchangeable outcomes."],
+    sections: [
+      { heading: "Task learning can appear first", paragraphs: ["Performance on a repeated game often changes as you learn its rules, timing, and response pattern. That can happen within several sessions, but it primarily shows practice on that activity.", "Early score changes may also reflect device familiarity, chance, sleep, or a quieter environment. A personal trend needs repeated observations under roughly similar conditions."] },
+      { heading: "Research programs usually run for weeks", paragraphs: ["Working-memory studies often distribute multiple sessions across several weeks. One meta-analysis found small effects on fluid-intelligence tests after short-term programs, while later analyses questioned how well effects survive stronger controls.", "Duration alone does not guarantee transfer. The comparison group, outcome measure, adherence, and similarity between training and testing all influence results."] },
+      { heading: "ADHD symptom claims require a higher bar", paragraphs: ["A large meta-analysis of randomized ADHD trials found no clear effect of computerized cognitive training on blinded measures of total ADHD symptoms, even though some trained cognitive processes may improve.", "That is why FocusCoach does not promise symptom reduction or a two-to-three-week transformation. It is not a treatment program."] },
+      { heading: "Use a practical two-week experiment", paragraphs: ["Choose a behavioral goal such as beginning priority work with less setup, not a claim about changing your brain. Use one short routine on eight to ten workdays and record whether you started the intended task afterward.", "Also track friction: did the exercise make starting easier, add another delay, or become frustrating? That information is more actionable than chasing a universal score."] },
+      { heading: "Decide what to keep", paragraphs: ["After two weeks, keep the routine if it supports a useful transition or makes progress visible. Change the time, exercise, or cue if adherence was low. Stop if it adds stress without practical value.", "For persistent attention problems that affect daily life, seek professional guidance rather than extending a self-directed training schedule indefinitely."] }
+    ],
+    sources: [
+      { title: "Au et al. (2015), n-back training and fluid intelligence meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25102926/" },
+      { title: "Soveri et al. (2017), task-specific and broader transfer", url: "https://pubmed.ncbi.nlm.nih.gov/28116702/" },
+      { title: "Computerized cognitive training in ADHD: blinded-outcome meta-analysis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10208955/" }
     ]
   }
 ];
