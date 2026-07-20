@@ -92,9 +92,12 @@ export const metadata: Metadata = {
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
   },
-  other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
-    ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
-    : undefined
+  other: {
+    ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {}),
+    "directree-verify": "directree-verify=1f20823adedc3b79db00dcb51aa6ef2c"
+  }
 };
 
 export default function RootLayout({
