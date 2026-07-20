@@ -1,6 +1,6 @@
-# Focus Coach - AI Cognitive Coach
+# FocusCoach – ADHD-Friendly Attention Training
 
-An AI-powered cognitive training web app focused on improving focus and productivity.
+An ADHD-friendly productivity app with short attention exercises, adaptive difficulty, and weekly AI summaries. It is not a medical device.
 
 ## Overview
 
@@ -54,4 +54,27 @@ Legacy `OPENAI_API_KEY` / `OPENAI_MODEL` settings are still supported.
 - Week 3: Testing + launch
 
 ## Getting Started
-Refer to `MVP开发清单.md` and `技术设计文档.md` for detailed implementation guidance.
+
+```bash
+npm install
+npm run dev
+```
+
+## Search and analytics setup
+
+The app generates `/sitemap.xml` and `/robots.txt`, and includes FAQPage, WebApplication, BlogPosting, and BreadcrumbList structured data. Add these production environment variables when the corresponding accounts are ready:
+
+```env
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=google-verification-token
+NEXT_PUBLIC_BING_SITE_VERIFICATION=bing-verification-token
+```
+
+After deployment:
+
+1. Verify `https://www.focuscoach.dev` in Google Search Console and Bing Webmaster Tools.
+2. Submit `https://www.focuscoach.dev/sitemap.xml` in both tools.
+3. Request indexing for the homepage, `/blog`, and the first published guides.
+4. Confirm GA4 receives a real-time page view before announcing the launch.
+
+Directory submissions, backlink outreach, community posts, testimonials, and Search Console account actions intentionally remain manual because they require account ownership and genuine relationships.

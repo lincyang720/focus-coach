@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Analytics } from "@/components/analytics";
 
 const appUrl = "https://www.focuscoach.dev";
-const title = "Focus Coach | AI Brain Training & Cognitive Training App";
+const title = "ADHD Focus App – AI Attention Training | FocusCoach";
 const description =
-  "AI brain training and cognitive coaching app. Train attention, reaction speed, and working memory with 5 short games. Weekly AI reports turn scores into productivity insights.";
+  "FocusCoach is an AI-powered ADHD focus app for adults. Train your attention in 10 minutes a day with adaptive exercises and a free focus test.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
@@ -15,7 +16,12 @@ export const metadata: Metadata = {
   description,
   applicationName: "Focus Coach",
   keywords: [
-    "focus training",
+    "adhd focus app",
+    "focus app for ADHD adults",
+    "ADHD productivity",
+    "ADHD focus tools",
+    "focus timer for ADHD",
+    "focus training for adults",
     "brain training",
     "cognitive training",
     "attention games",
@@ -25,7 +31,6 @@ export const metadata: Metadata = {
     "AI brain training",
     "brain training with AI reports",
     "personalized cognitive training",
-    "focus training for adults",
     "focus games for work",
     "productivity training",
     "mental fitness app",
@@ -58,7 +63,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Focus Coach dashboard preview"
+        alt: "FocusCoach ADHD focus app dashboard"
       }
     ]
   },
@@ -83,7 +88,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
       "max-video-preview": -1
     }
-  }
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+  },
+  other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+    ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+    : undefined
 };
 
 export default function RootLayout({
@@ -93,7 +104,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>{children}<Analytics /></body>
     </html>
   );
 }

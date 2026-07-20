@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
+import { articles } from "@/lib/articles";
 
 const appUrl = "https://www.focuscoach.dev";
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/ai-brain-training-cognitive-coaching-app",
     "/games",
+    "/blog",
     "/pricing",
     "/login",
     "/register",
@@ -34,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
               : route === "/login" || route === "/register"
                 ? 0.2
                 : 0.5
+    })),
+    ...articles.map((article) => ({
+      url: `${appUrl}/blog/${article.slug}`,
+      lastModified: new Date(article.published),
+      changeFrequency: "monthly" as const,
+      priority: 0.8
     })),
     ...gameConfigs.map((game) => ({
       url: `${appUrl}/games/${gameSlugByType[game.type]}`,

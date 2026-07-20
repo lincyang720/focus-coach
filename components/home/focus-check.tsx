@@ -52,9 +52,9 @@ export function FocusCheck() {
       <CardHeader>
         <div className="flex items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-medium text-primary">Interactive focus check</p>
+            <p className="text-sm font-medium text-primary">Free · no signup required</p>
             <h2 className="mt-2 text-lg font-semibold leading-none tracking-normal">
-              60-Second AI Brain Training Preview
+              60-Second Attention Test
             </h2>
           </div>
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">
@@ -76,9 +76,8 @@ export function FocusCheck() {
               </div>
             </div>
             <p className="text-sm leading-6 text-muted-foreground">
-              Your result becomes more useful inside the full brain training app, where Focus Coach
-              tracks accuracy, reaction speed, and weekly AI coaching insights across multiple
-              cognitive training games.
+              This quick result is a practice snapshot, not a clinical assessment. FocusCoach can
+              track accuracy, response speed, and weekly patterns across multiple focus exercises.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild>
