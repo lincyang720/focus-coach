@@ -68,7 +68,7 @@ export const gameSlugByType: Record<GameType, string> = {
   quick_match: "quick-match",
   n_back: "n-back",
   task_switch: "task-switch",
-  stroop: "stroop"
+  stroop: "stroop-test"
 };
 
 export const gameTypeBySlug = Object.fromEntries(

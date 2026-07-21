@@ -9,16 +9,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
 export const metadata: Metadata = {
-  title: "Free Brain Training & Cognitive Training Games Online",
+  title: "Free Focus Games Online for Adults",
   description:
-    "Play five free brain training and cognitive training games online: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch for short focus practice.",
+    "Play five free focus games online for adults: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch. No download required.",
+  keywords: [
+    "free focus games for adults",
+    "online attention games for adults",
+    "free brain games online",
+    "working memory games for adults",
+    "attention training games"
+  ],
   alternates: {
     canonical: "/games"
   },
   openGraph: {
-    title: "Free Brain Training & Cognitive Training Games Online | Focus Coach",
+    title: "Free Focus Games Online for Adults | Focus Coach",
     description:
-      "Try short brain training games online with adaptive difficulty and productivity-oriented progress tracking.",
+      "Play five short online attention games for working memory, reaction speed, task switching, and inhibition. Free to start in your browser.",
     url: "/games"
   }
 };
@@ -27,13 +34,13 @@ export default function GamesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Free Brain Training & Cognitive Training Games Online",
+    name: "Free Focus Games Online for Adults",
     description:
-      "A collection of short brain training and cognitive training games for focus, reaction speed, task switching, and productivity practice.",
+      "A collection of free online attention games for adults covering working memory, reaction speed, task switching, and inhibition.",
     hasPart: gameConfigs.map((game) => ({
       "@type": "Game",
       name: game.name,
-      url: `/games/${gameSlugByType[game.type]}`,
+      url: `/exercises/${gameSlugByType[game.type]}`,
       genre: "Attention Training Game"
     }))
   };
@@ -49,20 +56,20 @@ export default function GamesPage() {
           <div className="max-w-3xl">
             <Badge>Free online focus practice</Badge>
             <h1 className="mt-3 text-4xl font-semibold tracking-normal">
-              Free Brain Training & Cognitive Training Games Online
+              Free Focus Games Online for Adults
             </h1>
             <p className="mt-4 text-lg leading-8 text-muted-foreground">
-              Practice focus, reaction speed, working memory, task switching, and self-control with
-              five short productivity-oriented brain training games. Each cognitive training
-              session is quick, measurable, and easy to repeat during a workday.
+              Play five short attention games for working memory, reaction speed, task switching,
+              and self-control. Each game runs in your browser with no download, is free to start,
+              and fits into a quick workday reset.
             </p>
             <h2 className="mt-8 text-2xl font-semibold tracking-normal">
-              Choose a free cognitive training game
+              Choose a free online attention game
             </h2>
             <p className="mt-3 leading-7 text-muted-foreground">
-              Start with Number Memory, N-Back, Stroop Test, Quick Match, or Task Switch. Each game
-              supports a different mental skill, from working memory training to reaction time tests
-              and task switching exercises.
+              Start with Number Memory, N-Back, Stroop Test, Quick Match, or Task Switch. Each
+              dedicated game page explains the rules, the skill being practiced, and realistic
+              limits—without presenting a game score as an ADHD diagnosis or treatment result.
             </p>
           </div>
           <figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm">
@@ -94,7 +101,7 @@ export default function GamesPage() {
               </CardHeader>
               <CardContent>
                 <Button className="w-full" asChild>
-                  <Link href={`/games/${gameSlugByType[game.type]}`}>
+                  <Link href={`/exercises/${gameSlugByType[game.type]}`}>
                     <Gamepad2 className="h-4 w-4" aria-hidden />
                     Play free game
                     <ArrowRight className="h-4 w-4" aria-hidden />

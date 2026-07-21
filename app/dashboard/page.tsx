@@ -83,7 +83,7 @@ export default function DashboardPage() {
               </CardHeader>
               <CardContent>
                 <Button className="w-full" asChild>
-                  <Link href={`/games/${gameSlugByType[game.type]}`}>
+                  <Link href={`/exercises/${gameSlugByType[game.type]}`}>
                     Train
                     <ArrowRight className="h-4 w-4" aria-hidden />
                   </Link>
@@ -107,7 +107,7 @@ export default function DashboardPage() {
             {gameConfigs.map((game) => (
               <Link
                 key={game.type}
-                href={`/games/${gameSlugByType[game.type]}`}
+                href={`/exercises/${gameSlugByType[game.type]}`}
                 className="rounded-lg border bg-background/80 p-4 transition hover:bg-background"
               >
                 <Trophy className="h-5 w-5 text-primary" aria-hidden />

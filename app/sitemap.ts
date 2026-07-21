@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/ai-brain-training-cognitive-coaching-app",
     "/games",
+    "/free-adhd-focus-test",
     "/blog",
     "/pricing",
     "/login",
@@ -44,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8
     })),
     ...gameConfigs.map((game) => ({
-      url: `${appUrl}/games/${gameSlugByType[game.type]}`,
+      url: `${appUrl}/exercises/${gameSlugByType[game.type]}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.8

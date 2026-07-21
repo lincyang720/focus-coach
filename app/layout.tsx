@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@/components/analytics";
 
 const appUrl = "https://www.focuscoach.dev";
-const title = "ADHD Focus App – AI Attention Training | FocusCoach";
+const title = "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach";
 const description =
   "FocusCoach is an AI-powered ADHD focus app for adults. Train your attention in 10 minutes a day with adaptive exercises and a free focus test.";
 

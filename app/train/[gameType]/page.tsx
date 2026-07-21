@@ -21,7 +21,7 @@ export function generateMetadata({
     title: `${config.name} Focus Training Game`,
     description: `Play the ${config.name} focus training game in Focus Coach to practice ${config.category.toLowerCase()} with short productivity-oriented sessions.`,
     alternates: {
-      canonical: `/games/${gameSlugByType[params.gameType]}`
+      canonical: `/exercises/${gameSlugByType[params.gameType]}`
     },
     robots: {
       index: false,

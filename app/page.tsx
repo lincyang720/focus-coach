@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: { absolute: "ADHD Focus App – AI Attention Training | FocusCoach" },
+  title: { absolute: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach" },
   description: "FocusCoach is an AI-powered ADHD focus app for adults. Train your attention in 10 minutes a day with adaptive exercises. Try the free 60-second focus test.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website", siteName: "FocusCoach", url: "/",
-    title: "ADHD Focus App – AI Attention Training | FocusCoach",
+    title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach",
     description: "ADHD-friendly attention training with adaptive exercises and a free 60-second focus test.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "ADHD focus app dashboard" }]
   },
-  twitter: { card: "summary_large_image", title: "ADHD Focus App – AI Attention Training | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }
 };
 
 const faqs = [
@@ -39,7 +39,7 @@ export default function HomePage() {
     <section className="grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
       <div className="max-w-2xl">
         <p className="mb-4 inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground"><Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />ADHD-friendly focus training for adults</p>
-        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">The ADHD Focus App That Trains Your Attention in 10 Minutes a Day</h1>
+        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">ADHD Focus Exercises for Adults: Train Your Attention in 10 Minutes a Day</h1>
         <p className="mt-5 text-lg leading-8 text-muted-foreground">FocusCoach is an ADHD focus app built for adults who want practical focus training for work and daily life. Try adaptive attention exercises, track useful patterns, and build a routine small enough to repeat.</p>
         <p className="mt-3 leading-7 text-muted-foreground">Start with the free 60-second attention test—right here, with no signup required.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" asChild><a href="#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></a></Button><Button variant="outline" size="lg" asChild><Link href="/games">Explore focus exercises</Link></Button><Button variant="ghost" size="lg" asChild><Link href="/blog">Read focus guides</Link></Button></div>
