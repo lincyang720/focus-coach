@@ -19,6 +19,21 @@ export function PageShell({ children }: { children: React.ReactNode }) {
               Terms of Service
             </Link>
           </nav>
+          <a
+            href="https://www.directree.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="FocusCoach is verified on directree"
+          >
+            {/* Directree requires its hosted badge for the verified do-follow listing. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://www.directree.io/badge/directree-badge-lightmode.svg"
+              alt="Verified on directree"
+              width="200"
+              height="37"
+            />
+          </a>
         </div>
       </footer>
     </div>
