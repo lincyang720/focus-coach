@@ -5,7 +5,7 @@ import { Analytics } from "@/components/analytics";
 const appUrl = "https://www.focuscoach.dev";
 const title = "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach";
 const description =
-  "FocusCoach is an AI-powered ADHD focus app for adults. Train your attention in 10 minutes a day with adaptive exercises and a free focus test.";
+  "Try ADHD focus exercises for adults with five adaptive attention games, a free 60-second focus test, and a repeatable 10-minute daily routine.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),

@@ -9,12 +9,12 @@ import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
   title: { absolute: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach" },
-  description: "FocusCoach is an AI-powered ADHD focus app for adults. Train your attention in 10 minutes a day with adaptive exercises. Try the free 60-second focus test.",
+  description: "Try ADHD focus exercises for adults with five adaptive attention games and a free 60-second focus test. Train attention in 10 minutes a day.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website", siteName: "FocusCoach", url: "/",
     title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach",
-    description: "ADHD-friendly attention training with adaptive exercises and a free 60-second focus test.",
+    description: "ADHD focus exercises for adults with adaptive games and a free 60-second focus test.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "ADHD focus app dashboard" }]
   },
   twitter: { card: "summary_large_image", title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }

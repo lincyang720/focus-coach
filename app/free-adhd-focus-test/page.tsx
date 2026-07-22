@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: { absolute: "Free ADHD Focus Test – 60-Second Attention Check | FocusCoach" },
+  title: { absolute: "Free ADHD Focus Test – 60-Second Attention Assessment | FocusCoach" },
   description:
     "Try a free 60-second ADHD-friendly focus test. Check attention speed and accuracy online with no signup, then explore practical focus exercises for adults.",
   keywords: [

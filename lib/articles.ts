@@ -18,7 +18,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "how-to-focus-with-adhd-10-minute-routine", title: "How to Focus With ADHD: 7 Evidence-Informed Tips", keyword: "how to focus with ADHD", published: "2026-07-20",
+    slug: "how-to-focus-with-adhd-10-minute-routine", title: "How to Improve Focus with ADHD: 7 Science-Backed Methods", keyword: "how to improve focus with ADHD", published: "2026-07-20",
     description: "A practical 10-minute routine for adults learning how to focus with ADHD, with setup, attention practice, task selection, and review.",
     intro: ["Learning how to focus with ADHD is less about forcing concentration and more about designing a reliable path into a task. This ten-minute routine creates that path.", "Use it as a workday warm-up. It is a productivity routine, not medical treatment, and you can adapt every step to your circumstances."],
     sections: [
@@ -45,7 +45,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "attention-exercises-for-adults-with-adhd", title: "Focus Exercises for Adults With ADHD: 5 Short Practices", keyword: "focus exercises for ADHD", published: "2026-07-20",
+    slug: "attention-exercises-for-adults-with-adhd", title: "5 Best ADHD Focus Exercises for Adults in 2026", keyword: "best ADHD focus exercises", published: "2026-07-20",
     description: "Five short ADHD attention exercises for adults, including visual matching, working memory, inhibition, task switching, and mindful noticing.",
     intro: ["ADHD attention exercises can provide a structured warm-up before focused work. They should be brief, repeatable, and connected to a practical next task.", "These exercises are for productivity and skills practice. They do not diagnose ADHD or replace evidence-based professional care."],
     sections: [
@@ -117,7 +117,7 @@ export const articles: Article[] = [
     ]
   },
   {
-    slug: "60-second-attention-span-test-score", title: "The 60-Second Attention Span Test: What Your Score Means", keyword: "attention span test", published: "2026-07-20",
+    slug: "60-second-attention-span-test-score", title: "Free ADHD Focus Test: What It Measures and Why It Matters", keyword: "free ADHD focus test", published: "2026-07-20",
     description: "Understand what a 60-second attention span test can and cannot show, how accuracy and speed interact, and how to track practice responsibly.",
     intro: ["A 60-second attention span test offers a quick snapshot of performance on one narrow task. It can be useful as a warm-up or personal trend, but it cannot measure your entire attention span.", "FocusCoach results are not diagnostic and should not be used to confirm or rule out ADHD or any health condition."],
     sections: [
@@ -200,6 +200,33 @@ export const articles: Article[] = [
       { title: "Au et al. (2015), n-back training and fluid intelligence meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/25102926/" },
       { title: "Soveri et al. (2017), task-specific and broader transfer", url: "https://pubmed.ncbi.nlm.nih.gov/28116702/" },
       { title: "Computerized cognitive training in ADHD: blinded-outcome meta-analysis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10208955/" }
+    ]
+  },
+  {
+    slug: "brain-training-for-adhd-adults", title: "Brain Training for ADHD Adults: Does It Actually Work?", keyword: "brain training for ADHD adults", published: "2026-07-21",
+    description: "A careful look at brain training for ADHD adults, including trained-task gains, transfer limits, practical uses, and claims to avoid.",
+    intro: ["Brain training for ADHD adults is often marketed with promises about focus, working memory, or productivity. The research supports a narrower conclusion than most advertisements: people usually improve on the tasks they repeatedly practice, while broad transfer to symptoms or daily functioning is less certain.", "That does not make every exercise useless. A brief game may provide structure, feedback, and a repeatable transition into work—as long as those practical benefits are not confused with diagnosis or treatment."],
+    sections: [
+      { heading: "What brain training reliably changes", paragraphs: ["Repeated practice improves familiarity with a task’s rules, timing, and response demands. N-back users commonly improve at n-back; Stroop practice can improve performance on similar interference trials.", "These are task-specific gains. They show learning, but they do not automatically establish a change in general intelligence, ADHD symptoms, or job performance."] },
+      { heading: "Why transfer is the hard question", paragraphs: ["Near transfer means improvement on an untrained task that closely resembles the practiced one. Far transfer means improvement on broader abilities or everyday outcomes. Evidence becomes weaker and less consistent as outcomes move farther from the trained exercise.", "Strong studies also need active control groups, blinded outcome ratings, and enough participants to separate training effects from expectations and ordinary variation."] },
+      { heading: "What ADHD studies suggest", paragraphs: ["Computerized cognitive training research in ADHD includes many more children than adults, so adult-specific conclusions remain limited. Meta-analyses have not shown a clear effect on blinded ratings of total ADHD symptoms.", "An adult browser game therefore should not be presented as an ADHD treatment. It can be offered as skills practice or a productivity routine with transparent limits."] },
+      { heading: "A responsible way to try it", paragraphs: ["Choose a practical goal such as beginning a priority task after a ten-minute routine. Use the same exercise on several workdays, then record whether the intended action started—not only whether the game score rose.", "Stop or change the routine if it creates frustration or becomes another avoidance loop. For diagnosis or treatment decisions, speak with a qualified clinician."] }
+    ],
+    sources: [
+      { title: "Computerized cognitive training in ADHD: randomized-trial meta-analysis", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10208955/" },
+      { title: "Soveri et al. (2017), n-back training meta-analysis", url: "https://pubmed.ncbi.nlm.nih.gov/28116702/" }
+    ]
+  },
+  {
+    slug: "10-minute-focus-exercises-adhd", title: "10 Minute Focus Exercises for ADHD That Actually Work", keyword: "10 minute focus exercises ADHD", published: "2026-07-21",
+    description: "Five practical 10-minute focus exercises for ADHD-friendly workday transitions, with clear steps and realistic expectations.",
+    intro: ["Ten-minute focus exercises for ADHD work best when they lead directly into a real task. The exercise is not the destination; it is a short, predictable bridge from interruption or avoidance into deliberate action.", "Try one routine for a week instead of stacking several methods. These are productivity strategies, not medical treatment, and different people may prefer movement, quiet structure, or a game-based warm-up."],
+    sections: [
+      { heading: "Routine 1: attention check and first action", paragraphs: ["Spend one minute on the free FocusCoach attention check. Review accuracy without judging the score, then write one physical action that can be completed in the remaining nine minutes.", "Open the correct file and begin immediately. The useful outcome is contact with the task, not a perfect test result."] },
+      { heading: "Routine 2: working-memory warm-up", paragraphs: ["Use Number Memory for three short rounds, prioritizing accurate recall over speed. Stop before the exercise becomes tiring.", "Spend the remaining time on a task that requires holding details in mind, with source material and a capture note visible beside it."] },
+      { heading: "Routine 3: rule switch and meeting reset", paragraphs: ["Play a brief Task Switch round after a meeting. Name the old context, close its unrelated tabs, and write the new rule for the next block in one sentence.", "Use the final minutes to perform the smallest meaningful step in that new context."] },
+      { heading: "Routine 4: movement and visual focus", paragraphs: ["Walk or stretch for three minutes without opening a feed. Return, complete one Quick Match or Stroop round, and identify the one screen or document that deserves attention.", "Remove the phone from reach and use the remaining time as a short work sprint."] },
+      { heading: "Routine 5: distraction parking lot", paragraphs: ["Write every unrelated thought currently competing for attention on a temporary list. Do not organize the list; capture each item in a few words.", "Choose one current task, define its finish line for this block, and work until the ten minutes end. Leave a restart instruction before stopping."] }
     ]
   }
 ];

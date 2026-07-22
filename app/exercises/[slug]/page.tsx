@@ -4,18 +4,20 @@ import { GameRunner } from "@/components/games/game-runner";
 import { PageShell } from "@/components/layout/page-shell";
 import { gameConfigByType, gameSlugByType, gameTypeBySlug } from "@/lib/games";
 
-const keywordBySlug: Record<string, string> = {
-  "number-memory": "Number Memory Exercise for ADHD",
-  "quick-match": "Quick Match Exercise for ADHD",
-  "n-back": "N-Back Training for ADHD",
-  "task-switch": "Task Switching Exercise for ADHD",
-  "stroop-test": "Stroop Test for ADHD"
+const titleBySlug: Record<string, string> = {
+  "number-memory": "Number Memory Exercise for ADHD – Improve Working Memory",
+  "quick-match": "Quick Match Exercise for ADHD – Processing Speed Training",
+  "n-back": "N-Back Training for ADHD – Dual N-Back Brain Training",
+  "task-switch": "Task Switching Exercise for ADHD – Cognitive Flexibility",
+  "stroop-test": "Stroop Test for ADHD – Cognitive Flexibility Training"
 };
 
 type GameSeoContent = {
   metaDescription: string;
   keywords: string[];
   intro: string;
+  science: string;
+  adhdRelation: string;
   howTo: string[];
   benefits: string[];
   faqs: { question: string; answer: string }[];
@@ -34,6 +36,10 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
     ],
     intro:
       "Number Memory is a short working memory training game that asks you to recall a digit sequence after it flashes on screen. It works as a number memory test, a memory training game, and a quick daily brain training exercise for adults who want focused practice without a long setup. As the sequence grows, you practice holding information, resisting distraction, and checking accuracy under light time pressure.",
+    science:
+      "Digit-span tasks are commonly used to study short-term and working-memory performance because they require information to be held briefly and reproduced in order. Practice can improve familiarity and performance on similar recall tasks, but a browser exercise cannot establish a broad change in memory, intelligence, or everyday functioning.",
+    adhdRelation:
+      "Working-memory demands can feel especially noticeable when an adult with ADHD is interrupted or must keep several instructions active at once. This exercise offers narrow, task-specific practice and a structured workday transition; it does not assess ADHD, treat symptoms, or replace clinical care.",
     howTo: [
       "Watch the full number sequence before answering.",
       "Type the digits back in the same order.",
@@ -70,6 +76,10 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
     ],
     intro:
       "Quick Match is a reaction time test and reaction speed training game built around fast visual comparison. Each round shows a target shape and color, then asks you to choose the matching option as quickly and accurately as possible. The game combines reflex test mechanics with cognitive training for visual attention, making it useful for adults who want short focus practice during the workday.",
+    science:
+      "Visual matching tasks combine selective attention, perceptual discrimination, and response selection. Faster responses are not automatically better: speed–accuracy tradeoffs mean a useful result must consider errors as well as reaction time. Repeated play mainly shows learning and consistency within this task.",
+    adhdRelation:
+      "Adults with ADHD may use a brief visual task as an external cue to leave passive browsing and begin deliberate work. Quick Match is designed for that transition. It cannot measure ADHD severity or prove that processing speed has changed outside the game.",
     howTo: [
       "Look at the target color and shape at the top of the round.",
       "Scan the answer choices and select the exact match.",
@@ -106,6 +116,10 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
     ],
     intro:
       "N-Back is a working memory training exercise where you decide whether the current square matches the position shown N steps earlier. This n-back cognitive training game starts simple and becomes more demanding as the level rises. It is designed for adults who want structured brain training for attention control, mental updating, and sustained focus without needing a complex dual n-back setup.",
+    science:
+      "N-back tasks require continuous updating: each new item changes which earlier item is relevant. Research consistently finds improvement on the trained task and sometimes on closely related tasks, while evidence for broad transfer to intelligence, ADHD symptoms, or everyday performance remains uncertain.",
+    adhdRelation:
+      "Because working-memory updating is relevant to following a changing stream of information, n-back can be a focused challenge for adults with ADHD. FocusCoach uses a visual single n-back format rather than a clinical test or full dual n-back protocol, and results should remain task-specific.",
     howTo: [
       "Watch each square as it appears on the grid.",
       "Decide whether it matches the position from N turns ago.",
@@ -142,6 +156,10 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
     ],
     intro:
       "Task Switch is a task switching exercise for cognitive flexibility training. The rule changes between judging parity and judging number size, so you must notice the current instruction before answering. This online multitasking test style game helps adults practice mental shifting, focus control, and flexible decision-making in short sessions that fit naturally into a work break.",
+    science:
+      "Laboratory task-switching paradigms compare responses when a rule repeats with responses after the rule changes. Switch trials often take longer or produce more errors, a pattern called switch cost. A short game can demonstrate this effect but cannot measure every aspect of real-world cognitive flexibility.",
+    adhdRelation:
+      "Returning to work after email, a meeting, or an interruption can require a clear context shift. Adults with ADHD may use this exercise as a deliberate transition cue. The score is not an ADHD assessment and does not predict workplace performance.",
     howTo: [
       "Read the active rule before responding.",
       "Choose even or odd when the rule is parity.",
@@ -178,6 +196,10 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
     ],
     intro:
       "The Stroop Test is a classic attention control test that asks you to identify the ink color while ignoring the word meaning. This Stroop test online combines reaction time test feedback with cognitive inhibition practice. It is useful for adults who want short brain training for self-control, selective attention, and mental speed during a focused workday routine.",
+    science:
+      "The Stroop effect occurs because reading a familiar word can compete with naming its ink color. Researchers use the difference between congruent and conflicting trials to study interference and response control. This simplified game offers practice, not a standardized neuropsychological score.",
+    adhdRelation:
+      "Inhibition and selective attention are often discussed in ADHD research, but one Stroop score cannot confirm a diagnosis or describe an individual’s complete attention profile. Use the exercise as a short warm-up and interpret changes only as performance within this game.",
     howTo: [
       "Look at the word and focus on the ink color.",
       "Ignore the meaning of the written word.",
@@ -217,11 +239,11 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 
   const config = gameConfigByType[gameType];
-  const keyword = keywordBySlug[params.slug] ?? `${config.name} Attention Training Game`;
+  const keyword = titleBySlug[params.slug] ?? `${config.name} Attention Training Game`;
   const seoContent = seoContentBySlug[params.slug];
 
   return {
-    title: `${keyword} - Focus Coach`,
+    title: { absolute: keyword },
     description:
       seoContent?.metaDescription ??
       `Play ${keyword} in Focus Coach. Practice ${config.category.toLowerCase()} with a short focus training game and adaptive difficulty.`,
@@ -242,7 +264,7 @@ export default function GameSeoPage({ params }: { params: { slug: string } }) {
   if (!gameType) notFound();
 
   const config = gameConfigByType[gameType];
-  const keyword = keywordBySlug[params.slug] ?? `${config.name} Attention Training Game`;
+  const keyword = titleBySlug[params.slug] ?? `${config.name} Attention Training Game`;
   const seoContent = seoContentBySlug[params.slug];
   const jsonLd = {
     "@context": "https://schema.org",
@@ -334,6 +356,18 @@ export default function GameSeoPage({ params }: { params: { slug: string } }) {
                   <li key={benefit}>{benefit}</li>
                 ))}
               </ul>
+            </section>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2">
+            <section className="max-w-3xl">
+              <h3 className="text-lg font-semibold">How the exercise works</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{seoContent.science}</p>
+            </section>
+
+            <section className="max-w-3xl">
+              <h3 className="text-lg font-semibold">How it relates to ADHD</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{seoContent.adhdRelation}</p>
             </section>
           </div>
 
