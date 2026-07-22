@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: { absolute: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach" },
+  title: { absolute: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach" },
   description: "Try ADHD focus exercises for adults with five adaptive attention games and a free 60-second focus test. Train attention in 10 minutes a day.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website", siteName: "FocusCoach", url: "/",
-    title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach",
+    title: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach",
     description: "ADHD focus exercises for adults with adaptive games and a free 60-second focus test.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "ADHD focus app dashboard" }]
   },
-  twitter: { card: "summary_large_image", title: "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }
 };
 
 const faqs = [

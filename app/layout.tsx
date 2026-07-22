@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@/components/analytics";
 
 const appUrl = "https://www.focuscoach.dev";
-const title = "ADHD Focus Exercises for Adults – Train Attention in 10 Min/Day | FocusCoach";
+const title = "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach";
 const description =
   "Try ADHD focus exercises for adults with five adaptive attention games, a free 60-second focus test, and a repeatable 10-minute daily routine.";
 
