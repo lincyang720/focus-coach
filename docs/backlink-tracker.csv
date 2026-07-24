@@ -1,0 +1,16 @@
+date,platform,source_type,source_url,destination_url,anchor_text,follow_type,status,notes,dr,traffic_estimate,next_follow_up
+2026-07-24,Product Hunt,directory,https://www.producthunt.com/products/focuscoach,https://www.focuscoach.dev/?utm_source=producthunt&utm_medium=launch&utm_campaign=focuscoach_launch,FocusCoach,dofollow,submitted,Tuesday 00:01 PT,93,high,2026-07-31
+2026-07-24,AlternativeTo,directory,,https://www.focuscoach.dev/?utm_source=alternativeto&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,82,high,2026-07-31
+2026-07-24,SaaSHub,directory,,https://www.focuscoach.dev/?utm_source=saashub&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,60,medium,2026-07-31
+2026-07-24,BetaList,directory,,https://www.focuscoach.dev/?utm_source=betalist&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,62,medium,2026-07-31
+2026-07-24,Toolify.ai,directory,,https://www.focuscoach.dev/?utm_source=toolify&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,,low,2026-07-31
+2026-07-24,There's AI For That,directory,,https://www.focuscoach.dev/?utm_source=theresaiforthat&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,,low,2026-08-01
+2026-07-24,FutureTools,directory,,https://www.focuscoach.dev/?utm_source=futuretools&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,,low,2026-08-01
+2026-07-24,SourceForge,directory,,https://www.focuscoach.dev/?utm_source=sourceforge&utm_medium=directory&utm_campaign=focuscoach_launch,FocusCoach,dofollow,pending,,92,high,2026-08-07
+2026-07-24,Dev.to,blog,,https://www.focuscoach.dev/?utm_source=devto&utm_medium=blog&utm_campaign=focuscoach_launch,FocusCoach,dofollow,draft,,90,high,
+2026-07-24,Indie Hackers,community,,https://www.focuscoach.dev/?utm_source=indiehackers&utm_medium=post&utm_campaign=focuscoach_launch,FocusCoach,dofollow,draft,,,medium,
+2026-07-24,r/ADHD,community,,https://www.focuscoach.dev/?utm_source=reddit&utm_medium=post&utm_campaign=r_adhd,FocusCoach,nofollow,scheduled,,,high,
+2026-07-24,r/productivity,community,,https://www.focuscoach.dev/?utm_source=reddit&utm_medium=post&utm_campaign=r_productivity,FocusCoach,nofollow,scheduled,,,high,
+2026-07-24,r/SideProject,community,,https://www.focuscoach.dev/?utm_source=reddit&utm_medium=post&utm_campaign=r_sideproject,FocusCoach,nofollow,scheduled,,,high,
+2026-07-24,r/adhdwomen,community,,https://www.focuscoach.dev/?utm_source=reddit&utm_medium=post&utm_campaign=r_adhdwomen,FocusCoach,nofollow,scheduled,,,medium,
+2026-07-24,Hacker News,community,,https://www.focuscoach.dev/?utm_source=hackernews&utm_medium=post&utm_campaign=show_hn,FocusCoach,nofollow,scheduled,,,high,
