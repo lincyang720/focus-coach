@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: { absolute: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach" },
-  description: "Try ADHD focus exercises for adults with five adaptive attention games and a free 60-second focus test. Train attention in 10 minutes a day.",
+  title: { absolute: "ADHD Focus Coach: Free Focus Training for Adults" },
+  description: "Free ADHD focus training for adults with a 60-second focus test, five adaptive attention games, and short 10-minute practice sessions.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website", siteName: "FocusCoach", url: "/",
-    title: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach",
-    description: "ADHD focus exercises for adults with adaptive games and a free 60-second focus test.",
+    title: "ADHD Focus Coach: Free Focus Training for Adults",
+    description: "Free ADHD focus training for adults with adaptive games and a 60-second focus test.",
     images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "ADHD focus app dashboard" }]
   },
-  twitter: { card: "summary_large_image", title: "ADHD Focus Exercises for Adults – 10 Min/Day | FocusCoach", description: "ADHD-friendly attention training in 10 minutes a day.", images: ["/opengraph-image"] }
+  twitter: { card: "summary_large_image", title: "ADHD Focus Coach: Free Focus Training for Adults", description: "Free ADHD-friendly focus training in 10 minutes a day.", images: ["/opengraph-image"] }
 };
 
 const faqs = [
@@ -39,15 +39,15 @@ export default function HomePage() {
     <section className="grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
       <div className="max-w-2xl">
         <p className="mb-4 inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground"><Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />ADHD-friendly focus training for adults</p>
-        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">ADHD Focus Exercises for Adults: Train Your Attention in 10 Minutes a Day</h1>
-        <p className="mt-5 text-lg leading-8 text-muted-foreground">FocusCoach is an ADHD focus app built for adults who want practical focus training for work and daily life. Try adaptive attention exercises, track useful patterns, and build a routine small enough to repeat.</p>
+        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">ADHD Focus Coach: Free Focus Training for Adults</h1>
+        <p className="mt-5 text-lg leading-8 text-muted-foreground">FocusCoach is an ADHD focus training app built for adults who want practical attention practice for work and daily life. Try adaptive focus exercises, track useful patterns, and build a routine small enough to repeat.</p>
         <p className="mt-3 leading-7 text-muted-foreground">Start with the free 60-second attention test—right here, with no signup required.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" asChild><a href="#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></a></Button><Button variant="outline" size="lg" asChild><Link href="/games">Explore focus exercises</Link></Button><Button variant="ghost" size="lg" asChild><Link href="/blog">Read focus guides</Link></Button></div>
       </div>
       <div id="focus-check" className="scroll-mt-24"><FocusCheck /></div>
     </section>
 
-    <section className="grid gap-6 py-12 md:grid-cols-3"><div><h2 className="text-2xl font-semibold">Attention Training That Fits a Real Workday</h2></div><div className="space-y-4 leading-7 text-muted-foreground md:col-span-2"><p>Long programs can be hard to begin when your attention already feels stretched. FocusCoach uses short focus exercises for attention control, working memory, reaction speed, task switching, and inhibition.</p><p>Each session gives you a clear next action. That makes the app useful as an ADHD productivity companion before deep work, between meetings, or whenever you need a structured reset.</p></div></section>
+    <section className="grid gap-6 py-12 md:grid-cols-3"><div><h2 className="text-2xl font-semibold">ADHD Focus Training That Fits a Real Workday</h2></div><div className="space-y-4 leading-7 text-muted-foreground md:col-span-2"><p>ADHD focus training works best when it is short, clear, and easy to restart. FocusCoach gives adults a free first step with a 60-second focus test, then offers 10-minute practice sessions that fit before deep work, between meetings, or during a low-energy afternoon. The goal is not to diagnose ADHD or promise a cure; it is to create a repeatable attention routine that helps you move from scattered intention to one useful next action.</p><p>The five training modes cover different attention skills: Number Memory for active recall, Quick Match for fast visual decisions, N-Back for working memory, Task Switch for flexible attention, and Stroop for inhibition. Each mode is brief enough to begin without a long setup.</p></div></section>
 
     <section className="grid gap-6 py-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center"><div className="space-y-4"><h2 className="text-2xl font-semibold">See Your ADHD Focus Tools in One Place</h2><p className="leading-7 text-muted-foreground">The dashboard combines exercises, progress trends, and plain-language AI summaries. Start quickly, understand recent attention patterns, and return to the task that matters.</p></div><figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm"><Image src="/images/focus-coach-dashboard.jpg" alt="ADHD focus app dashboard showing exercises and weekly progress" width={1536} height={1024} className="h-auto w-full" sizes="(min-width: 1024px) 58vw, 100vw" /></figure></section>
 
