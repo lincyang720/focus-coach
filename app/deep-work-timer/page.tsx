@@ -1,101 +1,113 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Clock3, Pause, Play, RotateCcw } from "lucide-react";
+import { ArrowRight, Brain, Clock3 } from "lucide-react";
 import { PageShell } from "@/components/layout/page-shell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { DeepWorkTimer } from "./timer";
 
 export const metadata: Metadata = {
-  title: { absolute: "Deep Work Timer for Adults | Focus Coach" },
+  title: { absolute: "Deep Work Timer – Free Online Focus Timer | FocusCoach" },
   description:
-    "Use a focused deep work timer with 25, 45, 60, or 90 minute sessions, simple controls, and a quick pre-work reset. Built for adults who want fewer distractions and clearer work blocks.",
+    "Free deep work timer: run 25-90 minute focus sessions instantly — no signup needed. Built for ADHD brains, with training prompts to help you actually start, not just time yourself.",
   keywords: [
     "deep work timer",
-    "focus timer for adults",
-    "pomodoro timer for deep work",
-    "work session timer",
-    "productivity timer"
+    "deep work timer online",
+    "deep work sessions",
+    "deep work technique",
+    "deep work vs pomodoro"
   ],
   alternates: { canonical: "/deep-work-timer" },
   openGraph: {
-    title: "Deep Work Timer for Adults | Focus Coach",
+    title: "Deep Work Timer – Free Online Focus Timer | FocusCoach",
     description:
-      "A simple deep work timer with flexible 25-90 minute sessions for focused work blocks.",
+      "Run 25-90 minute deep work sessions instantly. No signup required, with ADHD-friendly start prompts and session wrap-up.",
     url: "/deep-work-timer"
   }
 };
 
-const durations = [25, 45, 60, 90];
-
 const faqs = [
   {
-    question: "What makes this a deep work timer instead of a regular countdown?",
+    question: "What is a deep work timer?",
     answer:
-      "This page is built around long, deliberate work blocks instead of a generic short timer. It is meant to help you start one clear task, stay with it, and then reset before the next block."
+      "A deep work timer is a focus timer that blocks out a fixed period, often 45 to 90 minutes, for uninterrupted cognitively demanding work. It helps you protect one task instead of constantly switching."
   },
   {
-    question: "Can I use it for ADHD or distractibility?",
+    question: "Is deep work the same as pomodoro?",
     answer:
-      "Yes. Many adults with ADHD prefer a visible, simple work block that reduces decision fatigue. The timer is not a treatment, but it can support a more predictable work rhythm."
+      "Not exactly. Pomodoro usually uses short 25-minute work cycles with breaks. Deep work sessions are often longer single blocks, usually 60 to 90 minutes, for complex writing, coding, studying, or analysis."
   },
   {
-    question: "Do I need an account?",
+    question: "How long should a deep work session be?",
     answer:
-      "No. The timer works in your browser without signing in. You can pair it with the free focus check or use it on its own."
+      "It depends on your energy and task. Many people use 45 to 90 minutes. ADHD users may prefer starting with 25 minutes or even a 10-minute reduced-scope block before building longer sessions."
   },
   {
-    question: "What should I do before starting the timer?",
+    question: "Do I need to create an account to use this timer?",
     answer:
-      "Pick one task, define the first physical action, and remove one obvious distraction. A clear start beats a perfect plan."
+      "No. FocusCoach's deep work timer is free and works directly in your browser without signup, login, or installation."
+  },
+  {
+    question: "Can this timer help with ADHD?",
+    answer:
+      "It can help as a productivity support, not a treatment. The timer includes start-blocker prompts, micro-goals, and a session wrap-up so ADHD users get help beginning and returning, not just a countdown."
   }
 ];
 
 export default function DeepWorkTimerPage() {
-  const jsonLd = {
+  const webApplicationJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "Deep Work Timer",
     url: "https://www.focuscoach.dev/deep-work-timer",
     applicationCategory: "ProductivityApplication",
     operatingSystem: "Web",
+    isAccessibleForFree: true,
     description:
-      "A simple deep work timer for adults with adjustable 25 to 90 minute sessions and a distraction-free browser workflow."
+      "A free online deep work timer with 25, 45, 60, and 90 minute focus sessions, custom durations, ADHD-friendly start prompts, and local session wrap-up."
+  };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer }
+    }))
   };
 
   return (
     <PageShell>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webApplicationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="grid gap-8 py-8 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+      <section className="grid gap-8 py-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
         <div className="max-w-2xl">
-          <Badge className="bg-background/80">FocusCoach deep work timer</Badge>
+          <Badge className="bg-background/80">Free online focus timer</Badge>
           <h1 className="mt-4 text-4xl font-semibold tracking-normal sm:text-5xl">
-            Deep Work Timer for Adults
+            Deep Work Timer
           </h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Use a clean, adjustable timer for focused work blocks. Start with 25, 45, 60, or 90
-            minutes, then stay with one task until the block ends. It is designed for deep work,
-            not for racing the clock.
+            Start a focus session in one click — no account needed. Choose 25, 45, 60, or
+            90 minutes, set a micro-goal if starting feels sticky, and use the wrap-up to learn
+            what helped or distracted you.
           </p>
-          <p className="mt-3 leading-7 text-muted-foreground">
-            Pair it with a short reset before you begin, or jump straight in when you already know
-            the next action.
-          </p>
-
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild>
               <Link href="#timer">
-                Start timer
+                Start a deep work session
                 <Clock3 className="h-4 w-4" aria-hidden />
               </Link>
             </Button>
             <Button variant="outline" asChild>
-              <Link href="/free-adhd-focus-test">Use the 60-second focus check</Link>
+              <Link href="/games">Try focus training games</Link>
             </Button>
           </div>
         </div>
@@ -105,44 +117,37 @@ export default function DeepWorkTimerPage() {
 
       <section className="grid gap-6 py-12 md:grid-cols-3">
         <div>
-          <h2 className="text-2xl font-semibold">Why a deep work timer helps</h2>
+          <h2 className="text-2xl font-semibold">What Is a Deep Work Timer</h2>
         </div>
         <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
           <p>
-            A deep work timer does one job well: it creates a visible block for real work. That
-            matters when the hardest part is starting, not understanding the task. Use the timer to
-            protect one outcome, not to prove discipline.
+            A deep work timer is a simple boundary for one demanding task. Instead of leaving the
+            workday open-ended, a deep work timer gives your brain a visible container: one task,
+            one block, one next action. It works best for writing, coding, studying, planning, or
+            any project that suffers when you switch tabs every few minutes.
           </p>
           <p>
-            The best block length depends on your day. A 25-minute session can reduce friction when
-            you feel avoidant, while 60 or 90 minutes is better when you have already crossed the
-            start line and want to stay in the work.
+            The timer is only the tool. The deeper skill is creating conditions that make focus
+            easier to begin and easier to return to. That is why this deep work timer includes a
+            pre-start prompt and a quick session review, not just a countdown.
           </p>
         </div>
       </section>
 
       <section className="rounded-lg border bg-background/90 p-6 md:p-8">
-        <h2 className="text-2xl font-semibold">Suggested deep work block lengths</h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {durations.map((minutes) => (
-            <Card key={minutes} className="bg-background/88">
-              <CardHeader>
-                <CardTitle>{minutes} minutes</CardTitle>
-                <CardDescription>
-                  {minutes === 25
-                    ? "Good for a quick start or a low-energy day."
-                    : minutes === 45
-                      ? "Useful when you want focus without a long commitment."
-                      : minutes === 60
-                        ? "A balanced block for most deep work sessions."
-                        : "Best for uninterrupted writing, coding, or analysis."}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  Before starting, write the first physical action. When the block ends, decide
-                  whether to stop, recover, or begin a second round.
-                </p>
+        <h2 className="text-2xl font-semibold">How to Use This Deep Work Timer</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-4">
+          {[
+            ["1", "Choose a block", "Pick 25, 45, 60, 90 minutes, or set a custom 5-180 minute session."],
+            ["2", "Clear the start", "Use Start Blockers to begin now, write a micro-goal, or reduce the scope."],
+            ["3", "Stay with one task", "Watch the circular progress and keep the browser tab title visible."],
+            ["4", "Wrap the session", "Rate focus 1-5 and capture the distraction pattern before moving on."]
+          ].map(([step, title, text]) => (
+            <Card key={step} className="bg-background/88">
+              <CardContent className="p-5">
+                <p className="text-sm font-semibold text-primary">Step {step}</p>
+                <h3 className="mt-2 font-semibold">{title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
               </CardContent>
             </Card>
           ))}
@@ -151,18 +156,60 @@ export default function DeepWorkTimerPage() {
 
       <section className="grid gap-6 py-12 md:grid-cols-3">
         <div>
-          <h2 className="text-2xl font-semibold">What to do before the clock starts</h2>
+          <h2 className="text-2xl font-semibold">Deep Work Timer vs Pomodoro Timer</h2>
+        </div>
+        <div className="md:col-span-2">
+          <div className="overflow-hidden rounded-lg border bg-background/90">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-muted/60">
+                <tr>
+                  <th className="p-4 font-semibold">Method</th>
+                  <th className="p-4 font-semibold">Best for</th>
+                  <th className="p-4 font-semibold">Typical length</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y">
+                <tr>
+                  <td className="p-4 font-medium">Pomodoro timer</td>
+                  <td className="p-4 text-muted-foreground">Short tasks, shallow work, quick momentum</td>
+                  <td className="p-4 text-muted-foreground">25 minutes + 5 minute break</td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Deep work timer</td>
+                  <td className="p-4 text-muted-foreground">Writing, coding, studying, strategy, complex work</td>
+                  <td className="p-4 text-muted-foreground">45-90 minutes, or shorter when starting is hard</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section className="grid gap-6 py-12 md:grid-cols-3">
+        <div>
+          <h2 className="text-2xl font-semibold">Why ADHD Brains Need a Different Kind of Timer</h2>
         </div>
         <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
           <p>
-            Choose one task, close one distracting tab, and define the first action in plain
-            language. If the work still feels vague, spend thirty seconds making the task smaller
-            before pressing start.
+            ADHD-friendly timers need to solve the beginning problem. A standard timer assumes you
+            are ready to start; many distracted brains need help turning a vague intention into a
+            concrete first move. Start Blockers give you three launch paths: begin now, define a
+            micro-goal, or reduce the task to a 10-minute version.
           </p>
           <p>
-            The timer is a boundary, not a verdict. If you stop early, treat it as a signal to
-            adjust the next block rather than a failed session.
+            If deep work often feels slippery, pair this page with FocusCoach&apos;s short training
+            games and our guide to{" "}
+            <Link className="font-medium text-primary" href="/blog/adhd-deep-work-flow">
+              ADHD and deep work
+            </Link>
+            . The goal is not perfect concentration; it is making starting and returning easier.
           </p>
+          <Button variant="outline" asChild>
+            <Link href="/games">
+              Build your focus muscle
+              <Brain className="h-4 w-4" aria-hidden />
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -183,9 +230,9 @@ export default function DeepWorkTimerPage() {
       <section className="py-12">
         <div className="flex flex-col gap-4 rounded-lg border bg-background/90 p-6 md:flex-row md:items-center md:justify-between md:p-8">
           <div>
-            <h2 className="text-2xl font-semibold">Need a shorter reset first?</h2>
+            <h2 className="text-2xl font-semibold">Want a baseline before your next session?</h2>
             <p className="mt-2 max-w-2xl leading-7 text-muted-foreground">
-              Try the free focus check, then return here with one task and one clear starting move.
+              Take the free 60-second attention test, then come back and start a focused work block.
             </p>
           </div>
           <Button asChild>
