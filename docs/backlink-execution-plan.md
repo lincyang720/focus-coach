@@ -42,7 +42,7 @@ Homepage:           https://www.focuscoach.dev/?utm_source={{platform}}&utm_medi
 | P0 | Product Hunt | producthunt.com | 周二-周四 00:01 PT 发布，配合 maker comment |
 | P0 | AlternativeTo | alternativeto.net | 找 "focus app" / "ADHD app" 作为替代品提交 |
 | P0 | SaaSHub | saashub.com | Productivity / Health & Wellness 分类 |
-| P0 | BetaList | betalist.com | 需要账号，提交 startup |
+| P0 | BetaList | betalist.com | 已确认付费提交，跳过 |
 | P1 | Toolify.ai | toolify.ai | AI Health / Productivity 分类 |
 | P1 | There's AI For That | theresanaiforthat.com | AI 工具目录 |
 | P1 | FutureTools | futuretools.io | AI 工具目录 |

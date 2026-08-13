@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/ai-brain-training-cognitive-coaching-app",
+    "/deep-work-timer",
     "/games",
     "/free-adhd-focus-test",
     "/blog",

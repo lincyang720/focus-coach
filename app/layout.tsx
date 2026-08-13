@@ -3,7 +3,7 @@ import "./globals.css";
 import { Analytics } from "@/components/analytics";
 
 const appUrl = "https://www.focuscoach.dev";
-const title = "ADHD Focus Coach: Free Focus Training for Adults";
+const title = "ADHD Focus Training for Adults | Focus Coach";
 const description =
   "Free ADHD focus training for adults with five adaptive attention games, a 60-second focus test, and a repeatable 10-minute daily routine.";
 

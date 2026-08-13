@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { BookOpen, Brain, CreditCard, LineChart, LogIn, LogOut, Settings, Target } from "lucide-react";
+import { BookOpen, Brain, CreditCard, LineChart, LogIn, LogOut, Settings, Target, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { clearCurrentUser, getCurrentUser } from "@/lib/storage";
 import type { UserProfile } from "@/lib/types";
 
 const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Target },
+  { href: "/deep-work-timer", label: "Deep Work", icon: Timer },
   { href: "/games", label: "Games", icon: Brain },
   { href: "/blog", label: "Guides", icon: BookOpen },
   { href: "/progress", label: "Progress", icon: LineChart },
