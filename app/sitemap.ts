@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/free-adhd-focus-test",
     "/blog",
     "/pricing",
-    "/login",
-    "/register",
     "/privacy",
     "/terms"
   ];
@@ -35,9 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ? 0.9
             : route === "/pricing"
               ? 0.8
-              : route === "/login" || route === "/register"
-                ? 0.2
-                : 0.5
+              : 0.5
     })),
     ...articles.map((article) => ({
       url: `${appUrl}/blog/${article.slug}`,
