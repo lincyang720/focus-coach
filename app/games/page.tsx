@@ -9,11 +9,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
 export const metadata: Metadata = {
-  title: "Free Focus Games Online for Adults",
+  title: "Free Focus & Brain Training Games Online for Adults",
   description:
-    "Play five free focus games online for adults: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch. No download required.",
+    "Play five free focus and brain training games online for adults: Number Memory, N-Back, Stroop Test, Quick Match, and Task Switch. No download required.",
   keywords: [
     "free focus games for adults",
+    "brain training games online",
+    "free brain training games",
     "online attention games for adults",
     "free brain games online",
     "working memory games for adults",
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
     canonical: "/games"
   },
   openGraph: {
-    title: "Free Focus Games Online for Adults | Focus Coach",
+    title: "Free Focus & Brain Training Games Online | Focus Coach",
     description:
       "Play five short online attention games for working memory, reaction speed, task switching, and inhibition. Free to start in your browser.",
     url: "/games"
@@ -56,7 +58,7 @@ export default function GamesPage() {
           <div className="max-w-3xl">
             <Badge>Free online focus practice</Badge>
             <h1 className="mt-3 text-4xl font-semibold tracking-normal">
-              Free Focus Games Online for Adults
+              Free Focus &amp; Brain Training Games Online for Adults
             </h1>
             <p className="mt-4 text-lg leading-8 text-muted-foreground">
               Play five short attention games for working memory, reaction speed, task switching,
@@ -110,6 +112,92 @@ export default function GamesPage() {
               </CardContent>
             </Card>
           ))}
+        </section>
+
+        <section className="grid gap-6 border-t py-12 md:grid-cols-3">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-normal">
+              What these brain training games practice
+            </h2>
+          </div>
+          <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+            <p>
+              Online brain training is most useful when you treat a game as a short, repeatable
+              practice task rather than a measure of intelligence or a promise of broader change.
+              Each FocusCoach game concentrates on one narrow skill: holding a sequence in mind,
+              comparing visual details, updating information, switching rules, or ignoring a
+              distracting response. That makes it easier to choose a game that matches the kind of
+              attention reset you want before work.
+            </p>
+            <p>
+              A higher score usually means that you are becoming more familiar with that game’s
+              rules and timing. It does not diagnose ADHD, predict job performance, or replace
+              professional care. The practical value is the routine: one short, defined activity
+              can create a clearer handoff from scrolling, email, or a meeting into the next
+              useful task.
+            </p>
+          </div>
+        </section>
+
+        <section className="grid gap-6 py-4 md:grid-cols-3">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-normal">
+              Choose a game by the attention skill you want to warm up
+            </h2>
+          </div>
+          <div className="space-y-5 leading-7 text-muted-foreground md:col-span-2">
+            <p>
+              <strong className="text-foreground">Number Memory</strong> is a useful choice when
+              you need to hold names, numbers, or instructions in mind. <strong className="text-foreground">Quick Match</strong>
+              works as a fast visual-attention reset before a task that requires careful scanning.
+              <strong className="text-foreground">N-Back</strong> is for continuous updating,
+              while <strong className="text-foreground">Task Switch</strong> gives you a brief
+              rule-change challenge after interruptions. Choose the <strong className="text-foreground">Stroop Test</strong>
+              when you want to slow down and practice ignoring a distracting automatic response.
+            </p>
+            <p>
+              Keep the routine deliberately small. Play one round, write the first physical action
+              of your work task, then begin it. If a game feels frustrating or overstimulating,
+              switch to a shorter round, choose a different exercise, or use a quiet timer instead.
+              Consistency and an easy restart matter more than a perfect streak.
+            </p>
+          </div>
+        </section>
+
+        <section className="rounded-lg border bg-background/90 p-6 md:p-8">
+          <h2 className="text-2xl font-semibold tracking-normal">
+            Free online brain training games: common questions
+          </h2>
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            <div>
+              <h3 className="font-semibold">Are these focus games free?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Yes. You can start each browser-based game for free without downloading software.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Which brain training game should I start with?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Start with Number Memory for recall, Quick Match for visual attention, or Stroop
+                for inhibition. Pick the one that feels easiest to repeat before work.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Can brain games improve ADHD symptoms?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                These games are productivity-oriented practice, not treatment or diagnosis. Their
+                scores describe performance within the game and should not be used as clinical
+                evidence.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">How often should I play?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                A short, repeatable session before a focus block is enough. Stop when it no longer
+                helps you transition into the work you intended to do.
+              </p>
+            </div>
+          </div>
         </section>
       </div>
     </PageShell>

@@ -31,9 +31,10 @@ export const articles: Article[] = [
   },
   {
     slug: "best-focus-apps-for-adhd-adults", title: "5 Best ADHD Focus Apps in 2026 (Plus 2 Useful Alternatives)", keyword: "best ADHD focus apps", published: "2026-07-20",
-    description: "Compare seven useful focus apps for ADHD adults by use case, friction, feedback, flexibility, and privacy.",
-    intro: ["The best focus app for ADHD is the one that solves your specific bottleneck with the least friction. A timer, blocker, task manager, and attention trainer solve different problems.", "This comparison uses product categories and well-known tools as examples. Features and pricing can change, so verify details on each product’s official site."],
+    description: "Compare seven focus apps for ADHD adults by use case, friction, feedback, flexibility, and privacy.",
+    intro: ["The best focus app for ADHD is the one that solves your specific bottleneck with the least friction. A timer, blocker, task manager, accountability service, and attention trainer solve different problems.", "This is an editorial comparison, not a clinical recommendation. FocusCoach is included because it is our product; we disclose that relationship and assess it against the same practical criteria used for the alternatives. Features and pricing can change, so verify current details on each product’s official site before choosing."],
     sections: [
+      { heading: "How we compared these ADHD focus apps", paragraphs: ["We compared the tools by the problem they are designed to solve, the friction required to start, the type of feedback they give, the flexibility of the routine, and the privacy questions a user should review before creating an account. No single app is best for every adult with ADHD.", "Use the list to narrow your choices, then test one primary tool for a week. Track something observable, such as whether you started a planned session, returned after a break, or completed the next defined action. If an app adds setup work without making the task easier to begin, it is probably not the right fit." ] },
       { heading: "1. FocusCoach: short attention practice", paragraphs: ["FocusCoach combines a free attention check, short exercises, adaptive difficulty, and weekly pattern summaries. It fits adults who want to practice attention as well as structure a workday.", "Choose it when progress feedback motivates you. It is a productivity and training tool, not an ADHD diagnostic or treatment product."] },
       { heading: "2. Forest: visible phone boundaries", paragraphs: ["Forest turns staying away from the phone into a visual commitment. The simple metaphor can make a focus interval feel concrete.", "It is best for phone distraction, but it does not break projects into actions or train attention skills."] },
       { heading: "3. Freedom: cross-device blocking", paragraphs: ["Freedom is designed to block distracting sites and apps across devices. It can help when automatic checking defeats softer reminders.", "Blocking works best with a prepared task; otherwise removing distraction may simply expose uncertainty about what to do next."] },
@@ -41,7 +42,13 @@ export const articles: Article[] = [
       { heading: "5. Structured: see the day", paragraphs: ["A visual timeline helps translate abstract plans into a sequence. Structured is useful for people who need to see when a task belongs.", "Leave buffer space. Packing every minute creates a schedule that collapses after one interruption."] },
       { heading: "6. Focusmate: body doubling", paragraphs: ["Focusmate provides scheduled virtual coworking sessions. The presence of another person can create a clear start and social commitment.", "It is less useful when your schedule changes frequently or camera-based sessions feel distracting."] },
       { heading: "7. Brain Focus: simple intervals", paragraphs: ["A straightforward interval timer can be enough when the main need is a visible boundary. Simplicity is often an advantage.", "Start with shorter intervals than a standard 25-minute Pomodoro if that makes beginning easier."] },
-      { heading: "How to choose your ADHD focus app", paragraphs: ["Name the bottleneck first: starting, blocking, planning, accountability, or attention practice. Pick one primary app for that job.", "Test it for seven working days using one observable measure, such as sessions started or priority tasks completed. Keep the tool only if it makes work easier to begin or resume."] }
+      { heading: "How to choose your ADHD focus app", paragraphs: ["Name the bottleneck first: starting, blocking, planning, accountability, or attention practice. Pick one primary app for that job.", "Test it for seven working days using one observable measure, such as sessions started or priority tasks completed. Keep the tool only if it makes work easier to begin or resume." ] }
+    ],
+    sources: [
+      { title: "Forest official website", url: "https://www.forestapp.cc/" },
+      { title: "Freedom official website", url: "https://freedom.to/" },
+      { title: "Todoist official website", url: "https://todoist.com/" },
+      { title: "Focusmate official website", url: "https://www.focusmate.com/" }
     ]
   },
   {
