@@ -8,16 +8,25 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: { absolute: "ADHD Focus Training for Adults | Focus Coach" },
-  description: "Free ADHD focus training for adults with a 60-second focus test, five adaptive attention games, and short 10-minute practice sessions.",
+  title: { absolute: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools" },
+  description:
+    "Focus Coach is FocusCoach—free ADHD-friendly focus tools with a 60-second attention check, adaptive training, and free focus games you can play in your browser.",
   alternates: { canonical: "/" },
   openGraph: {
-    type: "website", siteName: "FocusCoach", url: "/",
-    title: "ADHD Focus Training for Adults | Focus Coach",
-    description: "Free ADHD focus training for adults with adaptive games and a 60-second focus test.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "ADHD focus app dashboard" }]
+    type: "website",
+    siteName: "Focus Coach",
+    url: "/",
+    title: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools",
+    description:
+      "Free focus tools for adults: try the Focus Coach attention check, then play free focus games—no signup required to start.",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Focus Coach dashboard" }]
   },
-  twitter: { card: "summary_large_image", title: "ADHD Focus Training for Adults | Focus Coach", description: "Free ADHD-friendly focus training in 10 minutes a day.", images: ["/opengraph-image"] }
+  twitter: {
+    card: "summary_large_image",
+    title: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools",
+    description: "Free ADHD-friendly focus tools and browser-based focus games from Focus Coach.",
+    images: ["/opengraph-image"]
+  }
 };
 
 const faqs = [
@@ -30,7 +39,7 @@ const faqs = [
 
 export default function HomePage() {
   const jsonLd = { "@context": "https://schema.org", "@graph": [
-    { "@type": "WebApplication", name: "FocusCoach", url: "https://www.focuscoach.dev/", applicationCategory: "ProductivityApplication", operatingSystem: "Web", description: "An ADHD-friendly focus app for adults with short adaptive attention exercises and weekly productivity insights.", offers: { "@type": "Offer", price: "29.99", priceCurrency: "USD", category: "annual subscription" }, featureList: ["Free 60-second focus test", "10-minute attention training sessions", "Adaptive focus exercises", "Weekly AI productivity recap"] },
+    { "@type": "WebApplication", name: "Focus Coach", alternateName: "FocusCoach", url: "https://www.focuscoach.dev/", applicationCategory: "ProductivityApplication", operatingSystem: "Web", description: "Focus Coach (FocusCoach) offers ADHD-friendly focus tools: a free attention check, adaptive exercises, and free focus games in the browser.", offers: { "@type": "Offer", price: "29.99", priceCurrency: "USD", category: "annual subscription" }, featureList: ["Free 60-second focus test", "Free focus games", "10-minute attention training sessions", "Adaptive focus exercises", "Weekly AI productivity recap"] },
     { "@type": "FAQPage", mainEntity: faqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) }
   ] };
 
@@ -38,11 +47,11 @@ export default function HomePage() {
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <section className="grid min-h-[calc(100vh-120px)] items-center gap-10 py-8 lg:grid-cols-[1.02fr_0.98fr]">
       <div className="max-w-2xl">
-        <p className="mb-4 inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground"><Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />ADHD focus training for adults</p>
-        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">ADHD Focus Training for Adults</h1>
-        <p className="mt-5 text-lg leading-8 text-muted-foreground">FocusCoach is an ADHD focus training app built for adults who want practical attention practice for work and daily life. Try adaptive focus exercises, track useful patterns, and build a routine small enough to repeat.</p>
+        <p className="mb-4 inline-flex items-center rounded-full border bg-background/80 px-3 py-1 text-sm text-muted-foreground"><Sparkles className="mr-2 h-4 w-4 text-secondary" aria-hidden />Focus Coach · FocusCoach</p>
+        <h1 className="text-4xl font-semibold tracking-normal sm:text-5xl">Focus Coach</h1>
+        <p className="mt-5 text-lg leading-8 text-muted-foreground">FocusCoach is the same product you will see as Focus Coach: ADHD-friendly focus tools for adults who want practical attention practice before work. Try the free check below, play <Link href="/games" className="text-primary underline underline-offset-4">free focus games</Link> in your browser, or read our guide to <Link href="/blog/best-focus-apps-for-adhd-adults" className="text-primary underline underline-offset-4">ADHD focus tools</Link>.</p>
         <p className="mt-3 leading-7 text-muted-foreground">Start with the free 60-second attention test—right here, with no signup required.</p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" asChild><a href="#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></a></Button><Button variant="outline" size="lg" asChild><Link href="/deep-work-timer">Open deep work timer</Link></Button><Button variant="ghost" size="lg" asChild><Link href="/blog">Read focus guides</Link></Button></div>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Button size="lg" asChild><a href="#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></a></Button><Button variant="outline" size="lg" asChild><Link href="/games">Play free focus games</Link></Button><Button variant="ghost" size="lg" asChild><Link href="/blog/best-focus-apps-for-adhd-adults">ADHD focus tools guide</Link></Button></div>
       </div>
       <div id="focus-check" className="scroll-mt-24"><FocusCheck /></div>
     </section>
@@ -68,7 +77,7 @@ export default function HomePage() {
         { title: "Task Switch", text: "Alternate between two sorting rules and notice when the active rule changes. It is a short way to practice reorienting after a meeting or interruption, while remembering that a game score cannot predict real-world job performance." },
         { title: "Stroop Test", text: "Respond to the color of the text while ignoring the color word itself. The conflict creates a familiar inhibition exercise: slow down after errors, prioritize accuracy, and use the round as a cue to begin your chosen work block." }
       ].map(game => <Card key={game.title} className="bg-background/88"><CardContent className="p-5"><h3 className="font-semibold">{game.title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{game.text}</p></CardContent></Card>)}</div>
-      <Button variant="outline" className="mt-6" asChild><Link href="/games">See all focus exercises <ArrowRight className="h-4 w-4" aria-hidden /></Link></Button>
+      <Button variant="outline" className="mt-6" asChild><Link href="/games">Browse free focus games <ArrowRight className="h-4 w-4" aria-hidden /></Link></Button>
     </section>
 
     <section className="grid gap-6 py-12 md:grid-cols-3"><div><h2 className="text-2xl font-semibold">Use FocusCoach Where Focus Usually Breaks Down</h2></div><div className="space-y-4 leading-7 text-muted-foreground md:col-span-2"><p><strong className="text-foreground">Before deep work:</strong> use a brief exercise as a clear transition from email or browsing into one defined task. Write the first physical action before you start, then move directly from the result screen into that action.</p><p><strong className="text-foreground">Between meetings:</strong> take a structured reset instead of opening another feed. One short round can mark the end of the previous context; a one-line note can identify what deserves attention next.</p><p><strong className="text-foreground">When starting feels difficult:</strong> pair the free focus check with a ten-minute work commitment. The goal is not a perfect score or an hour of concentration—it is to reduce the distance between intention and the first useful action.</p><p><strong className="text-foreground">During a low-energy afternoon:</strong> choose a lighter exercise, review the trend without judgment, and select a task that fits your available energy. FocusCoach is meant to support a realistic workday rather than turn productivity into another test.</p></div></section>
