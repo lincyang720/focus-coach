@@ -77,4 +77,22 @@ After deployment:
 3. Request indexing for the homepage, `/blog`, and the first published guides.
 4. Confirm GA4 receives a real-time page view before announcing the launch.
 
+### IndexNow (Bing / ChatGPT URL discovery)
+
+The site serves an IndexNow key at `https://www.focuscoach.dev/7e4a9c2f-8b1d-4630-a5e6-f7c9d8b0a1e2.txt` (see `public/` and `lib/indexnow.ts`). After deploy or content updates, notify search engines:
+
+1. In Vercel (Production), set `INDEXNOW_SUBMIT_SECRET` to a long random string.
+2. Call the protected route once (default URL list: homepage, `/games`, and the ADHD focus tools blog post):
+
+```bash
+curl -sS -X POST "https://www.focuscoach.dev/api/indexnow/submit" \
+  -H "Authorization: Bearer YOUR_INDEXNOW_SUBMIT_SECRET" \
+  -H "Content-Type: application/json" \
+  -d '{}'
+```
+
+Or run `INDEXNOW_SUBMIT_SECRET=YOUR_SECRET node scripts/submit-indexnow.mjs`.
+
+Optional body to submit custom URLs: `{"urlList":["https://www.focuscoach.dev/your-page"]}`.
+
 Directory submissions, backlink outreach, community posts, testimonials, and Search Console account actions intentionally remain manual because they require account ownership and genuine relationships.
