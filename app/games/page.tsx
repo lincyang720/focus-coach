@@ -96,6 +96,10 @@ export default function GamesPage() {
 
         <GamesInlineDemo />
 
+        <Link href="/memory-games" className="text-primary underline underline-offset-4">
+          Memory games for adults
+        </Link>
+
         <section>
           <h2 className="text-2xl font-semibold tracking-normal">All free focus games</h2>
           <p className="mt-3 max-w-2xl leading-7 text-muted-foreground">

@@ -12,6 +12,7 @@ const navItems = [
   { href: "/dashboard", label: "Dashboard", icon: Target },
   { href: "/deep-work-timer", label: "Deep Work", icon: Timer },
   { href: "/games", label: "Games", icon: Brain },
+  { href: "/memory-games", label: "Memory Games", icon: Brain },
   { href: "/blog", label: "Guides", icon: BookOpen },
   { href: "/progress", label: "Progress", icon: LineChart },
   { href: "/reports", label: "Reports", icon: Brain },
@@ -42,7 +43,7 @@ export function Header() {
           </span>
           <span>Focus Coach</span>
         </Link>
-        <nav className="hidden items-center gap-1 md:flex">
+        <nav aria-label="Main navigation" className="hidden flex-1 flex-wrap items-center justify-center gap-1 px-2 md:flex">
           {navItems.map((item) => (
             <Button key={item.href} variant="ghost" size="sm" asChild>
               <Link href={item.href}>
@@ -66,6 +67,11 @@ export function Header() {
           </Button>
         )}
       </div>
+      <nav aria-label="Main navigation" className="border-t px-4 py-2 md:hidden">
+          <Link className="text-sm font-medium text-primary underline underline-offset-4" href="/memory-games">
+            Memory Games
+          </Link>
+        </nav>
     </header>
   );
 }

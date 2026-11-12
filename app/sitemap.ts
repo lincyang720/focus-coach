@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ai-brain-training-cognitive-coaching-app",
     "/deep-work-timer",
     "/games",
+    "/memory-games",
     "/free-adhd-focus-test",
     "/blog",
     "/pricing",
