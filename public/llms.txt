@@ -1,0 +1,7 @@
+# FocusCoach
+
+> Free, ADHD-friendly focus tools, including a 60-second attention check, adaptive training, and browser-based focus games.
+
+## Start here
+
+- [FocusCoach homepage](https://www.focuscoach.dev/): Explore the site's focus tools and games.
