@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,26 +8,20 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const title = "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools";
+const description = "Focus Coach is FocusCoach—free ADHD-friendly focus tools with a 60-second attention check, adaptive training, and free focus games you can play in your browser.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools" },
-  description:
-    "Focus Coach is FocusCoach—free ADHD-friendly focus tools with a 60-second attention check, adaptive training, and free focus games you can play in your browser.",
+  title: { absolute: title },
+  description,
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    siteName: "Focus Coach",
-    url: "/",
-    title: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools",
-    description:
-      "Free focus tools for adults: try the Focus Coach attention check, then play free focus games—no signup required to start.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Focus Coach dashboard" }]
-  },
   twitter: {
     card: "summary_large_image",
     title: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools",
     description: "Free ADHD-friendly focus tools and browser-based focus games from Focus Coach.",
     images: ["/opengraph-image"]
-  }
+  },
+  openGraph: shareMetadata(title, description, "/")
 };
 
 const faqs = [
@@ -91,5 +86,6 @@ export default function HomePage() {
     <section className="py-12"><h2 className="text-2xl font-semibold">ADHD Focus Training FAQ</h2><div className="mt-5 grid gap-6 md:grid-cols-2">{faqs.map(item => <Card key={item.question} className="bg-background/88"><CardContent className="p-5"><h3 className="font-semibold leading-6">{item.question}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">{item.answer}</p></CardContent></Card>)}</div></section>
 
     <aside className="mb-10 rounded-lg border border-accent/30 bg-background/90 p-5 text-sm leading-6 text-muted-foreground"><strong className="text-foreground">Important:</strong> FocusCoach is a training and productivity tool, not a medical device. It does not diagnose, treat, or cure ADHD and is not a replacement for professional healthcare.</aside>
-  </PageShell>;
+  <p>Measure your speed and accuracy in the <Link className="underline" href="/exercises/quick-match">reaction time test</Link>.</p>
+    </PageShell>;
 }

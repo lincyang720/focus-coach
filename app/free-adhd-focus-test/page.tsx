@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -6,10 +7,12 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const title = "Free ADHD Focus Test – 60-Second Attention Assessment | FocusCoach";
+const description = "Try a free 60-second ADHD-friendly focus test. Check attention speed and accuracy online with no signup, then explore practical focus exercises for adults.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Free ADHD Focus Test – 60-Second Attention Assessment | FocusCoach" },
-  description:
-    "Try a free 60-second ADHD-friendly focus test. Check attention speed and accuracy online with no signup, then explore practical focus exercises for adults.",
+  title: { absolute: title },
+  description,
   keywords: [
     "free adhd focus test",
     "adhd attention test online free",
@@ -17,11 +20,7 @@ export const metadata: Metadata = {
     "attention test for adults"
   ],
   alternates: { canonical: "/free-adhd-focus-test" },
-  openGraph: {
-    title: "Free ADHD Focus Test – Check Your Attention in 60 Seconds",
-    description: "A free, no-signup attention check with immediate task-specific feedback.",
-    url: "/free-adhd-focus-test"
-  }
+  openGraph: shareMetadata(title, description, "/free-adhd-focus-test")
 };
 
 const faqs = [

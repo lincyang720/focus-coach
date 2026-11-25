@@ -19,14 +19,17 @@ export interface GameCompletePayload {
   accuracy: number;
   durationSeconds: number;
   gameData: unknown;
+  averageResponseMs?: number;
 }
 
 export function GameRunner({
   gameType,
-  seoTitle
+  seoTitle,
+  subtitle
 }: {
   gameType: GameType;
   seoTitle?: string;
+  subtitle?: string;
 }) {
   const config = gameConfigByType[gameType];
   const [difficulty, setDifficulty] = useState(1);
@@ -75,7 +78,7 @@ export function GameRunner({
         <h1 className="mt-1 text-3xl font-semibold tracking-normal">
           {seoTitle ?? `${config.name} Focus Training Game`}
         </h1>
-        <p className="mt-2 max-w-2xl text-muted-foreground">{config.description}</p>
+        <p className="mt-2 max-w-2xl text-muted-foreground">{subtitle ?? config.description}</p>
         <h2 className="mt-6 text-2xl font-semibold tracking-normal">
           Adaptive {config.category.toLowerCase()} practice for short work breaks
         </h2>
@@ -94,6 +97,7 @@ export function GameRunner({
           <CardContent className="grid gap-3 md:grid-cols-3">
             <ResultMetric label="Score" value={`${lastResult.score}/100`} />
             <ResultMetric label="Accuracy" value={`${(lastResult.accuracy * 100).toFixed(1)}%`} />
+            {lastResult.averageResponseMs !== undefined && <ResultMetric label="Average reaction time" value={`${lastResult.averageResponseMs} ms`} />}
             <ResultMetric label="Next level" value={`${difficulty}`} />
           </CardContent>
         </Card>

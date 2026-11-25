@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/layout/page-shell";
@@ -17,9 +18,12 @@ export function generateMetadata({
     };
   }
 
+  const title = `${config.name} Focus Training Game`;
+  const description = `Play the ${config.name} focus training game in Focus Coach to practice ${config.category.toLowerCase()} with short productivity-oriented sessions.`;
   return {
-    title: `${config.name} Focus Training Game`,
-    description: `Play the ${config.name} focus training game in Focus Coach to practice ${config.category.toLowerCase()} with short productivity-oriented sessions.`,
+    title,
+    description,
+    openGraph: shareMetadata(title + " | Focus Coach", description, `/train/${params.gameType}`),
     alternates: {
       canonical: `/exercises/${gameSlugByType[params.gameType]}`
     },

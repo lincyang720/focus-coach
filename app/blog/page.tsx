@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen } from "lucide-react";
@@ -5,10 +6,14 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card, CardContent } from "@/components/ui/card";
 import { articles } from "@/lib/articles";
 
+const title = "ADHD Focus & Productivity Guides";
+const description = "Practical, non-clinical guides to ADHD-friendly focus routines, attention exercises, deep work, body doubling, and remote productivity.";
+
 export const metadata: Metadata = {
-  title: "ADHD Focus & Productivity Guides",
-  description: "Practical, non-clinical guides to ADHD-friendly focus routines, attention exercises, deep work, body doubling, and remote productivity.",
-  alternates: { canonical: "/blog" }
+  title,
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: shareMetadata(title + " | Focus Coach", description, "/blog")
 };
 
 export default function BlogPage() {

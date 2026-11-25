@@ -1,14 +1,18 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+const title = "Focus Coach Terms of Service";
+const description = "Read the Focus Coach terms for using short focus training games, AI productivity recaps, subscriptions, and account features.";
+
 export const metadata: Metadata = {
-  title: "Focus Coach Terms of Service",
-  description:
-    "Read the Focus Coach terms for using short focus training games, AI productivity recaps, subscriptions, and account features.",
+  title,
+  description,
   alternates: {
     canonical: "/terms"
-  }
+  },
+  openGraph: shareMetadata(title + " | Focus Coach", description, "/terms")
 };
 
 export default function TermsPage() {

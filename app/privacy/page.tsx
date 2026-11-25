@@ -1,14 +1,18 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import { PageShell } from "@/components/layout/page-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+const title = "Focus Coach Privacy Policy";
+const description = "Read the Focus Coach privacy policy for focus training data, account information, analytics, AI reports, and payment processing.";
+
 export const metadata: Metadata = {
-  title: "Focus Coach Privacy Policy",
-  description:
-    "Read the Focus Coach privacy policy for focus training data, account information, analytics, AI reports, and payment processing.",
+  title,
+  description,
   alternates: {
     canonical: "/privacy"
-  }
+  },
+  openGraph: shareMetadata(title + " | Focus Coach", description, "/privacy")
 };
 
 export default function PrivacyPage() {

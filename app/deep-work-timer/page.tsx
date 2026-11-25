@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Brain, Clock3 } from "lucide-react";
@@ -7,10 +8,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DeepWorkTimer } from "./timer";
 
+const title = "Deep Work Timer – Free Online Focus Timer | FocusCoach";
+const description = "Free deep work timer: run 25-90 minute focus sessions instantly — no signup needed. Built for ADHD brains, with training prompts to help you actually start, not just time yourself.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Deep Work Timer – Free Online Focus Timer | FocusCoach" },
-  description:
-    "Free deep work timer: run 25-90 minute focus sessions instantly — no signup needed. Built for ADHD brains, with training prompts to help you actually start, not just time yourself.",
+  title: { absolute: title },
+  description,
   keywords: [
     "deep work timer",
     "deep work timer online",
@@ -19,12 +22,7 @@ export const metadata: Metadata = {
     "deep work vs pomodoro"
   ],
   alternates: { canonical: "/deep-work-timer" },
-  openGraph: {
-    title: "Deep Work Timer – Free Online Focus Timer | FocusCoach",
-    description:
-      "Run 25-90 minute deep work sessions instantly. No signup required, with ADHD-friendly start prompts and session wrap-up.",
-    url: "/deep-work-timer"
-  }
+  openGraph: shareMetadata(title, description, "/deep-work-timer")
 };
 
 const faqs = [

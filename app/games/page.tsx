@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,19 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
+const title = "Free Focus Games | Play Online in Your Browser | Focus Coach";
+const description = "Play free focus games online: Number Memory, N-Back, Stroop, Quick Match, and Task Switch. Browser-based attention games for adults—free to start, no download.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Free Focus Games | Play Online in Your Browser | Focus Coach" },
-  description:
-    "Play free focus games online: Number Memory, N-Back, Stroop, Quick Match, and Task Switch. Browser-based attention games for adults—free to start, no download.",
+  title: { absolute: title },
+  description,
   alternates: {
     canonical: "/games"
   },
-  openGraph: {
-    title: "Free Focus Games | Focus Coach",
-    description:
-      "Five free focus games you can play in your browser. Short attention games for working memory, speed, switching, and inhibition.",
-    url: "/games"
-  }
+  openGraph: shareMetadata(title, description, "/games")
 };
 
 export default function GamesPage() {
@@ -215,6 +213,7 @@ export default function GamesPage() {
           </div>
         </section>
       </div>
+    <p>Measure your speed and accuracy in the <Link className="underline" href="/exercises/quick-match">reaction time test</Link>.</p>
     </PageShell>
   );
 }
