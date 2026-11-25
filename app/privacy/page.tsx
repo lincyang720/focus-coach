@@ -4,7 +4,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const title = "Focus Coach Privacy Policy";
-const description = "Read the Focus Coach privacy policy for focus training data, account information, analytics, AI reports, and payment processing.";
+const description = "Learn how Focus Coach uses account details and exercise results, and how to contact the maintainer about your data.";
 
 export const metadata: Metadata = {
   title,
@@ -28,9 +28,8 @@ export default function PrivacyPage() {
               Focus Coach Privacy Policy
             </h1>
             <p>
-              Focus Coach is a productivity app for short focus training sessions. This placeholder
-              policy explains the data categories the MVP is designed to handle before a formal legal
-              policy is generated.
+              You can play the focus exercises without creating an account. When you finish a session,
+              Focus Coach saves your result in this browser so you can review your practice over time.
             </p>
           </section>
           <section>
@@ -52,17 +51,9 @@ export default function PrivacyPage() {
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-semibold text-foreground">Payments and processors</h2>
-            <p>
-              Payments are processed through PayPal. Focus Coach does not store full card numbers in
-              the application database.
-            </p>
-          </section>
-          <section>
             <h2 className="text-xl font-semibold text-foreground">Contact</h2>
             <p>
-              Replace this placeholder with your support email before launch. For production, review
-              this policy with a qualified legal provider.
+              For questions about your account or exercise data, email <a className="underline" href="mailto:lincyang85@gmail.com">lincyang85@gmail.com</a>.
             </p>
           </section>
         </CardContent>
