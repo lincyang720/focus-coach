@@ -1,9 +1,12 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 
+const title = "Affordable AI Brain Training App Pricing";
+const description = "Compare the free Focus Coach plan with the $29.99/year Pro plan for personalized cognitive training, unlimited brain training, and weekly AI recaps.";
+
 export const metadata: Metadata = {
-  title: "Affordable AI Brain Training App Pricing",
-  description:
-    "Compare the free Focus Coach plan with the $29.99/year Pro plan for personalized cognitive training, unlimited brain training, and weekly AI recaps.",
+  title,
+  description,
   keywords: [
     "AI brain training",
     "personalized cognitive training",
@@ -13,7 +16,8 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/pricing"
-  }
+  },
+  openGraph: shareMetadata(title + " | Focus Coach", description, "/pricing")
 };
 
 export default function PricingLayout({ children }: { children: React.ReactNode }) {

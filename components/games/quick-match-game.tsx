@@ -41,6 +41,7 @@ export function QuickMatchGame({
       const result = scoreQuickMatch(nextResponses);
       onComplete({
         ...result,
+        averageResponseMs: Math.round(nextResponses.reduce((sum, item) => sum + item.responseTimeMs, 0) / nextResponses.length),
         durationSeconds: Math.max(1, Math.round((Date.now() - startedAt) / 1000)),
         gameData: nextResponses
       });

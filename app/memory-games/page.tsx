@@ -1,14 +1,18 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
+const title = "Memory Games for Adults | Focus Coach";
+const description = "Play memory games for adults in your phone or desktop browser. No signup or download. Finished scores are saved in your browser so you can see your progress.";
+
 export const metadata: Metadata = {
-  title: { absolute: "Memory Games for Adults | Focus Coach" },
-  description:
-    "Play memory games for adults in your phone or desktop browser. No signup or download. Finished scores are saved in your browser so you can see your progress.",
-  alternates: { canonical: "/memory-games" }
+  title: { absolute: title },
+  description,
+  alternates: { canonical: "/memory-games" },
+  openGraph: shareMetadata(title, description, "/memory-games")
 };
 
 const practice = {

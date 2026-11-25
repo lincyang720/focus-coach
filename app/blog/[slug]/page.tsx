@@ -17,7 +17,7 @@ export function generateMetadata({ params }: Props): Metadata {
     title: article.title,
     description: article.description,
     alternates: { canonical: `/blog/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.description, url: `/blog/${article.slug}`, publishedTime: article.published, images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: article.title }] }
+    openGraph: { type: "article", title: article.title + " | Focus Coach", description: article.description, url: `/blog/${article.slug}`, publishedTime: article.published, images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: article.title }] }
   };
 }
 

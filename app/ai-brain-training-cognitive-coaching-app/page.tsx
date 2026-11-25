@@ -1,3 +1,4 @@
+import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,30 +7,16 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
+const title = "AI Brain Training Cognitive Coaching App & Brain Training App";
+const description = "Learn how Focus Coach combines AI brain training, cognitive coaching, short focus games, and weekly reports in one practical brain training app.";
+
 export const metadata: Metadata = {
   title: {
-    absolute: "AI Brain Training Cognitive Coaching App & Brain Training App"
+    absolute: title
   },
-  description:
-    "Learn how Focus Coach combines AI brain training, cognitive coaching, short focus games, and weekly reports in one practical brain training app.",
+  description,
   alternates: {
     canonical: "/ai-brain-training-cognitive-coaching-app"
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Focus Coach",
-    title: "AI Brain Training Cognitive Coaching App & Brain Training App",
-    description:
-      "A practical guide to Focus Coach as an AI brain training cognitive coaching app for attention, memory, and focus practice.",
-    url: "/ai-brain-training-cognitive-coaching-app",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Focus Coach AI brain training cognitive coaching app"
-      }
-    ]
   },
   twitter: {
     card: "summary_large_image",
@@ -37,7 +24,8 @@ export const metadata: Metadata = {
     description:
       "Short cognitive training games, AI coaching insights, and weekly focus reports in one brain training app.",
     images: ["/opengraph-image"]
-  }
+  },
+  openGraph: shareMetadata(title, description, "/ai-brain-training-cognitive-coaching-app")
 };
 
 export default function AiBrainTrainingCognitiveCoachingAppPage() {

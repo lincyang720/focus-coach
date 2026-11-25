@@ -11,7 +11,6 @@ export function PageShell({ children }: { children: React.ReactNode }) {
           <p>FocusCoach is an ADHD-friendly attention training tool for adults—not a medical device.</p>
           <nav className="flex flex-wrap gap-4">
             <Link className="hover:text-foreground" href="/blog">Focus Guides</Link>
-            <Link className="hover:text-foreground" href="/pricing">Pricing</Link>
             <Link className="hover:text-foreground" href="/privacy">
               Privacy Policy
             </Link>
