@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/terms"
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/terms")
+  ...shareMetadata(title + " | Focus Coach", description, "/terms")
 };
 
 export default function TermsPage() {

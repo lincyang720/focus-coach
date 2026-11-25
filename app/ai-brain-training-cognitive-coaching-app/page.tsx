@@ -18,14 +18,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/ai-brain-training-cognitive-coaching-app"
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "AI Brain Training Cognitive Coaching App & Brain Training App",
-    description:
-      "Short cognitive training games, AI coaching insights, and weekly focus reports in one brain training app.",
-    images: ["/opengraph-image"]
-  },
-  openGraph: shareMetadata(title, description, "/ai-brain-training-cognitive-coaching-app")
+  ...shareMetadata(title, description, "/ai-brain-training-cognitive-coaching-app")
 };
 
 export default function AiBrainTrainingCognitiveCoachingAppPage() {

@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
+import { shareMetadata } from "@/lib/share-metadata";
 import Link from "next/link";
 import { PageShell } from "@/components/layout/page-shell";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
+
+const title = "Focus Training Exercises";
+const description = "Choose a free browser exercise for number recall, reaction speed, spatial memory, task switching or color-word interference.";
+
+export const metadata: Metadata = {
+  title,
+  description,
+  ...shareMetadata(title + " | Focus Coach", description, "/exercises")
+};
 
 export default function ExercisesPage() {
   return (

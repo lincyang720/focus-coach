@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/blog" },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/blog")
+  ...shareMetadata(title + " | Focus Coach", description, "/blog")
 };
 
 export default function BlogPage() {

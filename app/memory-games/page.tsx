@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: "/memory-games" },
-  openGraph: shareMetadata(title, description, "/memory-games")
+  ...shareMetadata(title, description, "/memory-games")
 };
 
 const practice = {

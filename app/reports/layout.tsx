@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/reports"
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/reports")
+  ...shareMetadata(title + " | Focus Coach", description, "/reports")
 };
 
 export default function ReportsLayout({ children }: { children: React.ReactNode }) {

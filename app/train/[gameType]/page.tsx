@@ -23,7 +23,7 @@ export function generateMetadata({
   return {
     title,
     description,
-    openGraph: shareMetadata(title + " | Focus Coach", description, `/train/${params.gameType}`),
+    ...shareMetadata(title + " | Focus Coach", description, `/train/${params.gameType}`),
     alternates: {
       canonical: `/exercises/${gameSlugByType[params.gameType]}`
     },

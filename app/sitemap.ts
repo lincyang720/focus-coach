@@ -16,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/free-adhd-focus-test",
     "/blog",
     "/pricing",
+    "/about",
+    "/contact",
     "/privacy",
     "/terms"
   ];

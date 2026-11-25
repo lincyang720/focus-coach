@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     index: false,
     follow: true
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/settings")
+  ...shareMetadata(title + " | Focus Coach", description, "/settings")
 };
 
 export default function SettingsLayout({ children }: { children: React.ReactNode }) {

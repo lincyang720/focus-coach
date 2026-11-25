@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     index: false,
     follow: true
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/register")
+  ...shareMetadata(title + " | Focus Coach", description, "/register")
 };
 
 export default function RegisterLayout({ children }: { children: React.ReactNode }) {

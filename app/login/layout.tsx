@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     index: false,
     follow: true
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/login")
+  ...shareMetadata(title + " | Focus Coach", description, "/login")
 };
 
 export default function LoginLayout({ children }: { children: React.ReactNode }) {

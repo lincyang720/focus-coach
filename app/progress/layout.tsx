@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/progress"
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/progress")
+  ...shareMetadata(title + " | Focus Coach", description, "/progress")
 };
 
 export default function ProgressLayout({ children }: { children: React.ReactNode }) {

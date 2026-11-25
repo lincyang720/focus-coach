@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     index: false,
     follow: true
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/success")
+  ...shareMetadata(title + " | Focus Coach", description, "/success")
 };
 
 export default function SuccessLayout({ children }: { children: React.ReactNode }) {
