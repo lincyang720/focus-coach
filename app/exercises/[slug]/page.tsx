@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { reactionGuide, nBackGuide } from "@/lib/exercise-guides";
+import { type GuideSection, reactionGuide, nBackGuide, numberMemoryGuide, stroopGuide } from "@/lib/exercise-guides";
 import { shareMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -20,6 +20,13 @@ const sectionBySlug: Record<string, string> = {
   "number-memory": "How digit span is scored",
   "stroop-test": "How the Stroop score is calculated",
   "task-switch": "When the sorting rule changes"
+};
+
+const guidesBySlug: Record<string, GuideSection[]> = {
+  "quick-match": reactionGuide,
+  "n-back": nBackGuide,
+  "number-memory": numberMemoryGuide,
+  "stroop-test": stroopGuide
 };
 
 const titleBySlug: Record<string, string> = {
@@ -167,7 +174,7 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
       "brain training"
     ],
     intro:
-      "Open this free N Back Test and start immediately. A set takes 30 self-paced decisions, roughly a minute or two, and your result shows the percentage correct. In this test, you decide whether the current square matches the position shown N steps earlier. This n-back cognitive training game starts simple and becomes more demanding as the level rises. It is designed for adults who want structured brain training for attention control, mental updating, and sustained focus without needing a complex dual n-back setup.",
+      "Open the free n back test and start immediately. A set takes 30 self-paced decisions, roughly a minute or two, and your result shows the percentage correct. In this test, you decide whether the current square matches the position shown N steps earlier. This n-back cognitive training game starts simple and becomes more demanding as the level rises. It is designed for adults who want structured brain training for attention control, mental updating, and sustained focus without needing a complex dual n-back setup.",
     science:
       "N-back tasks require continuous updating: each new item changes which earlier item is relevant. Research consistently finds improvement on the trained task and sometimes on closely related tasks, while evidence for broad transfer to intelligence, ADHD symptoms, or everyday performance remains uncertain.",
     adhdRelation:
@@ -312,7 +319,7 @@ const seoContentBySlug: Record<string, GameSeoContent> = {
       {
         question: "Why do I get slower as I go?",
         answer:
-          "Notice what happens on a conflicting trial, such as RED printed in blue. You may begin reading the word, catch yourself and pause before choosing blue. Fatigue, interruptions or a deliberate effort to make fewer errors can also slow a set. Check accuracy alongside speed."
+          "Notice what happens on a conflicting trial, such as RED printed in blue. You may begin reading the word, catch yourself and pause before choosing blue. Fatigue, interruptions or a deliberate effort to make fewer errors can also slow a set. Check accuracy alongside speed. For instance, if you slow down after selecting the word instead of the ink twice, a steadier pace on the remaining trials can preserve accuracy. Your final average includes both parts of that set."
       }
     ]
   }
@@ -342,7 +349,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     alternates: {
       canonical: `/exercises/${params.slug}`
     },
-    openGraph: shareMetadata(keyword, description, `/exercises/${params.slug}`)
+    ...shareMetadata(keyword, description, `/exercises/${params.slug}`)
   };
 }
 
@@ -353,7 +360,7 @@ export default function GameSeoPage({ params }: { params: { slug: string } }) {
   const config = gameConfigByType[gameType];
   const keyword = titleBySlug[params.slug] ?? `${config.name} Attention Training Game`;
   const seoContent = seoContentBySlug[params.slug];
-  const guide = params.slug === "quick-match" ? reactionGuide : params.slug === "n-back" ? nBackGuide : [];
+  const guide = guidesBySlug[params.slug] ?? [];
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -417,7 +424,7 @@ export default function GameSeoPage({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <GameRunner gameType={gameType} seoTitle={headingBySlug[params.slug] ?? keyword} subtitle={params.slug === "quick-match" ? "Free online reflex and reaction speed test — 20 rounds, your average reaction time in milliseconds" : undefined} />
+      <GameRunner gameType={gameType} backToGames seoTitle={headingBySlug[params.slug] ?? keyword} subtitle={params.slug === "quick-match" ? "Free online reflex and reaction speed test — 20 rounds, your average reaction time in milliseconds" : undefined} />
       {seoContent ? (
         <section className="mt-12 space-y-8">
           <div className="max-w-3xl">

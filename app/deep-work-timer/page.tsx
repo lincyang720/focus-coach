@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "deep work vs pomodoro"
   ],
   alternates: { canonical: "/deep-work-timer" },
-  openGraph: shareMetadata(title, description, "/deep-work-timer")
+  ...shareMetadata(title, description, "/deep-work-timer")
 };
 
 const faqs = [

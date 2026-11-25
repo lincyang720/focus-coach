@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/games"
   },
-  openGraph: shareMetadata(title, description, "/games")
+  ...shareMetadata(title, description, "/games")
 };
 
 export default function GamesPage() {

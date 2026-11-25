@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pricing"
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/pricing")
+  ...shareMetadata(title + " | Focus Coach", description, "/pricing")
 };
 
 export default function PricingLayout({ children }: { children: React.ReactNode }) {

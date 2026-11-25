@@ -25,11 +25,13 @@ export interface GameCompletePayload {
 export function GameRunner({
   gameType,
   seoTitle,
-  subtitle
+  subtitle,
+  backToGames = false
 }: {
   gameType: GameType;
   seoTitle?: string;
   subtitle?: string;
+  backToGames?: boolean;
 }) {
   const config = gameConfigByType[gameType];
   const [difficulty, setDifficulty] = useState(1);
@@ -67,9 +69,9 @@ export function GameRunner({
   return (
     <div className="space-y-5">
       <Button variant="ghost" size="sm" asChild>
-        <Link href="/dashboard">
+        <Link href={backToGames ? "/games" : "/dashboard"}>
           <ArrowLeft className="h-4 w-4" aria-hidden />
-          Dashboard
+          {backToGames ? "Games" : "Dashboard"}
         </Link>
       </Button>
 

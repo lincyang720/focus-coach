@@ -15,13 +15,7 @@ export const metadata: Metadata = {
   title: { absolute: title },
   description,
   alternates: { canonical: "/" },
-  twitter: {
-    card: "summary_large_image",
-    title: "Focus Coach (FocusCoach) | ADHD-Friendly Focus Tools",
-    description: "Free ADHD-friendly focus tools and browser-based focus games from Focus Coach.",
-    images: ["/opengraph-image"]
-  },
-  openGraph: shareMetadata(title, description, "/")
+  ...shareMetadata(title, description, "/")
 };
 
 const faqs = [

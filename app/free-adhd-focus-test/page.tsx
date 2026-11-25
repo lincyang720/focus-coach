@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "attention test for adults"
   ],
   alternates: { canonical: "/free-adhd-focus-test" },
-  openGraph: shareMetadata(title, description, "/free-adhd-focus-test")
+  ...shareMetadata(title, description, "/free-adhd-focus-test")
 };
 
 const faqs = [

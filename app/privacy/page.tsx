@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/privacy"
   },
-  openGraph: shareMetadata(title + " | Focus Coach", description, "/privacy")
+  ...shareMetadata(title + " | Focus Coach", description, "/privacy")
 };
 
 export default function PrivacyPage() {

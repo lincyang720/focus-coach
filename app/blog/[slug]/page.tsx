@@ -1,3 +1,4 @@
+import { twitterMetadata } from "@/lib/share-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -17,6 +18,7 @@ export function generateMetadata({ params }: Props): Metadata {
     title: article.title,
     description: article.description,
     alternates: { canonical: `/blog/${article.slug}` },
+    twitter: twitterMetadata(article.title + " | Focus Coach", article.description),
     openGraph: { type: "article", title: article.title + " | Focus Coach", description: article.description, url: `/blog/${article.slug}`, publishedTime: article.published, images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: article.title }] }
   };
 }
