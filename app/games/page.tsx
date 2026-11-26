@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
-const title = "Free Focus Games | Play Online in Your Browser | Focus Coach";
+const title = "Free Focus Games | Play Online in Your Browser";
 const description = "Play free focus games online: Number Memory, N-Back, Stroop, Quick Match, and Task Switch. Browser-based attention games for adults—free to start, no download.";
 
 export const metadata: Metadata = {

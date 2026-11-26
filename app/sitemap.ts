@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/memory-games",
     "/free-adhd-focus-test",
     "/blog",
-    "/pricing",
+    "/exercises",
     "/about",
     "/contact",
     "/privacy",
@@ -34,9 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             ? 0.9
           : route === "/games"
             ? 0.9
-            : route === "/pricing"
-              ? 0.8
-              : 0.5
+            : 0.5
     })),
     ...articles.map((article) => ({
       url: `${appUrl}/blog/${article.slug}`,

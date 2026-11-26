@@ -76,8 +76,7 @@ export function FocusCheck() {
               </div>
             </div>
             <p className="text-sm leading-6 text-muted-foreground">
-              This quick result is a practice snapshot, not a clinical assessment. FocusCoach can
-              track accuracy, response speed, and weekly patterns across multiple focus exercises.
+              This quick result is a practice snapshot, not a clinical assessment. Try a focus exercise next to practice matching shapes, recalling digits, or naming ink colors.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <Button asChild>

@@ -11,7 +11,7 @@ import { TaskSwitchGame } from "@/components/games/task-switch-game";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { adjustDifficulty, gameConfigByType, getLatestDifficulty } from "@/lib/games";
-import { getCurrentUser, getLocalSessions, saveLocalSession } from "@/lib/storage";
+import { getLocalSessions, saveLocalSession } from "@/lib/storage";
 import type { GameSessionInput, GameType } from "@/lib/types";
 
 export interface GameCompletePayload {
@@ -25,13 +25,11 @@ export interface GameCompletePayload {
 export function GameRunner({
   gameType,
   seoTitle,
-  subtitle,
-  backToGames = false
+  subtitle
 }: {
   gameType: GameType;
   seoTitle?: string;
   subtitle?: string;
-  backToGames?: boolean;
 }) {
   const config = gameConfigByType[gameType];
   const [difficulty, setDifficulty] = useState(1);
@@ -41,10 +39,8 @@ export function GameRunner({
     setDifficulty(getLatestDifficulty(getLocalSessions(), gameType));
   }, [gameType]);
 
-  async function handleComplete(payload: GameCompletePayload) {
-    const user = getCurrentUser();
+  function handleComplete(payload: GameCompletePayload) {
     const input: GameSessionInput = {
-      userId: user?.id,
       gameType,
       difficultyLevel: difficulty,
       score: payload.score,
@@ -57,21 +53,14 @@ export function GameRunner({
     setLastResult(payload);
     setDifficulty(adjustDifficulty(difficulty, payload.accuracy));
 
-    if (user) {
-      await fetch("/api/sessions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(input)
-      }).catch(() => undefined);
-    }
   }
 
   return (
     <div className="space-y-5">
       <Button variant="ghost" size="sm" asChild>
-        <Link href={backToGames ? "/games" : "/dashboard"}>
+        <Link href="/games">
           <ArrowLeft className="h-4 w-4" aria-hidden />
-          {backToGames ? "Games" : "Dashboard"}
+          Games
         </Link>
       </Button>
 

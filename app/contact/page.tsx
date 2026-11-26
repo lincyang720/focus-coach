@@ -6,10 +6,10 @@ const title = "Contact Focus Coach";
 const description = "Contact the Focus Coach maintainer about an exercise, a correction, or a question about your data.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: { canonical: "/contact" },
-  ...shareMetadata(title + " | Focus Coach", description, "/contact")
+  ...shareMetadata(title, description, "/contact")
 };
 
 export default function ContactPage() {

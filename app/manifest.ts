@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "FocusCoach – ADHD-Friendly Attention Training",
     short_name: "FocusCoach",
-    description: "Short adaptive attention exercises and weekly productivity insights for adults.",
+    description: "Short adaptive attention exercises for adults.",
     start_url: "/",
     display: "standalone",
     background_color: "#f6f8f9",

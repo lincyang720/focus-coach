@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 const title = "AI Brain Training Cognitive Coaching App & Brain Training App";
-const description = "Learn how Focus Coach combines AI brain training, cognitive coaching, short focus games, and weekly reports in one practical brain training app.";
+const description = "Learn how Focus Coach combines AI brain training, cognitive coaching, short focus games, and exercise guides in one practical brain training app.";
 
 export const metadata: Metadata = {
   title: {
@@ -27,7 +27,7 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
     "@type": "WebPage",
     name: "AI Brain Training Cognitive Coaching App & Brain Training App",
     description:
-      "A guide to how Focus Coach combines cognitive training games, AI coaching insights, and weekly reports for practical focus practice.",
+      "A guide to how Focus Coach combines cognitive training games, AI coaching insights, and exercise guides for practical focus practice.",
     url: "https://www.focuscoach.dev/ai-brain-training-cognitive-coaching-app",
     about: [
       "AI brain training",
@@ -73,8 +73,8 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
           </div>
           <figure className="overflow-hidden rounded-lg border bg-background/90 shadow-sm">
             <Image
-              src="/images/focus-coach-ai-report.jpg"
-              alt="AI cognitive coaching weekly report dashboard with attention trend, accuracy, response speed, and focus insights"
+              src="/images/focus-coach-games.jpg"
+              alt="Focus Coach browser exercises"
               width={1536}
               height={1024}
               className="h-auto w-full"
@@ -94,11 +94,11 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
             {
               icon: ClipboardList,
               title: "Cognitive coaching insights",
-              text: "Use weekly summaries to understand accuracy, response speed, consistency, and what to practice in the next session."
+              text: "Use the scoring guides to understand accuracy and response speed."
             },
             {
               icon: Sparkles,
-              title: "AI reports for focus",
+              title: "Feedback after each set",
               text: "Turn training data into plain-language guidance for workday focus without medical claims or clinical positioning."
             }
           ].map((item) => (
@@ -130,8 +130,7 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
             <p>
               The app is not designed around medical claims. It is a productivity and mental fitness
               tool that helps users practice attention control, working memory, reaction speed, and
-              task switching through short sessions. The AI report gives practical next steps based
-              on recent training data.
+              task switching through short sessions. Practice guides explain how to interpret each score.
             </p>
           </div>
         </section>
@@ -145,14 +144,12 @@ export default function AiBrainTrainingCognitiveCoachingAppPage() {
           <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
             <p>
               The workflow is simple: play a short game, collect a measurable result, then review
-              what the result suggests. Over time, Focus Coach can compare performance across
-              cognitive training games and produce weekly summaries that highlight consistency,
-              accuracy, and response speed.
+              what the result suggests. Compare two sets at the same difficulty before drawing conclusions about changes in accuracy.
             </p>
             <p>
               This structure helps the app serve people who are searching for an AI brain training
               cognitive coaching app and a brain training app in one product. The games provide the
-              training surface, while the AI coach helps interpret what happened and how to continue.
+              training surface, while the exercise guide explains what happened and how to continue.
             </p>
           </div>
         </section>

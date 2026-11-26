@@ -52,7 +52,7 @@ export const articles: Article[] = [
       {
         heading: "1. FocusCoach: ADHD focus tool for attention practice",
         paragraphs: [
-          "FocusCoach bundles a free attention check, short adaptive exercises, and optional weekly pattern summaries. It fits adults who want ADHD focus tools that practice attention, not only block websites.",
+          "FocusCoach bundles a free attention check, short adaptive exercises, and a deep work timer. It fits adults who want ADHD focus tools that practice attention, not only block websites.",
           "Use it when feedback and a repeatable warm-up matter. Pair it with the free focus games library if you prefer game-based resets before deep work.",
           "It is a productivity and training tool, not an ADHD diagnostic or treatment product."
         ]

@@ -7,7 +7,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-const title = "Free ADHD Focus Test – 60-Second Attention Assessment | FocusCoach";
+const title = "Free ADHD Focus Test – 60-Second Attention Assessment";
 const description = "Try a free 60-second ADHD-friendly focus test. Check attention speed and accuracy online with no signup, then explore practical focus exercises for adults.";
 
 export const metadata: Metadata = {

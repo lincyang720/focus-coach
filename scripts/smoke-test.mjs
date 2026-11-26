@@ -23,35 +23,13 @@ async function test(name, fn) {
   }
 }
 
-async function post(path, body) {
-  return fetch(`${BASE_URL}${path}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  });
-}
+const retiredPages = ["/dashboard", "/progress", "/reports", "/settings", "/login", "/success", "/pricing", "/register"];
 
 async function testPages() {
   console.log("\nPage accessibility");
-  const pages = [
-    "/",
-    "/login",
-    "/register",
-    "/pricing",
-    "/privacy",
-    "/terms",
-    "/games",
-    "/exercises/number-memory",
-    "/exercises/quick-match",
-    "/exercises/n-back",
-    "/exercises/task-switch",
-    "/exercises/stroop-test",
-    "/dashboard",
-    "/progress",
-    "/reports",
-    "/settings",
-    "/success"
-  ];
+  const pages = ["/", "/about", "/contact", "/exercises", "/privacy", "/terms", "/games",
+    "/exercises/number-memory", "/exercises/quick-match", "/exercises/n-back",
+    "/exercises/task-switch", "/exercises/stroop-test"];
 
   for (const path of pages) {
     await test(`GET ${path}`, async () => {
@@ -80,8 +58,11 @@ async function testSeoFiles() {
     const response = await fetch(`${BASE_URL}/sitemap.xml`);
     const text = await response.text();
     if (response.status !== 200) throw new Error(`HTTP ${response.status}`);
-    for (const path of ["/login", "/pricing", "/games"]) {
-      if (!text.includes(path)) throw new Error(`Missing path: ${path}`);
+    for (const path of retiredPages) {
+      if (text.includes(path + "</loc>")) throw new Error("Retired sitemap entry: " + path);
+    }
+    for (const path of ["/exercises", "/games"]) {
+      if (!text.includes(path + "</loc>")) throw new Error(`Missing path: ${path}`);
     }
   });
 
@@ -93,102 +74,23 @@ async function testSeoFiles() {
   });
 }
 
-async function testAuthApi() {
-  console.log("\nAuth API");
-
-  await test("POST /api/auth/register missing fields", async () => {
-    const response = await post("/api/auth/register", {});
-    const json = await response.json();
-    if (response.status !== 400) throw new Error(`Expected 400, got ${response.status}`);
-    if (json.success !== false) throw new Error("Expected success false");
-  });
-
-  await test("POST /api/auth/login demo fallback", async () => {
-    const response = await post("/api/auth/login", {
-      email: "demo@focuscoach.local",
-      password: "password"
+async function testRetiredRoutes() {
+  for (const path of retiredPages) {
+    await test(`GET ${path} is retired`, async () => {
+      const response = await fetch(BASE_URL + path, { redirect: "manual" });
+      if (response.status !== 404) throw new Error(`HTTP ${response.status}`);
     });
-    const json = await response.json();
-    if (response.status !== 200) throw new Error(`Expected 200, got ${response.status}`);
-    if (!json.success || !json.token) throw new Error("Missing demo login payload");
-  });
-}
-
-async function testSessionsApi() {
-  console.log("\nSessions API");
-
-  await test("POST /api/sessions invalid payload", async () => {
-    const response = await post("/api/sessions", { gameType: "number_memory" });
-    const json = await response.json();
-    if (response.status !== 400) throw new Error(`Expected 400, got ${response.status}`);
-    if (json.success !== false) throw new Error("Expected success false");
-  });
-
-  await test("POST /api/sessions valid demo payload", async () => {
-    const response = await post("/api/sessions", {
-      userId: "test-user-123",
-      gameType: "number_memory",
-      difficultyLevel: 3,
-      score: 80,
-      maxScore: 100,
-      accuracy: 0.8,
-      durationSeconds: 120,
-      gameData: { sequence: [1, 2, 3], userInput: [1, 2, 3] }
+  }
+  for (const [method, path] of [
+    ["POST", "/api/auth/register"], ["POST", "/api/auth/login"], ["POST", "/api/sessions"],
+    ["GET", "/api/reports/weekly"], ["POST", "/api/reports/generate"],
+    ["POST", "/api/paypal/create-order"], ["POST", "/api/paypal/capture-order"]
+  ]) {
+    await test(`${method} ${path} is retired`, async () => {
+      const response = await fetch(BASE_URL + path, { method, redirect: "manual" });
+      if (response.status !== 404 && response.status !== 405) throw new Error(`HTTP ${response.status}`);
     });
-    const json = await response.json();
-    if (response.status !== 200) throw new Error(`Expected 200, got ${response.status}`);
-    if (!json.success || !json.sessionId) throw new Error("Missing session payload");
-    if (json.newDifficultyLevel !== 4) throw new Error("Expected level up");
-  });
-}
-
-async function testPayPalApi() {
-  console.log("\nPayPal API demo mode");
-
-  await test("POST /api/paypal/create-order missing userId", async () => {
-    const response = await post("/api/paypal/create-order", {});
-    if (response.status !== 400) throw new Error(`Expected 400, got ${response.status}`);
-  });
-
-  await test("POST /api/paypal/create-order demo fallback", async () => {
-    const response = await post("/api/paypal/create-order", { userId: "test-user-123" });
-    const json = await response.json();
-    if (response.status !== 200) throw new Error(`Expected 200, got ${response.status}`);
-    if (!json.orderId) throw new Error("Missing orderId");
-    if (!json.approveUrl?.includes("demo")) throw new Error("Expected demo approval URL");
-  });
-}
-
-async function testReportsApi() {
-  console.log("\nReports API");
-
-  await test("GET /api/reports/weekly missing params", async () => {
-    const response = await fetch(`${BASE_URL}/api/reports/weekly`);
-    const json = await response.json();
-    if (json.report !== null) throw new Error("Expected null report");
-  });
-}
-
-async function testUserFlow() {
-  console.log("\nFull user flow");
-  let userId = "test-user-flow";
-
-  await test("Register demo user", async () => {
-    const response = await post("/api/auth/register", {
-      email: "flow-test@example.com",
-      password: "FlowTest123!",
-      name: "Flow Test"
-    });
-    const json = await response.json();
-    if (!json.success || !json.userId) throw new Error("Registration failed");
-    userId = json.userId;
-  });
-
-  await test("Create payment order", async () => {
-    const response = await post("/api/paypal/create-order", { userId });
-    const json = await response.json();
-    if (!json.approveUrl) throw new Error("Missing approval URL");
-  });
+  }
 }
 
 async function main() {
@@ -203,11 +105,7 @@ async function main() {
   const start = Date.now();
   await testPages();
   await testSeoFiles();
-  await testAuthApi();
-  await testSessionsApi();
-  await testPayPalApi();
-  await testReportsApi();
-  await testUserFlow();
+  await testRetiredRoutes();
 
   const duration = ((Date.now() - start) / 1000).toFixed(1);
   console.log(`\nTotal: ${passed + failed} | Passed: ${passed} | Failed: ${failed} | ${duration}s`);

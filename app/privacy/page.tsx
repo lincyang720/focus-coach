@@ -4,15 +4,15 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const title = "Focus Coach Privacy Policy";
-const description = "Learn how Focus Coach uses account details and exercise results, and how to contact the maintainer about your data.";
+const description = "Learn where Focus Coach stores exercise results in your browser, how advertising cookies may be used, and how to manage personalized ads.";
 
 export const metadata: Metadata = {
-  title,
+  title: { absolute: title },
   description,
   alternates: {
     canonical: "/privacy"
   },
-  ...shareMetadata(title + " | Focus Coach", description, "/privacy")
+  ...shareMetadata(title, description, "/privacy")
 };
 
 export default function PrivacyPage() {
@@ -28,32 +28,31 @@ export default function PrivacyPage() {
               Focus Coach Privacy Policy
             </h1>
             <p>
-              You can play the focus exercises without creating an account. When you finish a session,
-              Focus Coach saves your result in this browser so you can review your practice over time.
+              Focus Coach stores your exercise results in your own browser. The site does not create
+              user accounts or generate weekly reports.
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-semibold text-foreground">
-              Focus training data we collect
-            </h2>
+            <h2 className="text-xl font-semibold text-foreground">Your exercise results</h2>
             <p>
-              The app may store account details, game session scores, accuracy, difficulty level,
-              training duration, and weekly AI recap content.
+              When you finish an exercise, this browser saves your responses, score, accuracy,
+              difficulty and session duration in local storage. The game uses results on this device
+              to choose the next difficulty level. Clearing browser data for this site removes those results.
             </p>
           </section>
           <section>
-            <h2 className="text-xl font-semibold text-foreground">
-              How focus training data is used
-            </h2>
+            <h2 className="text-xl font-semibold text-foreground">Advertising and cookies</h2>
             <p>
-              Session data is used to show progress, adjust game difficulty, recommend short
-              training sessions, and generate productivity-oriented weekly recaps.
+              Third-party advertising providers, including Google, may use cookies to choose ads
+              based on previous visits to Focus Coach and other websites. Advertising cookies may
+              help Google and its partners personalize the ads you see. To manage or turn off
+              personalized Google ads, visit <a className="underline" href="https://myadcenter.google.com/">Google Ads Settings</a>.
             </p>
           </section>
           <section>
             <h2 className="text-xl font-semibold text-foreground">Contact</h2>
             <p>
-              For questions about your account or exercise data, email <a className="underline" href="mailto:lincyang85@gmail.com">lincyang85@gmail.com</a>.
+              For questions about your privacy or exercise data, email <a className="underline" href="mailto:lincyang85@gmail.com">lincyang85@gmail.com</a>.
             </p>
           </section>
         </CardContent>
