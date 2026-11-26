@@ -7,7 +7,7 @@ export function GET() {
       <text x="188" y="130" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#102033">Focus Coach</text>
       <text x="72" y="285" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#102033">10-minute focus training</text>
       <text x="72" y="365" font-family="Arial, sans-serif" font-size="72" font-weight="800" fill="#102033">for clearer work sessions</text>
-      <text x="72" y="450" font-family="Arial, sans-serif" font-size="30" fill="#526070">Five short games, adaptive difficulty, and weekly AI recaps.</text>
+      <text x="72" y="450" font-family="Arial, sans-serif" font-size="30" fill="#526070">Five short games with adaptive difficulty.</text>
     </svg>`,
     {
       headers: {

@@ -424,7 +424,7 @@ export default function GameSeoPage({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <GameRunner gameType={gameType} backToGames seoTitle={headingBySlug[params.slug] ?? keyword} subtitle={params.slug === "quick-match" ? "Free online reflex and reaction speed test — 20 rounds, your average reaction time in milliseconds" : undefined} />
+      <GameRunner gameType={gameType} seoTitle={headingBySlug[params.slug] ?? keyword} subtitle={params.slug === "quick-match" ? "Free online reflex and reaction speed test — 20 rounds, your average reaction time in milliseconds" : undefined} />
       {seoContent ? (
         <section className="mt-12 space-y-8">
           <div className="max-w-3xl">

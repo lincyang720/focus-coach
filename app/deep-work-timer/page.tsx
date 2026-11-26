@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { DeepWorkTimer } from "./timer";
 
-const title = "Deep Work Timer – Free Online Focus Timer | FocusCoach";
+const title = "Deep Work Timer – Free Online Focus Timer";
 const description = "Free deep work timer: run 25-90 minute focus sessions instantly — no signup needed. Built for ADHD brains, with training prompts to help you actually start, not just time yourself.";
 
 export const metadata: Metadata = {

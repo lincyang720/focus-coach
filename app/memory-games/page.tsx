@@ -5,7 +5,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { Button } from "@/components/ui/button";
 import { gameConfigs, gameSlugByType } from "@/lib/games";
 
-const title = "Memory Games for Adults | Focus Coach";
+const title = "Memory Games for Adults";
 const description = "Play memory games for adults in your phone or desktop browser. No signup or download. Finished scores are saved in your browser so you can see your progress.";
 
 export const metadata: Metadata = {
@@ -96,7 +96,7 @@ export default function MemoryGamesPage() {
           </p>
           <nav aria-label="More from Focus Coach" className="flex flex-wrap gap-4">
             <Link className="text-primary underline" href="/">Focus Coach home</Link>
-            <Link className="text-primary underline" href="/progress">View progress</Link>
+            <Link className="text-primary underline" href="/exercises">Browse all exercises</Link>
           </nav>
         </section>
       </div>

@@ -64,11 +64,10 @@ export function getLocalSessions() {
 }
 
 export function saveLocalSession(input: GameSessionInput) {
-  const user = getCurrentUser();
   const session: GameSession = {
     ...input,
     id: crypto.randomUUID(),
-    userId: input.userId ?? user?.id ?? "anonymous-user",
+    userId: input.userId ?? "anonymous-user",
     completedAt: new Date().toISOString()
   };
   const sessions = [...getLocalSessions(), session];
