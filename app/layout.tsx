@@ -65,7 +65,8 @@ export const metadata: Metadata = {
     ...(process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
       ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
       : {}),
-    "directree-verify": "directree-verify=1f20823adedc3b79db00dcb51aa6ef2c"
+    "directree-verify": "directree-verify=1f20823adedc3b79db00dcb51aa6ef2c",
+    "google-adsense-account": "ca-pub-9200275562093244"
   }
 };
 
