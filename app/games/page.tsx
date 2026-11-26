@@ -156,6 +156,38 @@ export default function GamesPage() {
         <section className="grid gap-6 py-4 md:grid-cols-3">
           <div>
             <h2 className="text-2xl font-semibold tracking-normal">
+              ADHD-friendly focus games and concentration games
+            </h2>
+          </div>
+          <div className="space-y-4 leading-7 text-muted-foreground md:col-span-2">
+            <p>
+              If you are looking for ADHD games online for adults, think about the moment you want
+              to use one. Maybe you have just closed a meeting and need to pick up a half-written
+              email. Leave the draft open, play one short round, then go back and write the next
+              sentence. These focusing games give adults a specific attention task to practice.
+              Even a perfect score describes only that round. The games cannot diagnose ADHD.
+            </p>
+            <p>
+              You can try these concentration games online free of charge while you work out
+              which kind of challenge you enjoy. In Quick Match, a blue circle is easy to mistake
+              for a blue square if you look only at color. In Stroop, the word BLUE might appear
+              in red ink. Choosing red means holding on to the rule even as the word suggests
+              another answer. Those two focus training games feel quite different despite both
+              asking you to look closely.
+            </p>
+            <p>
+              If you prefer to play attention games online free from the pressure of a timer, try
+              N-Back. Here the square stays put until you answer, and accuracy determines your score.
+              Take a moment to picture the earlier position before choosing. You can play all
+              five ADHD games online free of subscriptions, so you can come back to the one
+              that fits your next break.
+            </p>
+          </div>
+        </section>
+
+        <section className="grid gap-6 py-4 md:grid-cols-3">
+          <div>
+            <h2 className="text-2xl font-semibold tracking-normal">
               Pick a free focus game by skill
             </h2>
           </div>
@@ -208,6 +240,29 @@ export default function GamesPage() {
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 One short session before a focus block is enough. Stop when it no longer helps you
                 transition into work.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Are these games suitable for adults with ADHD?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Yes. Adults with ADHD can use a short round to practice one skill, such as
+                remembering a position or ignoring a distracting word. Scores describe how you
+                did on that task and cannot diagnose ADHD.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Is there a free concentration game?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Yes. Try Number Memory for free in your browser. Watch the digits appear, then
+                type them in order after they disappear. You can see your result without an account.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Which game helps with focusing?</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                Try Stroop if you want to practice staying with one instruction despite a
+                distraction. Choose the ink color each time, even when the written word names a
+                different color. For a visual search task, try Quick Match.
               </p>
             </div>
           </div>
