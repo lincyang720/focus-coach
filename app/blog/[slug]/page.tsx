@@ -23,6 +23,17 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
+const gamesAnchorBySlug: Record<string, string> = {
+  "attention-exercises-for-adults-with-adhd": "ADHD focus games",
+  "10-minute-focus-exercises-adhd": "10-minute focus games",
+  "how-to-focus-with-adhd-10-minute-routine": "free focus games",
+  "brain-training-for-adhd-adults": "browser-based focus games",
+  "how-long-brain-training-takes": "playable focus games",
+  "60-second-attention-span-test-score": "focus games online",
+  "why-regular-timers-fail-adhd-brains": "focus games for a task reset",
+  "adhd-working-memory": "working memory games",
+};
+
 export default function ArticlePage({ params }: Props) {
   const article = getArticle(params.slug);
   if (!article) notFound();
@@ -51,7 +62,7 @@ export default function ArticlePage({ params }: Props) {
           </div>
         </aside>
       ) : (
-        <aside className="mt-12 rounded-lg border bg-background/90 p-6"><h2 className="text-xl font-semibold">Try a 60-second focus reset</h2><p className="mt-3 leading-7 text-muted-foreground">Use the free attention check as a transition into your next task, or explore all five training activities. No account is required for the homepage test.</p><div className="mt-5 flex flex-wrap gap-3"><Button asChild><Link href="/#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></Link></Button><Button variant="outline" asChild><Link href="/games">Explore focus exercises</Link></Button></div></aside>
+        <aside className="mt-12 rounded-lg border bg-background/90 p-6"><h2 className="text-xl font-semibold">Try a 60-second focus reset</h2><p className="mt-3 leading-7 text-muted-foreground">Use the free attention check as a transition into your next task, or explore all five training activities. No account is required for the homepage test.</p><div className="mt-5 flex flex-wrap gap-3"><Button asChild><Link href="/#focus-check">Take the free focus test <ArrowRight className="h-4 w-4" aria-hidden /></Link></Button><Button variant="outline" asChild><Link href="/games">{gamesAnchorBySlug[params.slug] ?? "Explore focus exercises"}</Link></Button></div></aside>
       )}
       <p className="mt-8 border-t pt-6 text-sm leading-6 text-muted-foreground">FocusCoach is a productivity and attention-training tool, not a medical device. It does not diagnose, treat, or cure ADHD. If attention difficulties affect daily life, consult a qualified healthcare professional.</p>
     </article>
